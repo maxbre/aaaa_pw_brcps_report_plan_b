@@ -112,7 +112,7 @@ L'impiego della sezione censuaria ha l'obiettivo di cogliere l'eterogeneità spa
 
 Il tasso di mortalità basale (grezzo) per *cause respiratorie* applicato alla singola sezione censuaria ISTAT è stato ricavato dai dati di *mortalità specifica stratificati a livello provinciale* per la *classe d'età 30+* (fonte ISTAT 2024).
 
-Il *cutoff* alla classe d'età 30+ individua la *popolazione adulta* per cui sono state  definite e riconosciute scientificamente specifiche funzioni di concentrazione-risposta \[@hrapie-2:2025]. I decessi attesi per cause respiratorie sono stati stimati tramite una *standardizzazione indiretta* applicando i tassi grezzi provinciali alla corrispondente numerosità di popolazione residente nelle varie sezione censuarie ISTAT. Questo approccio, necessariamente semplificato per evitare di incorrere nell'instabilità dei "piccoli numeri, presuppone l'assunzione che esista la *"trsportabilità"* dei tassi di mortalità per cause respiratorie nella popolazione 30+  delle Provincie in Regione Veneto, alle corrispondente sezioni censuarie ISTAT.
+Il *cutoff* alla classe d'età 30+ individua la *popolazione adulta* per cui sono state definite e riconosciute scientificamente specifiche funzioni di concentrazione-risposta \[@hrapie-2:2025]. I decessi attesi per cause respiratorie sono stati stimati tramite una *standardizzazione indiretta*, applicando i tassi grezzi provinciali alla corrispondente numerosità di popolazione 30+ residente nelle varie sezioni censuarie ISTAT. Questo approccio, necessariamente semplificato per evitare di incorrere nell'instabilità dei "piccoli numeri", presuppone l'assunzione che esista la *"trasportabilità"* dei tassi di mortalità per cause respiratorie della popolazione 30+ dalle Province della Regione Veneto alle corrispondenti sezioni censuarie ISTAT.
 
 I tassi di mortalità per cause respiratorie definiti a livello di Provincia (dato ISTAT) variano nel range compreso tra il 0.084% e il 0.140%, con una media regionale pari a circa 0.107%, cioè circa 107 casi ogni 100 000 residenti in Veneto.
 
@@ -142,9 +142,11 @@ dove:
 
 - $N$ è la popolazione target di riferimento (es. popolazione adulta $30+$);
 
-- $B$ è il tasso basale grezzo di incidenza dell'esito sanitario considerato (es. mortalità per cause respiratorie).
+- $B$ è il tasso basale grezzo di incidenza dell'esito sanitario considerato (es. mortalità per cause respiratorie);
 
-Si può dimostrare dal punto di vista matematico [^nota] che la valutazione di impatto sanitario aggregando preventivamente i dati di esposizione (a livello di sezione censuaria, di comune o di regione) tende *sistematicamente a sovrastimare il reale impatto* rispetto ad un'analisi condotta alla massima risoluzione spaziale disponibile (idealmente individuale!) e poi aggregata a posteriori. 
+Da notare che nella formula $\Delta C$ rappresenta il delta di esposizione in eccesso rispetto ad una soglia di riferimento prestabilita (target). In particolare, il $\Delta C$ di esposizione in eccesso rispetto alla soglia target di $10 \ \mu g/m^3$ impiegata nel presente studio \[@who_aq:2021], è stato calcolato tramite la funzione R `pmin()`, azzerando i valori nelle sezioni con inquinamento inferiore a tale limite ed evitando così l'attribuzione di un *paradossale effetto protettivo* dell'inquinante.
+
+Si può inoltre dimostrare dal punto di vista matematico [^nota] che la valutazione di impatto sanitario aggregando preventivamente i dati di esposizione (a livello di sezione censuaria, di comune o di regione) tende *sistematicamente a sovrastimare il reale impatto* rispetto ad un'analisi condotta alla massima risoluzione spaziale disponibile (idealmente individuale!) e poi aggregata a posteriori. 
 
 Per questa motivazione, nella presente analisi il $\Delta C$ viene calcolato e la funzione $f$ applicata separatamente *per ciascuna sezione censuaria*, prima di qualunque aggregazione dei risultati. 
 
