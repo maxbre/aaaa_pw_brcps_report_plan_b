@@ -17,4 +17,6 @@ which are hopefully left for a next and much more interesting
 finalisation.
 
 So for now, let’s go straight and hit the long and winding road in a
-future time! But dangerous paths are much more interesting!
+future time!
+
+…but dangerous paths are much more interesting! ;-)
