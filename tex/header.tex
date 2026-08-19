@@ -1,0 +1,13 @@
+% Use the KOMA-Script native header package
+\usepackage[headsepline= 0.01pt]{scrlayer-scrpage} 
+\clearpairofpagestyles
+
+% Set up your running header and footer text
+\setkomafont{pagehead}{\normalfont\fontsize{8}{10}\selectfont\itshape}
+\cohead{Massimo Bressan - BRCPS 2026, Project Work}
+
+\setkomafont{pagefoot}{\normalfont\fontsize{10}{12}\selectfont\itshape}
+\cofoot{\thepage}
+
+% Forces this specific document to start numbering at Page 2
+\setcounter{page}{2} 

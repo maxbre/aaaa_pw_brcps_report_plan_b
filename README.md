@@ -1,0 +1,20 @@
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+# aaaa_pw_brcps_report_plan_b
+
+My final report for the master course “BRCPS26” @unipd.
+
+This is actually the Plan B of the project work.
+
+For reference see the approach in my GitHub repos:
+
+- 20261019_pw_data_analysis_pipeline
+
+- 20261019_report_pw_ubep
+
+which are hopefully left for a next and much more interesting
+finalisation.
+
+So for now, let’s go straight and hit the long and winding road in a
+future time! But dangerous paths are much more interesting!

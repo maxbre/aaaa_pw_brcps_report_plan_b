@@ -1,0 +1,586 @@
+% Encoding: UTF-8
+
+@TechReport{dlgs_152:2006,
+  author      = {DECRETO LEGISLATIVO 3 aprile 2006, n. 152.},
+  title       = {Norme in materia ambientale},
+  institution = {GU},
+  year        = {n. 88 del 14-04-2006 - Suppl. Ordinario n. 96.},
+}
+
+@TechReport{dlgs_155:2010,
+  author      = {DECRETO LEGISLATIVO 13 agosto 2010, n. 155.},
+  title       = {Attuazione della direttiva 2008/50/CE relativa alla qualità dell'aria ambiente e per un'aria più pulita in Europa},
+  institution = {GU},
+  year        = {n. 216 del 15-09-2010 - Suppl. Ordinario n. 217.},
+}
+
+@Article{bel_lapmod:2018,
+  author  = {R. Bellasio and R. Bianconi and S. Mosca and P. Zannetti},
+  title   = {Incorporation of Numerical Plume Rise Algorithms in the Lagrangian Particle Model LAPMOD and Validation against the Indianapolis and Kincaid Datasets},
+  journal = {Atmosphere},
+  year    = {2018},
+  volume  = {9 (10)},
+  pages   = {404},
+  doi     = {doi:10.3390/atmos9100404},
+}
+
+@Article{bel_lapmod:2017,
+  author  = {R. Bellasio and R. Bianconi and S. Mosca and P. Zannetti},
+  title   = {Formulation of the Lagrangian particle model LAPMOD and its evaluation against Kincaid SF6 and SO2 datasets},
+  journal = {Atmospheric Environment},
+  year    = {2017},
+  volume  = {163},
+  pages   = {87-98},
+  doi     = {doi:10.1016/j.atmosenv.2017.05.039},
+}
+
+@TechReport{calpuff_manual:2001,
+  author      = {J.S. Scire and D.G. Strimaitis and R.J. Yamartino},
+  title       = {A user’s Guide for the CALPUFF Dispersion Model (Version 5).},
+  institution = {Earth Tech, Concord, MA.},
+  year        = {2001},
+  type        = {version 5.8.5, EPA approved},
+}
+
+@TechReport{calmet_manual:2000,
+  author      = {J.S. Scire and F.R. Robe and M.E. Fernau and R.J. Yamartino},
+  title       = {A User’s Guide for the CALMET Meteorological Model (Version 5).},
+  institution = {Earth Tech, Inc., Concord, MA.},
+  year        = {2000},
+  type        = {version 5.8.5, EPA approved},
+}
+
+@Manual{R_manual:2022,
+  title        = {{R}: A Language and Environment for Statistical Computing},
+  author       = {{R Core Team}},
+  organization = {R Foundation for Statistical Computing},
+  address      = {Vienna, Austria},
+  year         = {2022},
+  url          = {https://www.R-project.org/},
+}
+
+@Manual{rstudio_manual:2022,
+  title        = {RStudio: Integrated Development Environment for {R}},
+  author       = {{RStudio Team}},
+  organization = {RStudio, PBC},
+  address      = {Boston, MA},
+  year         = {2022},
+  url          = {http://www.rstudio.com/},
+}
+
+@Article{wickam_tidy:2019,
+  author  = {Hadley Wickham and Mara Averick and Jennifer Bryan and Winston Chang and Lucy D'Agostino McGowan and Romain François and Garrett Grolemund and Alex Hayes and Lionel Henry and Jim Hester and Max Kuhn and Thomas Lin Pedersen and Evan Miller and Stephan Milton Bache and Kirill Müller and Jeroen Ooms and David Robinson and Dana Paige Seidel and Vitalie Spinu and Kohske Takahashi and Davis Vaughan and Claus Wilke and Kara Woo and Hiroaki Yutani},
+  title   = {Welcome to the {tidyverse}},
+  journal = {Journal of Open Source Software},
+  year    = {2019},
+  volume  = {4},
+  number  = {43},
+  pages   = {1686},
+  doi     = {10.21105/joss.01686},
+}
+
+@Manual{xie_manual:2020,
+  title  = {bookdown: Authoring Books and Technical Documents with {R} Markdown},
+  author = {Yihui Xie},
+  year   = {2022},
+  note   = {R package version 0.29},
+  url    = {https://github.com/rstudio/bookdown},
+}
+
+@Book{xie_book:2016,
+  title     = {bookdown: Authoring Books and Technical Documents with {R} Markdown},
+  publisher = {Chapman and Hall/CRC},
+  year      = {2016},
+  author    = {Yihui Xie},
+  address   = {Boca Raton, Florida},
+  note      = {ISBN 978-1138700109},
+  url       = {https://bookdown.org/yihui/bookdown},
+}
+
+@Article{ijph_who:2021,
+  author  = {Hoffmann, Barbara and Boogaard, Hanna and de Nazelle, Audrey and Andersen, Zorana J. and Abramson, Michael and Brauer, Michael and Brunekreef, Bert and Forastiere, Francesco and Huang, Wei and Kan, Haidong and Kaufman, Joel D. and Katsouyanni, Klea and Krzyzanowski, Michal and Kuenzli, Nino and Laden, Francine and Nieuwenhuijsen, Mark and Mustapha, Adetoun and Powell, Pippa and Rice, Mary and Roca-Barceló, Aina and Roscoe, Charlotte J. and Soares, Agnes and Straif, Kurt and Thurston, George},
+  title   = {WHO Air Quality Guidelines 2021 – Aiming for Healthier Air for all: A Joint Statement by Medical, Public Health, Scientific Societies and Patient Representative Organisations},
+  journal = {International Journal of Public Health},
+  year    = {2021},
+  volume  = {66},
+  issn    = {1661-8564},
+  doi     = {10.3389/ijph.2021.1604465},
+  url     = {https://www.ssph-journal.org/articles/10.3389/ijph.2021.1604465},
+}
+
+@Article{knuth:1984,
+  author  = {Knuth, Donald E.},
+  title   = {Literate Programming.},
+  journal = {Computing Journal},
+  year    = {1984},
+  volume  = {27},
+  number  = {2},
+  pages   = {97-111},
+  url     = {http://dblp.uni-trier.de/db/journals/cj/cj27.html#Knuth84},
+}
+
+@TechReport{arpav-vetro:2019,
+  author      = {ARPAV},
+  title       = {Simulazione modellistica di dispersione in atmosfera del {C}admio rilasciato durante le fusioni dai forni autorizzati e sottoposti a telecontrollo. Stime periodo Settembre-Dicembre 2017.},
+  institution = {Agenzia Regionale per la Prevenzione e Protezione Ambientale del Veneto},
+  year        = {2019},
+  number      = {prot. 125954 23/12/2019},
+}
+
+@TechReport{arpav-vetro:2014,
+  author      = {ARPAV},
+  title       = {Vetrerie di {M}urano. Simulazione modellistica di dispersione in atmosfera degli inquinanti rilasciati durante le attività di lavorazione del vetro.},
+  institution = {Agenzia Regionale per la Prevenzione e Protezione Ambientale del Veneto},
+  year        = {2014},
+  timestamp   = {04/09/2014},
+}
+
+@Article{bel_lapmod:2012,
+  author  = {R. Bellasio and R. Bianconi},
+  title   = {Il sistema modellistico LAPMOD per la simulazione dell'inquinamento atmosferico in orografia complessa.},
+  journal = {Ingegneria Ambientale},
+  year    = {2012},
+  volume  = {XLI},
+  pages   = {492-500},
+}
+
+@Article{epa_guidelines:2005,
+  author  = {US-EPA},
+  title   = {Revision to the Guideline on Air Quality Models: Adoption of a Preferred General Purpose (Flat and Complex Terrain) Dispersion Model and Other Revisions; Final Rule.},
+  journal = {Federal Register},
+  year    = {2005},
+  volume  = {70},
+  number  = {2016},
+}
+
+@TechReport{arpav-qa:2022,
+  author      = {ARPAV},
+  title       = {Campagna di monitoraggio di PM10 e {M}etalli a {M}urano ({V}enezia). Relazione tecnica. Periodo di attuazione: 1 gennaio – 31 dicembre 2021.},
+  institution = {Agenzia Regionale per la Prevenzione e Protezione Ambientale del Veneto},
+  year        = {2022},
+  month       = jul,
+}
+
+@TechReport{l_241:1990,
+  author      = {LEGGE 7 agosto 1990, n. 241},
+  title       = {Nuove norme in materia di procedimento amministrativo e di diritto di accesso ai documenti amministrativi},
+  institution = {GU},
+  year        = {n. 192 del 18-08-1990.},
+}
+
+@TechReport{reach:2006,
+  author      = {REGOLAMENTO CE, n. 1907.},
+  title       = {{Del Parlamento Europeo e del Consiglio del 18 dicembre 2006 concernente la registrazione, la valutazione, l'autorizzazione e la restrizione delle sostanze chimiche (REACH).}},
+  institution = {GU},
+  year        = {L 396 del 30-12-2006.},
+}
+
+@Article{carslaw_openair:2012,
+  author  = {David C. Carslaw and Karl Ropkins},
+  title   = {openair --- An {R} package for air quality data analysis},
+  journal = {Environmental Modelling \& Software},
+  year    = {2012},
+  volume  = {27--28},
+  number  = {0},
+  pages   = {52--61},
+  issn    = {1364-8152},
+  doi     = {10.1016/j.envsoft.2011.09.008},
+}
+
+@Manual{leaflet_manual:2022,
+  title  = {leaflet: Create Interactive Web Maps with the JavaScript 'Leaflet' Library},
+  author = {Joe Cheng and Barret Schloerke and Bhaskar Karambelkar and Yihui Xie},
+  year   = {2022},
+  note   = {R package version 2.1.1.9000},
+  url    = {https://rstudio.github.io/leaflet/},
+}
+
+@Manual{mapview_manual:2022,
+  title  = {mapview: Interactive Viewing of Spatial Data in {R}},
+  author = {Tim Appelhans and Florian Detsch and Christoph Reudenbach and Stefan Woellauer},
+  year   = {2022},
+  note   = {R package version 2.11.0},
+  url    = {https://CRAN.R-project.org/package=mapview},
+}
+
+@Conference{calmet:conf_harbour_2005,
+  author    = {M. Sansone and D. Pernigotti and M. Ferrario},
+  title     = {Applicaion of CALMET model to the {Veneto} region, with particular attention to the shoreline, using offshore data for initialisation. 1st {International Conference on Harbours \& Air Quality}, {Genova} ({Italy})},
+  booktitle = {1st international Conference on Harbours \& Air Quality, Genova (Italy)},
+  year      = {2005},
+}
+
+@Conference{calmet:conf_harmo_2005,
+  author    = {D. Pernigotti and M. Sansone and M. Ferrario},
+  title     = {Validation of one-year LAMI model and re-analysis on the {Po Valley}, northern Italy. Comparison to CALMET model output on the sub-area of {Veneto} region. 10th {International Conference on Harmonisation within Atmospheric Dispersion Modelling for Regulatory Purposes}, {Crete} ({Greece})},
+  booktitle = {{HARMO10}, 10th {International Conference on Harmonisation within Atmospheric Dispersion Modelling for Regulatory Purposes}, {Crete} ({Greece})},
+  year      = {2005},
+}
+
+@InCollection{chambers:1983,
+  author    = {John M. Chambers and William S. Cleveland and Beat Kleiner and Paul A. Tukey},
+  title     = {Comparing Data Distributions},
+  booktitle = {Graphical Methods for Data Analysis},
+  publisher = {Wadsworth International Group, Belmont, California.},
+  year      = {1983},
+}
+
+@Article{boxplot-variations:1978,
+  author  = {R McGill and JW Tukey and WA Larsen.},
+  title   = {Variations of box plots.},
+  journal = {The American Statistician 32, 12-16.},
+  year    = {1978},
+}
+
+@Article{calpuff_vs_spay:2022,
+  author         = {Nanni, Alessandro and Tinarelli, Gianni and Solisio, Carlo and Pozzi, Cristina},
+  title          = {Comparison between Puff and Lagrangian Particle Dispersion Models at a Complex and Coastal Site},
+  journal        = {Atmosphere},
+  year           = {2022},
+  volume         = {13},
+  number         = {4},
+  issn           = {2073-4433},
+  abstract       = {A comparison between a puff atmospheric dispersion model (hereafter: PuM) and a Lagrangian particle model (hereafter: LPM) was conducted for a real case of emissions from an industrial plant, in the context of a complex and coastal site. The PuM&rsquo;s approach is well-known and widely adopted worldwide, thanks to the authoritative suggestions by the US-EPA for regulatory use as, according to the definitions included in its guidelines, an &ldquo;alternative&rdquo; to &ldquo;preferred&rdquo; models; LPMs are more advanced models and have gained reliability over the last two decades. Therefore, it is of interest to provide insights into the decision to adopt or recommend, in the field of atmospheric impact assessment, a more advanced, but more knowledge- and resource-intensive, modeling tool, rather than an established albeit less accurate one. An inter-comparison of the two approaches is proposed based on the use of various statistical and comparative parameters with the goal of studying their differences in reproducing maps of ground-level ambient concentration statistics for assessment purposes (annual means, hourly peaks). The models were tested under a year-long simulation. The dispersion from both a point and a volume source, belonging to an existing industrial plant, was analyzed separately. The inter-comparison was performed through the analysis of 2D ground concentration maps, scatterplots, and three classical indices from the 2D maps of annual concentration statistics. To correlate the differences among models with site characteristics, the statistics were analyzed not only globally, but also according to distance from the source, the elevation, and the land-use classification. The analysis shows that around-its-axis plume dispersion in LPM is lower than in PuM over all the land-use types except water surfaces, in agreement with the theoretical basis provided by the models. Because of its more advanced theoretical formulation, e.g., in the interaction of the plume with the complex terrain and the three-dimensional wind field, an LPM used as a comparison term allowed us to highlight the weaknesses of a more traditional approach, such as PuM, in reproducing effects such as plume up-sloping, deflection, channeling, confinement, and wind shear diffusion.},
+  article-number = {508},
+  doi            = {10.3390/atmos13040508},
+  url            = {https://www.mdpi.com/2073-4433/13/4/508},
+}
+
+@Article{plume_rise:2018,
+  author  = {Gordon, M. and Makar, P. A. and Staebler, R. M. and Zhang, J. and Akingunola, A. and Gong, W. and Li, S.-M.},
+  title   = {A comparison of plume rise algorithms to stack plume measurements in the Athabasca oil sands},
+  journal = {Atmospheric Chemistry and Physics},
+  year    = {2018},
+  volume  = {18},
+  number  = {19},
+  pages   = {14695--14714},
+  doi     = {10.5194/acp-18-14695-2018},
+  url     = {https://acp.copernicus.org/articles/18/14695/2018/},
+}
+
+@TechReport{clp:2008,
+  author      = {REGOLAMENTO CE, n. 1272.},
+  title       = {{Del Parlamento Europeo e del Consiglio del 16 dicembre 2008 relativo alla classificazione, all'etichettatura e all'imballaggio delle sostanze e delle miscele che modifica e abroga le direttive 67/548/CEE e 1999/45/CE e che reca modifica al regolamento (CE) n. 1907/2006.}},
+  institution = {GU},
+  year        = {L 353 del 31-12-2008.},
+}
+
+@InBook{cleveland:1992,
+  chapter   = {8},
+  title     = {{Local regression models}},
+  publisher = {Wadsworth \& Brooks/Cole},
+  year      = {1992},
+  author    = {Cleveland, W. S. and Grosse, E. and Shyu, W. M.},
+  editor    = {Chambers, J.M. and Hastie, T.J.},
+  added-at  = {2018-07-20T15:36:50.000+0200},
+  biburl    = {https://www.bibsonomy.org/bibtex/249dc786266d86d0cc54ed6ccb2fe9894/gron},
+  booktitle = {Statistical Models in S},
+  interhash = {7d86e5cc7c53a61bc8fead3dd2eb3b99},
+  intrahash = {49dc786266d86d0cc54ed6ccb2fe9894},
+  keywords  = {Loess ggplot},
+  timestamp = {2018-07-20T15:36:50.000+0200},
+}
+
+@Book{who_aq:1987,
+  title     = {Air quality guidelines for Europe},
+  publisher = {World Health Organization. Regional Office for Europe},
+  year      = {1987},
+  author    = {WHO},
+  editor    = {WHO regional publications. European series n. 23},
+  series    = {WHO regional publications. European series no.23},
+  pages     = {426 p.},
+}
+
+@Book{who_aq:2005,
+  title         = {Air quality guidelines: global update 2005: particulate matter, ozone, nitrogen dioxide and sulfur dioxide},
+  publisher     = {World Health Organization. Regional Office for Europe},
+  year          = {2006},
+  author        = {WHO},
+  editor        = {World Health Organization},
+  __markedentry = {[max:]},
+  pages         = {484 p.},
+  type          = {Publications},
+  url           = {https://www.euro.who.int/__data/assets/pdf_file/0005/78638/E90038.pdf},
+}
+
+@Book{who_aq:2000,
+  title     = {Air quality guidelines for Europe. Second Edition},
+  publisher = {World Health Organization. Regional Office for Europe},
+  year      = {2000},
+  author    = {WHO},
+  editor    = {WHO regional publications. European series n. 91},
+  series    = {WHO regional publications. European series no.91},
+  pages     = {273 p.},
+}
+
+@TechReport{who_aq:2021,
+  author      = {WHO},
+  title       = {WHO global air quality guidelines. Particulate matter (PM2.5 and PM10), ozone, nitrogen dioxide, sulfur dioxide and carbon monoxide.},
+  institution = {World Health Organization. Geneva.},
+  year        = {2021},
+  url         = {https://www.who.int/publications/i/item/9789240034228},
+}
+
+@TechReport{cpuf_guide:2011,
+  author      = {J. Barclay and J. Scire},
+  title       = {Generic Guidance and Optimum Model Settings for the CALPUFF Modeling System for Inclusion into the ‘Approved Methods for the Modeling and Assessments of Air Pollutants in NSW, Australia’},
+  institution = {Atmospheric Studies Group, TRC Environmental Corporation, Lowell, MA.},
+  year        = {2011},
+  url         = {https://www.epa.nsw.gov.au/~/media/EPA/Corporate%20Site/resources/air/calpuffmodelguidance.ashx},
+}
+
+@TechReport{iarc_58_cd:1993,
+  author      = {IARC},
+  title       = {Beryllium, Cadmium, Mercury, and Exposures in the Glass Manufacturing Industry. Monographs on the evaluation of carcinogenic risks to humans.},
+  institution = {International Agency for Research on Cancer},
+  year        = {1993},
+  url         = {https://monographs.iarc.who.int/wp-content/uploads/2018/06/mono58.pdf},
+  volume      = {58},
+}
+
+@TechReport{iarc_100_cd:2012,
+  author      = {IARC},
+  title       = {Arsenic, Metals, Fibres, and dusts. A review of human carcinogens. Monographs on the evaluation of carcinogenic risks to humans.},
+  institution = {International Agency for Research on Cancer},
+  year        = {2012},
+  url         = {https://monographs.iarc.who.int/wp-content/uploads/2018/06/mono58.pdf},
+  volume      = {100},
+}
+
+@TechReport{ipcs_cd:1992,
+  author      = {IPCS},
+  title       = {Cadmium. Environmental Health Criteria 134.},
+  institution = {World Health Organization, International Programme on Chemical Safety.},
+  year        = {1992},
+  url         = {https://www.inchem.org/documents/ehc/ehc/ehc134.htm},
+}
+
+@TechReport{ipcs_cd_env:1992,
+  author      = {IPCS},
+  title       = {Cadmium - Environmental aspects. Environmental Health Criteria 135.},
+  institution = {World Health Organization, International Programme on Chemical Safety.},
+  year        = {1992},
+  url         = {http://www.inchem.org/documents/ehc/ehc/ehc135.htm)},
+}
+
+@Article{wt_plume:2002,
+  author  = {H.N. Webster and D.J. Thomson},
+  title   = {Validation of a Lagrangian model plume rise scheme using the Kincaid data set.},
+  journal = {Atmospheric Environment},
+  year    = {2002},
+  volume  = {36},
+  number  = {32},
+  pages   = {5031-5042},
+}
+
+@Article{janicke_plume:2001,
+  author  = {U. Janicke and L. Janicke},
+  title   = {A three-dimensional plume rise model for dry and wet plumes.},
+  journal = {Atmoshperic Environment},
+  year    = {2001},
+  volume  = {35},
+  number  = {5},
+  pages   = {887-890},
+}
+
+@TechReport{enviroware:2023,
+  author      = {ENVIROWARE},
+  title       = {Progetto {Cadmio} – {Murano} ({Venezia}). Analisi di sensibilità del modello Lagrangiano a particelle LAPMOD al variare della configurazione di input.},
+  institution = {Enviroware Air Quality Consulting},
+  year        = {2023},
+}
+
+@TechReport{arpav-qa-regione:2023,
+  author      = {ARPAV},
+  title       = {Relazione regionale della qualità dell'aria ai sensi della {L.R.} n. 11/2001 art. 81. Anno di riferimento 2022.},
+  institution = {Agenzia Regionale per la Prevenzione e Protezione Ambientale del Veneto},
+  year        = {2023},
+  month       = may,
+}
+
+@TechReport{arpav-qa-murano:2023,
+  author      = {ARPAV},
+  title       = {Campagna di monitoraggio di PM10 e {M}etalli a {M}urano ({V}enezia). Relazione tecnica. Periodo di attuazione: 1 gennaio – 31 dicembre 2022.},
+  institution = {Agenzia Regionale per la Prevenzione e Protezione Ambientale del Veneto},
+  year        = {2023},
+  month       = jul,
+}
+
+@TechReport{epa_proposal:1993,
+  author      = {US-EPA},
+  title       = {Model Clearinghouse Memorandum, dated July 9, 1993, Proposal for Calculating Plume Rise for Stacks with Horizontal Releases or Rain Caps for Cookson Pigment.},
+  institution = {US-EPA},
+  year        = {1993},
+}
+
+@TechReport{olores:2023,
+  author      = {Amigo and Olores},
+  title       = {International Handbook on the Assessment of Odour Exposure using Dispersion Modelling (https://www.enviroware.com/posts/handbook-odour-modelling-draft2/)},
+  institution = {Olores},
+  year        = {2023},
+}
+
+@Article{wang_eps:2019,
+  author  = {Y. Wang and M. Pirani and A.L. Hansell and S. Richardson and M. Blangiardo.},
+  title   = {Using ecological propensity score to adjust for missing confounders in small area studies.},
+  journal = {Biostatistics. 20(1):1–16. doi: 10.1093/biostatistics/kxx058},
+  year    = {2019},
+}
+
+@Article{pirani_eps:2020,
+  author  = {M Pirani and AJ Mason and AL Hansell and S Richardson and M Blangiardo.},
+  title   = {A flexible hierarchical framework for improving inference in area-referenced environmental health studies.},
+  journal = {Biom J. 62(7):1650–1669. doi: 10.1002/bimj.201900241.},
+  year    = {2020},
+}
+
+@Article{rosenbaum_ps:1983,
+  author  = {PR Rosenbaum and DB Rubin},
+  title   = {The central role of the propensity score in observational studies for causal effects,},
+  journal = {Biometrika, Volume 70(1): 41–55},
+  year    = {1983},
+}
+
+@Article{dominici_cas_evi:2017,
+  author  = {F Dominici and C Zigler},
+  title   = {Best Practices for Gauging Evidence of Causality in Air Pollution Epidemiology.},
+  journal = {American Journal of Epidemiology, Vol. 186, No. 12, doi: 10.1093/aje/kwx307},
+  year    = {2017},
+}
+
+@Article{giffin_gps:2023,
+  author  = {A Giffin and BJ Reich and S Yang and AG Rappold.},
+  title   = {Generalized propensity score approach to causal inference with spatial interference},
+  journal = {Biometrics, 79(3): 2220–2231, https://doi.org/10.1111/biom.13745Digital Object Identifier (DOI)},
+  year    = {2023},
+}
+
+@Article{ramsey_ps:2019,
+  author  = {DSL Ramsey and DM Forsyth and E Wright and M McKay and I Westbrooke.},
+  title   = {Using propensity scores for causal inference in ecology: Options, considerations, and a case study.},
+  journal = {Methods Ecol Evol. (10):320–331. https://doi.org/10.1111/2041-210X.13111},
+  year    = {2019},
+}
+
+@Article{vdweele_evalue:2017,
+  author  = {TJ VanderWeele and P Ding},
+  title   = {Sensitivity Analysis in Observational Research: Introducing the E-Value.},
+  journal = {Ann Intern Med. 167(4):268-274. doi: 10.7326/M16-2607. Epub 2017 Jul 11. PMID: 28693043.},
+  year    = {2017},
+}
+
+@TechReport{who_airq:2020,
+  author      = {WHO},
+  title       = {AirQ+: software tool for health risk assessment of air pollution},
+  institution = {Bonn (Germany): WHO Regional Office for Europe.. European Centre for Environment and Health. https://www.who.int/europe/tools-and-toolkits/airq---software-tool-for-health-risk-assessment-of-air-pollution Accessed 06/2026},
+  year        = {2020},
+}
+
+@TechReport{hrapie-2:2025,
+  author      = {WHO},
+  title       = {Health risks of air pollution in Europe: HRAPIE-2 project. Updated guidance on concentration–response functions for health risk assessment of air pollution in the WHO European Region},
+  institution = {World Health Organization. Regional Office for Europe},
+  year        = {2025},
+}
+
+@Book{eea_aq:2023,
+  title     = {Air quality in Europe},
+  publisher = {Publications Office of the European Union, Luxembourg},
+  year      = {2023},
+  author    = {EEA},
+  editor    = {EEA - European Environment Agency},
+}
+
+@TechReport{arpav-qa-regione:2026,
+  author      = {ARPAV},
+  title       = {Relazione regionale della qualità dell'aria ai sensi della {L.R.} n. 11/2001 art. 81. Anno di riferimento 2025.},
+  institution = {Agenzia Regionale per la Prevenzione e Protezione Ambientale del Veneto},
+  year        = {2026},
+  month       = may,
+}
+
+@TechReport{eu_aq:2030,
+  author      = {EU},
+  title       = {DIRETTIVA (UE) 2024/2881 del Parlamento Europeo e del Consiglio del 23 ottobre 2024 relativa alla qualità dell’aria ambiente e per un’aria più pulita in Europa},
+  institution = {Gazzetta ufficiale dell’Unione europea, IT Serie L, 2024/2881, 20.11.2024},
+  year        = {2024},
+}
+
+@Article{rosano_dep:2020,
+  author  = {A. Rosano and B. Pacelli and N. Zengarini and G. Costa and C. Cislaghi and N. Caranci},
+  title   = {Aggiornamento e revisione dell’indice di deprivazione italiano 2011 a livello di sezione di censimento},
+  journal = {Epidemiol Prev 2020; 44 (2-3):162-170. doi: 10.19191/EP20.2-3.P162.039},
+  year    = {2020},
+}
+
+@Article{austin_ps:2011,
+  author  = {Austin, P. C.},
+  title   = {An introduction to propensity score methods for reducing the effects of confounding in observational studies},
+  journal = {Multivariate Behavioral Research, 46(3), 399-424.},
+  year    = {2011},
+}
+
+@TechReport{hernan_whatif:2020,
+  author      = {Hernán M. A., Robins, J.M.},
+  title       = {Causal Inference: What If.},
+  institution = {Boca Raton. Chapman \& Hall. CRC.},
+  year        = {2020},
+}
+
+@TechReport{pearl_dag:2009,
+  author      = {Judea Pearl},
+  title       = {Causality: Models, Reasoning, and Inference.},
+  institution = {Cambridge University Press},
+  year        = {2009},
+}
+
+@Article{greenland_dag:1999,
+  author  = {Greenland, S., Pearl, J., \& Robins, J. M.},
+  title   = {Causal diagrams for epidemiologic research.},
+  journal = {Epidemiology, 10(1), 37–48.},
+  year    = {1999},
+}
+
+@Article{akbari_sp_inf:2021,
+  author  = {Akbari K., Winter S., Tomko M.},
+  title   = {Spatial Causality: A Systematic Review on Spatial Causal Inference},
+  journal = {Geographical Analysis: 1–34},
+  year    = {2021},
+}
+
+@Article{lipsicht_negctrl:2010,
+  author  = {Lipsitch M, Tchetgen Tchetgen E, Cohen T.},
+  title   = {Negative controls: a tool for detecting confounding and bias in observational studies},
+  journal = {Epidemiology. 21(3):383-8. doi: 10.1097/EDE.0b013e3181d61eeb. Erratum in: Epidemiology. 21(4):589.},
+  year    = {2010},
+}
+
+@Software{WHO_AirQ_2020,
+  author       = {{World Health Organization}},
+  title        = {AirQ+: Software tool for health risk assessment of air pollution},
+  year         = {2020},
+  address      = {Bonn, Germany},
+  organization = {WHO Regional Office for Europe},
+  url          = {https://www.who.int/europe/tools-and-guidance/software-airq+},
+  urldate      = {2026-08-16},
+  version      = {2.1},
+}
+
+@Article{kasdagli:2024,
+  author  = {M.I. Kasdagli and P. Orellano and R. Pérez Velasco and E. Samoli},
+  title   = {Long-Term Exposure to Nitrogen Dioxide and Ozone and Mortality: Update of the WHO Air Quality Guidelines Systematic Review and Meta-Analysis.},
+  journal = {Int J Public Health. 18;69:1607676. doi: 10.3389/ijph.2024.1607676.},
+  year    = {2024},
+}
+
+@Book{who2019icd10,
+  title     = {International Statistical Classification of Diseases and Related Health Problems (ICD-10)},
+  publisher = {WHO},
+  year      = {2019},
+  author    = {{World Health Organization}},
+  address   = {Geneva},
+  edition   = {5th},
+  url       = {https://who.int},
+}
+
+@Comment{jabref-meta: databaseType:bibtex;}
