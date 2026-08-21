@@ -5,8 +5,8 @@ lang: it
 language:
   crossref-fig-title: "Figura"
   crossref-tbl-title: "Tabella"
-  crossref-fig-prefix: "Fig."
-  crossref-tbl-prefix: "Tab."
+  crossref-fig-prefix: "Figura"
+  crossref-tbl-prefix: "Tabella"
 format:
   pdf:
     fontsize: 12pt
@@ -99,7 +99,7 @@ In assenza di dati individuali georeferenziati - di fatto inaccessibili per le s
 
 L'obiettivo secondario è delineare un possibile percorso di sviluppo metodologico per stimare in modo robusto il numero di *casi attribuibili* associati all'inquinamento atmosferico da *biossido di azoto* $NO_2$ e riconducibili a specifici scenari controfattuali in Regione Veneto. In prospettiva futura lo studio rappresenta la base per delineare uno strumento operativo di analisi quantitativa e di supporto decisionale alla programmazione ed alla valutazione delle Politiche Regionali in materia di Ambiente e Sanità Pubblica.
 
-## Materiali e metodi
+## Materiali e metodi {#sec-methods}
 
 *Unità statistica di analisi e disegno dello studio*
 
@@ -108,28 +108,34 @@ L'unità statistica di analisi è rappresentata dalla sezione censuaria ISTAT de
 Si tratta di uno studio *ecologico* su base territoriale in cui tutte le variabili analizzate - esposizione atmosferica ($\text{NO}_2$), popolazione residente, stima mortalità basale -, sono sempre misurate e riferite alla sezione censuaria. 
 L'impiego della sezione censuaria ha l'obiettivo di cogliere l'eterogeneità spaziale dell'inquinamento atmosferico ad una risoluzione geografica il più possibile 'fine', riducendo la variabilità intra-unitaria (di gruppo) e limitando il rischio di errore di classificazione dell'esposizione (*exposure misclassification*). L'interpretazione dei risultati deve comunque tenere conto della natura *aggregata* dei dati, riferendo sempre le valutazioni di impatto sanitario a livello *aggregato* di popolazione e territorio (*ecological effect*), evitando sempre l'erronea inferenza diretta a livello individuale (*ecological fallacy*).
 
-*Dataset*
+*Dataset e test statistici*
 
 Il tasso di mortalità basale (grezzo) per *cause respiratorie* applicato alla singola sezione censuaria ISTAT è stato ricavato dai dati di *mortalità specifica stratificati a livello provinciale* per la *classe d'età 30+* (fonte ISTAT 2024).
 
-Il *cutoff* alla classe d'età 30+ individua la *popolazione adulta* per cui sono state definite e riconosciute scientificamente specifiche funzioni di concentrazione-risposta \[@hrapie-2:2025]. I decessi attesi per cause respiratorie sono stati stimati tramite una *standardizzazione indiretta*, applicando i tassi grezzi provinciali alla corrispondente numerosità di popolazione 30+ residente nelle varie sezioni censuarie ISTAT. Questo approccio, necessariamente semplificato per evitare di incorrere nell'instabilità dei "piccoli numeri", presuppone l'assunzione che esista la *"trasportabilità"* dei tassi di mortalità per cause respiratorie della popolazione 30+ dalle Province della Regione Veneto alle corrispondenti sezioni censuarie ISTAT.
+Il *cutoff* alla classe d'età 30+ individua la *popolazione adulta* per cui sono state definite e riconosciute scientificamente specifiche funzioni di concentrazione-risposta \[@hrapie-2:2025]. 
+
+Ai fini del calcolo dei decessi attesi nella classe 30+ di ciascuna sezione censuaria ISTAT, sono stati applicati i tassi grezzi di mortalità provinciali, attribuendo a ciascuna sezione il tasso relativo alla provincia di appartenenza. Tale scelta, anziché una standardizzazione indiretta su tassi età-specifici, è dovuta alla ridotta numerosità dei decessi a livello di sezione censuaria, che avrebbe reso le stime altamente instabili. Questo approccio presuppone quindi l'assunzione che esista una *"trasportabilità"* dei tassi di mortalità per cause respiratorie della popolazione 30+, dalle Province della Regione Veneto alle corrispondenti sezioni censuarie ISTAT.
 
 I tassi di mortalità per cause respiratorie definiti a livello di Provincia (dato ISTAT) variano nel range compreso tra il 0.084% e il 0.140%, con una media regionale pari a circa 0.107%, cioè circa 107 casi ogni 100 000 residenti in Veneto.
 
 La media annuale della concentrazione ambientale di biossido di azoto $NO_2$ attribuita alle singole sezioni censuarie in Regione Veneto, è stata ottenuta tramite operazioni geografiche di *overlay*, definita da una  *media zonale pesata sulla superficie di intersezione*, tra il disegno delle sezioni censuarie ed il grigliato di output del modello fotochimico euleriano *CAMx*. 
 Il modello fotochimico  di dispersione atmosferica *CAMx*, distribuito da *Ramboll Environ* (http://www.camx.com/), è lo strumento operativo della catena modellistica SPIAIR implementata da ARPAV per la stima degli inquinanti atmosferici in Regione Veneto su un grigliato regolare di output con una risoluzione orizzontale di 4 km. 
 
-La variabili demografiche aggregate per sezione censuaria, rappresentate dalla popolazione totale residente e la popolazione in classe d'età 30+, sono state ricavate dalla rielaborazione dei dati originali disponibili nel database ISTAT per l'anno 2021 denominato *"Basi territoriali e variabili censuarie"* (liberamente disponibile al seguente indirizzo:  https://www.istat.it/notizia/basi-territoriali-e-variabili-censuarie/).
+Per la valutazione della presenza di un trend temporale nelle concentrazioni ambientali medie annuali di $NO_2$, aggregate a livello comunale è stato impiegato il test non parametrico di Mann-Kendall. Ile test verifica l'ipotesi nulla di assenza di un trend monotono nella serie temporale, confrontando i ranghi delle osservazioni successive senza richiedere assunzioni sulla distribuzione dei dati né sulla linearità della relazione, risultando pertanto robusto in presenza di valori anomali e di serie storiche di lunghezza limitata. La statistica del test (S) e il relativo p-value sono stati calcolati per ciascuna serie annuale di medie comunali; un trend è stato considerato statisticamente significativo per valori di p inferiori alla soglia \alpha = 0.05.
 
-Per quantificare l'impatto sanitario è stato impiegato un coefficiente di esposizione calibrato sulla stima del Rischio Relativo ($RR$) desunto dalla letteratura internazionale OMS \[@hrapie-2:2025]. In particolare, è stato considerato il ($RR$) di *mortalità per cause respiratorie* (Codici ICD-10: J00-J99) nella classe d'età 30+, che risulta compreso tra il $3\%$ e il $7\%$, con un valore centrale pari al $5\%$ per ogni aumento della concentrazione di $10 \ \mu g/m^3$.
+Per quantificare l'entità e la direzione del trend è stata inoltre calcolata la pendenza di Sen (Sen's slope), uno stimatore non parametrico ottenuto come mediana delle pendenze calcolate tra tutte le possibili coppie di punti della serie temporale. Anche questo stimatore, coerentemente con il test di Mann-Kendall, è robusto alla presenza di outlier ed esprime la variazione media annua dell'inquinante nell'unità di misura originaria.
 
-L'assunzione forte della stima di impatto sanitario è, ancora una volta, che esista la *trasportabilità del RR da letteratura OMS sulla popolazione delle sezioni censuarie*. 
+La variabili demografiche aggregate per sezione censuaria, rappresentate dalla popolazione totale residente e la popolazione in classe d'età 30+, sono state ricavate dalla rielaborazione dei dati disponibili nel database ISTAT per l'anno 2021 denominato *"Basi territoriali e variabili censuarie"* (https://www.istat.it/notizia/basi-territoriali-e-variabili-censuarie/).
 
 *Valutazione di impatto sanitario (VIS)*
 
-Per quantificare la relazione causale tra l'esposizione controfattuale ai livelli ambientali di *biossido di azoto* ($NO_2$) e la mortalità per cause respiratorie nella popolazione della classe 30+ *residente a livello di sezione censuaria* in Regione Veneto, è stata applicata la formula di calcolo implementata nel software *WHO AirQ+*, ampiamente utilizzato nelle stime di impatto sanitario \[@who_airq:2020].
+Per quantificare l'impatto sanitario è stato impiegato un coefficiente di esposizione calibrato sulla stima del Rischio Relativo ($RR$) desunto dalla letteratura internazionale OMS \[@hrapie-2:2025], in particolare il ($RR$) di *mortalità per cause respiratorie* (Codici ICD-10: J00-J99) nella classe d'età 30+, che risulta compreso tra il $3\%$ e il $7\%$, con un valore centrale pari al $5\%$, per ogni aumento della concentrazione di $10 \ \mu g/m^3$.
 
-La stima dei casi attribuibili ($AC$) e della frazione attribuibile ($AF$) nel software WHO AirQ+ presuppone una relazione di tipo *log-lineare* basata sulla funzione di concentrazione-risposta:
+L'assunzione della stima di impatto sanitario è che esista una *trasportabilità"* del RR da letteratura OMS sulla popolazione delle sezioni censuarie ISTAT. 
+
+Per quantificare la relazione tra l'esposizione controfattuale ai livelli ambientali di *biossido di azoto* ($NO_2$) e la mortalità per cause respiratorie nella popolazione della classe 30+, *residente a livello di sezione censuaria ISTAT* in Regione Veneto, è stata implementata la formula di calcolo del software *WHO AirQ+*, ampiamente utilizzato nelle stime di impatto sanitario \[@who_airq:2020].
+
+La formula di stima dei casi attribuibili ($AC$) e della frazione attribuibile ($AF$) presuppone una relazione di tipo *log-lineare* basata sulla funzione di concentrazione-risposta:
 
 $$AF = \frac{RR - 1}{RR} = 1 - \frac{1}{e^{\beta \cdot \Delta C}} = 1 - e^{-\beta \cdot \Delta C}$$
 $$AC = N \cdot B \cdot AF = N \cdot B \cdot \left(1 - e^{-\beta \cdot \Delta C}\right)$$
@@ -144,25 +150,23 @@ dove:
 
 - $B$ è il tasso basale grezzo di incidenza dell'esito sanitario considerato (es. mortalità per cause respiratorie);
 
-Da notare che nella formula $\Delta C$ rappresenta il delta di esposizione in eccesso rispetto ad una soglia di riferimento prestabilita (target). In particolare, il $\Delta C$ di esposizione in eccesso rispetto alla soglia target di $10 \ \mu g/m^3$ impiegata nel presente studio \[@who_aq:2021], è stato calcolato tramite la funzione R `pmin()`, azzerando i valori nelle sezioni con inquinamento inferiore a tale limite ed evitando così l'attribuzione di un *paradossale effetto protettivo* dell'inquinante.
+Da notare che $\Delta C$ rappresenta il differenziale di esposizione in eccesso rispetto ad una soglia di riferimento (target). Il $\Delta C$ di esposizione in eccesso rispetto alla soglia target di $10 \ \mu g/m^3$ impiegata nel presente studio \[@who_aq:2021], è stato calcolato azzerando i valori nelle sezioni con livelli di inquinamento inferiori a tale soglia, evitando così di attribuire all'inquinante un *paradossale effetto protettivo*.
 
-Si può inoltre dimostrare dal punto di vista matematico [^nota] che la valutazione di impatto sanitario aggregando preventivamente i dati di esposizione (a livello di sezione censuaria, di comune o di regione) tende *sistematicamente a sovrastimare il reale impatto* rispetto ad un'analisi condotta alla massima risoluzione spaziale disponibile (idealmente individuale!) e poi aggregata a posteriori. 
+Dal punto di vista matematico si può dimostrare [^nota] che la valutazione di impatto sanitario fatta aggregando preventivamente i dati di esposizione (a livello di sezione censuaria, di comune o di regione) tende a *sovrastimare in modo sistematico* il reale impatto rispetto ad un'analisi condotta alla massima risoluzione spaziale disponibile (idealmente individuale!) e poi aggregata a posteriori. 
 
-Per questa motivazione, nella presente analisi il $\Delta C$ viene calcolato e la funzione $f$ applicata separatamente *per ciascuna sezione censuaria*, prima di qualunque aggregazione dei risultati. 
-
-*La sezione censuaria definisce l'unità geografica dei dati ambientali e sanitari con la granularità spaziale più fine effettivamente disponibile* (cioè effettivamente accessibile, considerate le limitazioni della normativa per la tutela della *privacy* dei dati sanitari).
+Per questa motivazione, nella presente analisi il $\Delta C$ viene calcolato e la funzione di stima $AC$ applicata separatamente *per ciascuna sezione censuaria*, prima di qualunque aggregazione dei risultati. *La sezione censuaria definisce l'unità geografica dei dati ambientali e sanitari con la granularità spaziale più fine effettivamente disponibile* cioè, effettivamente accessibile, considerate le limitazioni della normativa per la tutela della *privacy* dei dati sanitari.
 
 [^nota]: Si rimanda al testo riportato in Appendice per una dimostrazione rigorosa.
 
 *Scenari di valutazione controfattuale*
 
-L'applicazione della "formula WHO" alla popolazione delle sezioni censuarie del Veneto ha permesso la stima dei casi attribuibili di decessi per la popolazione 30+ in relazione a due differenti scenari:
+L'applicazione della formula di stima di impatto alla popolazione 30+ delle sezioni censuarie del Veneto ha permesso la stima dei casi attribuibili in relazione a due differenti scenari:
 
-- lo *stato attuale 2025* ($E_{\text{real}}$), che considera la distribuzione osservata dell'esposizione ambientale all'inquinante $NO_2$ nel 2025; 
+- *stato attuale 2025* ($E_{\text{real}}$), considera la distribuzione osservata dell'esposizione ambientale all'inquinante $NO_2$ nel 2025; 
 
-- lo *controfattuale OMS* ($E_{\text{unexp}}$), che considera una esposizione pari a $NO_2 = 10 ~ \mu g~m^-3$ per tutte le sezioni censuarie superiori a tale valore soglia.
+- *controfattuale OMS* ($E_{\text{unexp}}$), considera una esposizione pari a $NO_2 = 10 ~ \mu g~m^-3$ per tutte le sezioni censuarie superiori a tale valore soglia.
 
-Il valore $\Delta C$ considerato per ciascuna sezione censuaria è rappresentato dalla differenza tra la concentrazione ambientale osservata (*reale/stimata*) e il valore soglia (*cutoff*) pari a $10 \ \mu g/m^3$, che rappresenta il livello ambientale di riferimento per la media annuale previsto dalle più recenti linee guida OMS sulla qualità dell'aria \[@who_aq:2021].
+Il $\Delta C$ per ciascuna sezione censuaria è quindi rappresentato dalla differenza tra la concentrazione ambientale osservata (*reale/stimata*) ed il valore soglia (*cutoff*) fissato in $10 \ \mu g/m^3$, che rappresenta il livello ambientale di riferimento per la media annuale previsto dalle linee guida OMS sulla qualità dell'aria \[@who_aq:2021].
 
 *Propagazione incertezza (bootstrap)*
 
@@ -178,9 +182,7 @@ Gli intervalli di confidenza al 95% sono stati stimati con il metodo dei percent
 
 *Software*
 
-Le analisi statistiche sono state effettuate in ambiente di programmazione *R (v. 4.5+)* \[@R_manual:2022], con l'impiego di pacchetti dedicati: `tydyverse` e `viridis` per il *data wrangling* e per la restituzione grafica, `sf` e `terra` per l'analisi e la manipolazione spaziale dei dati georeferenziati.
-
-Questo documento è stato redatto in modo dinamico con *Quarto* (https://quarto.org/), sistema *open source* di pubblicazione scientifica che garantisce trasparenza e riproducibilità (*reproducible research*).
+Le analisi statistiche sono state effettuate in ambiente di programmazione *R (v. 4.5+)* \[@R_manual:2022], con l'impiego di pacchetti dedicati: `tydyverse` e `viridis` per il *data wrangling* e per la restituzione grafica, `sf` e `terra` per l'analisi e la manipolazione dei dati georeferenziati. Questo documento è stato redatto in modo dinamico con *Quarto* (https://quarto.org/), sistema *open source* di pubblicazione scientifica che garantisce trasparenza e riproducibilità (*reproducible research*).
 
 
 \newpage
@@ -191,6 +193,14 @@ Questo documento è stato redatto in modo dinamico con *Quarto* (https://quarto.
 
 qui la presentazione oggettiva e neutra di tabelle, mappe, stime $RR$, intervalli di confidenza e plot di sensibilità, senza interpretazioni e discussione....
 
+----
+
+quando presento Test di Mann-Kendall e stima della pendenza di Sen (MK and sens'slope) per trend ambientale a livello comunale fare la seguente precisazione.... rimodulare dove serve....
+
+
+È importante sottolineare che l'analisi di trend mediante test di Mann-Kendall e pendenza di Sen è stata condotta *separatamente per ciascun comune*, trattando ogni serie temporale come indipendente dalle altre. Il test ha quindi la finalità esclusiva di individuare la presenza, la direzione e l'entità di un trend temporale all'interno della singola unità territoriale, e *non tiene conto della eventuale correlazione o dipendenza spaziale tra comuni limitrofi*. Un'eventuale struttura di autocorrelazione spaziale nei dati non è pertanto oggetto di verifica in questa fase dell'analisi. Si segnala inoltre che, essendo il test applicato in modo indipendente su un numero elevato di unità territoriali, il numero di trend risultati significativi per puro effetto del caso può aumentare per effetto dei confronti multipli, aspetto non corretto nella presente analisi (es. mediante procedura di Benjamini-Hochberg o Bonferroni) e da tenere in considerazione nell'interpretazione dei risultati a livello aggregato.
+
+----
 
 <!-- In @fig-boxplot-no2 sono riprodotti tramite boxplot i valori di concentrazione annuali di $NO2$ stratificati per Provincia in Regione Veneto. L'unità statitsica è rappresentata dalle sezioni censuarie ISTAT e le concentrazioni di $NO_2$ ad esse assegnate sono rappresentate dalla media dell'*anno tipo* riferito all'intervallo temporale dal 2019 al 2025, cioè il valore medio di concentrazione ambientale su 7 anni di osservazioni stratificato per ciascuna cella computazionale del dominio di calcolo del modello di dispersione *CAMx*, con una griglia regolare e risoluzione orizzontale di 4 km.  -->
 
@@ -216,16 +226,16 @@ qui la presentazione oggettiva e neutra di tabelle, mappe, stime $RR$, intervall
 
 *qui sui contenuti del bootstrapping*
 
- (*----> qui dire che comunque si tratta di una stima "inerentemente" distorta? Violazione dell'i.i.d.: qui è il punto più rilevante: Il bootstrap non parametrico classico assume osservazioni scambiabili. Se c'è autocorrelazione spaziale o dipendenza temporale, il bootstrap "naive" per riga produce SE sistematicamente sottostimati perché rompe la struttura di dipendenza e tratta osservazioni correlate come indipendenti. La soluzione è block bootstrap, cluster bootstrap (per provincia/cluster geografico), o bootstrap spaziale (block spaziale). --- meglio lasciare questa parte alla discussione ---*)
+...dire che comunque si tratta di una stima "inerentemente" distorta? Violazione dell'i.i.d., punto più rilevante: Il bootstrap non parametrico classico assume osservazioni scambiabili. Se c'è autocorrelazione spaziale o dipendenza temporale, il bootstrap "naive" per riga produce SE sistematicamente sottostimati perché rompe la struttura di dipendenza e tratta osservazioni correlate come indipendenti. La soluzione è block bootstrap, cluster bootstrap (per provincia/cluster geografico), o bootstrap spaziale (block spaziale).
 
 
 *Limiti dello studio e possibili sviluppi futuri*
 
+La quantificazione dell'impatto sanitario dell'inquinamento atmosferico a livello di sezioni censuarie presenta rilevanti sfide analitiche, legate principalmente alla presenza di *confondimento spaziale* e *collinearità* tra le caratteristiche geografiche ed i livelli espositivi \[@ramsey_ps:2019]. Negli studi osservazionali ecologici, i classici modelli di regressione rischiano di incorrere nel fenomeno del *sovra-aggiustamento (over-adjustment)* o nella violazione dell'assunzione di *positività*, distorcendo le stime di effetto. Per tentare di superare questi limiti, è necessaio adottare un framework di *inferenza causale* \[@dominici_cas_evi:2017] con l'obiettivo di isolare il ruolo dei confondenti socio-demografici e territoriali 
+(i confondenti di tipo individuale rimangono non risolti fino a quando si opera con stime di gruppo...................)
 
-La quantificazione dell'impatto sanitario dell'inquinamento atmosferico a livello di sezioni censuarie presenta rilevanti sfide analitiche, legate principalmente alla presenza di *confondimento spaziale* e *collinearità* tra le caratteristiche geografiche ed i livelli espositivi \[@ramsey_ps:2019]. Negli studi osservazionali ecologici, i classici modelli di regressione rischiano di incorrere nel fenomeno del *sovra-aggiustamento (over-adjustment)* o nella violazione dell'assunzione di *positività*, distorcendo le stime di effetto. Per tentare di superare questi limiti, è necessaio adottare un framework di *inferenza causale* \[@dominici_cas_evi:2017] con l'obiettivo di isolare il ruolo dei confondenti socio-demografici e territoriali (i confondenti di tipo individuale rimangono non risolti fino a quando si opera con stime di gruppo...................)
 
 
-- Vantaggi del Survey Stratificato e Robustezza delle Stime (Incertezza Bootstrap)
 - Limiti dell'Approccio Ecologico
 
 
@@ -235,13 +245,7 @@ possible further refinements
 
 - inserimento incertezza nei tassi di mortalità e nella popolazione residente nella sezione censuaria
 
-- ricalcolo del modello di propensione e dei pesi all'interno della procedura di bootstrapping (ma problema di stabilità dei pesi e del risultato)
-
-- utilizzo della variabile continua NO2 e quindi generalised propensity score @giffin_gps:2023 anche in forma non parametrica
-
 - Utilizzare strutture autoregressive spaziali (CAR/MICAR), prior spaziali, per riflettere il fatto che aree geografiche vicine tendono ad avere caratteristiche ambientali e di popolazione simili tra loro.
-
-- use of the updated deprivation index, affinamento delle covariate che rappresentano i possibili effetti confondenti
 
 - exploit in more details the autocorrelation of census tracts, may be a solution the use of MEM moran's eigenvector maps? I have done it, but oversaturation and no clear causal meaning (and it does not exists in fact)...
 
@@ -274,27 +278,72 @@ different treatment to the administration of the identical drug A but with a hig
 
 ## Appendice {.unnumbered}
 
-Dal punto di vista matematico, si può notare un'interessante proprietà della funzione di stima di impatto sanitario utilizzata nel presente studio (ed implementata nel software *AirQ+*), che ha delle significative implicazioni di tipo numerico e conseguentemente epidemiologico: 
+La presente Appendice riprende ed espande la nota *[1]* riportata nel testo al paragrafo -@sec-methods [Materiali e metodi](#sec-methods), fornendo un inquadramento matematico ed epidemiologico relativamente alla funzione di stima dei casi attribuibili $AC$ e conseguentemente della frazione attribuibile $AF$).
+
+Dal punto di vista matematico, si può notare un'interessante proprietà della funzione di stima di impatto sanitario utilizzata nel presente studio (ed implementata nel software *AirQ+*), che ha delle significative implicazioni di tipo numerico e, conseguentemente, epidemiologico: 
 
 $$f(\Delta C) = 1 - e^{-\beta \cdot \Delta C}$$.
 
-Se calcoliamo la derivata prima e seconda della funzione rispetto a $\Delta C$, si ottiene:
-
+Se, infatti, calcoliamo la derivata prima e seconda della funzione rispetto a $\Delta C$, si ottiene:
 $$f'(\Delta C) = \beta e^{-\beta \cdot \Delta C} > 0$$
-
 $$f''(\Delta C) = -\beta^2 e^{-\beta \cdot \Delta C} < 0$$
-
-La derivata prima $f'(\Delta C) > 0$ è strettamente positiva e quindi la funzione è *monotonicamente crescente*: all'aumentare della riduzione di inquinante ($\Delta C$), i casi evitati aumentano sempre.
-
-La derivata seconda $f''(\Delta C) < 0$ è strettamente negativa e la funzione risulta *strettamente concava* (con la curvatura rivolta verso il basso, e caratterizzata da rendimenti marginali decrescenti).
+La derivata prima $f'(\Delta C) > 0$ è strettamente positiva, e quindi, la funzione è *monotonicamente crescente*: all'aumentare della riduzione di inquinante ($\Delta C$), i casi evitati aumentano sempre. 
+La derivata seconda $f''(\Delta C) < 0$ è strettamente negativa, e quindi, la funzione è *strettamente concava*, cioè con la curvatura rivolta verso il basso, e caratterizzata da rendimenti marginali decrescenti.
 
 In altri termini, piccole riduzioni iniziali delle concentrazioni di inquinante generano benefici sanitari sproporzionatamente più elevati rispetto a riduzioni successive della stessa entità, creando una crescita iniziale molto ripida dell'impatto evitato che tende poi a stabilizzarsi (appiattirsi) man mano che il $\Delta C$ aumenta ulteriormente.
 
-Per la nota disuguaglianza di *Jensen*, se $\varphi$ è una funzione concava e $X$ una variabile casuale con valore atteso finito, vale in generale:
+La @fig-f-who riproduce graficamente l'andamento della funzione $f(\Delta C)$ nell'intervallo $\Delta C \in [0, 100] ~\mu g~ m^{-3}$, rendendo visivamente evidenti la monotonia crescente e la concavità appena dimostrate analiticamente, con la retta tangente nell'origine riportata come riferimento per apprezzare meglio il progressivo rallentamento dei rendimenti marginali.
+
+```{r}
+#| label: fig-f-who
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: Funzione di stima dell'impatto sanitario in funzione di $\Delta C$
+#| fig-height: 3
+#| fig-width: 5
+#| fig-pos: "H"
+
+
+# grafico calibrato per RR = 1.05 per 10 µg/m3
+# quindi β = ln(1.05)/10 ≈ 0.004879
+
+# Calcolo di beta a partire dall'RR fornito (1.05 per 10 ug/m3)
+RR <- 1.05
+beta <- log(RR) / 10
+
+# Funzione di impatto sanitario
+f <- function(delta_c, beta) 1 - exp(-beta * delta_c)
+
+# Griglia di valori di Delta C
+delta_c_seq <- seq(0, 100, by = 0.1)
+df <- data.frame(
+  delta_c = delta_c_seq,
+  f_val = f(delta_c_seq, beta)
+)
+
+ggplot(df, aes(x = delta_c, y = f_val)) +
+  geom_line(linewidth = 0.8, color = "#2c7fb8") +
+  geom_abline(intercept = 0, slope = beta, linetype = "dashed", color = "grey60", linewidth = 0.4) +
+  labs(
+    x = expression(Delta*C~(mu*g/m^3)),
+    y = expression(f(Delta*C) == 1 - e^{-beta*Delta*C}),
+    title = "Funzione di stima impatto sanitario",
+    subtitle = expression(paste(beta, " = ln(1.05)/10 ", "=", " 0.00488"))
+  ) +
+  theme_minimal(base_size = 11) +
+  theme(
+    #plot.title = element_text(face = "bold", size = 12),
+    plot.subtitle = element_text(size = 10, color = "grey30")
+  )
+
+```
+
+Per la nota disuguaglianza di *Jensen*, se indichiamo con $\varphi$ una funzione concava e con $X$ una variabile casuale con valore atteso finito, vale in generale:
 
 $$E[\varphi(X)] \le \varphi(E[X])$$
 
-Poiché in precedenza è stato dimostrato che $f(\Delta C) = 1 - e^{-\beta \cdot \Delta C}$ è strettamente concava ($f''(\Delta C) < 0$ per ogni $\Delta C$), possiamo applicare direttamente questo risultato ponendo $\varphi = f$ e trattando $\Delta C$ come una variabile casuale che descrive la *variabilità spaziale* dell'esposizione tra le unità territoriali (sezioni censuarie) che compongono l'area di studio:
+Poiché in precedenza è stato dimostrato che $f(\Delta C) = 1 - e^{-\beta \cdot \Delta C}$ è strettamente concava ($f''(\Delta C) < 0$, per ogni $\Delta C$), possiamo applicare direttamente questo risultato ponendo $\varphi = f$ e trattando $\Delta C$ come una variabile casuale che descrive la *variabilità spaziale* dell'esposizione tra le unità territoriali (sezioni censuarie) che compongono l'area di studio:
 
 $$E[f(\Delta C)] \le f(E[\Delta C])$$
 
@@ -305,18 +354,15 @@ In termini epidemiologici, questa disuguaglianza mette a confronto due strategie
 - **$f(E[\Delta C])$**: il beneficio calcolato applicando la formula un'unica volta alla riduzione *media complessiva* dell'area (comune, provincia o regione), trattando l'intera popolazione come se fosse esposta in modo omogeneo a quel valore medio.
 
 La disuguaglianza implica che la prima quantità è *sempre minore o al più uguale* alla seconda. 
-
 L'uguaglianza vale solo nel caso limite in cui $\Delta C$ sia costante su tutte le unità territoriali (assenza di eterogeneità spaziale reale) — condizione praticamente mai verificata nei dati di inquinamento ambientale, che presentano tipicamente forte variabilità locale.
 
 Intuitivamente, il motivo è lo stesso individuato analizzando la concavità di $f$: dato che i rendimenti marginali sono decrescenti, le sezioni con riduzioni molto elevate di inquinante contribuiscono all'impatto medio meno di quanto le sezioni con riduzioni modeste vi contribuiscano in proporzione, nella media aggregata.
 
-Un esempio numerico semplice chiarisce il meccanismo.
-
+Un esempio numerico semplice chiarisce bene il meccanismo.
 Si considerino due sole sezioni censuarie con $\Delta C_1 = 2 \ \mu g/m^3$ e $\Delta C_2 = 18 \ \mu g/m^3$
 ($\overline{\Delta C} = 10$) e $\beta = 0{,}01$. 
 
 Si ottiene:
-
 $$f(\Delta C_1) = f(2) = 1 - e^{-0{,}02} \approx 0{,}0198$$
 $$f(\Delta C_2) = f(18) = 1 - e^{-0{,}18} \approx 0{,}1647$$
 
@@ -326,12 +372,9 @@ $$f(\overline{\Delta C}) = f(10) = 1 - e^{-0{,}1} \approx 0{,}0952$$
 
 cioè, la stima aggregata è, seppur di poco, superiore.
 
-Il grafico di una funzione concava si trova sempre *al di sopra* della corda che congiunge due suoi punti qualsiasi.
-
+Il grafico di una funzione concava si trova sempre *al di sopra* della corda che congiunge due suoi punti qualsiasi. 
 Nell'esempio numerico, $\Delta C = 10$ è esattamente il punto medio tra $\Delta C_1 = 2$ e $\Delta C_2 = 18$; di conseguenza, il valore della corda in quel punto coincide con la media dei due benefici calcolati separatamente, $E[f(\Delta C)] \approx 0{,}0923$.
+Poiché $f$ è concava, il valore della funzione calcolato direttamente in quel punto, $f(\overline{\Delta C}) = f(10) \approx 0{,}0952$, si colloca *sopra* la corda, cioè sopra la media dei due benefici individuali.
 
-Poiché $f$ è concava, il valore della funzione calcolato direttamente in quel punto, $f(\overline{\Delta C}) = f(10) \approx 0{,}0952$, si colloca *sopra* la corda, cioè sopra
-la media dei due benefici individuali.
-
-In altre parole: il rallentamento dei rendimenti marginali per riduzioni elevate ($\Delta C_2 = 18$) fa sì che il beneficio calcolato punto per punto e poi mediato ($E[f(\Delta C)]$) non raggiunga mai il beneficio ottenuto applicando la formula al valore medio aggregato ($f(\overline{\Delta C})$) - ed è proprio questo scarto, *sistematico* per ogni funzione strettamente concava, a determinare la sovrastima dell'approccio aggregato.
+In altre parole: il rallentamento dei rendimenti marginali per riduzioni elevate ($\Delta C_2 = 18$) fa sì che il beneficio calcolato punto per punto e poi mediato ($E[f(\Delta C)]$) non raggiunga mai il beneficio ottenuto applicando la formula al valore medio aggregato ($f(\overline{\Delta C})$) - ed è proprio questo scarto, *sistematico* per ogni funzione strettamente concava, a determinare la sovrastima di *tipo matematico* conseguente all'approccio di tipo aggregato.
 
