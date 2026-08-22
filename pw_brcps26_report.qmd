@@ -164,7 +164,7 @@ L'applicazione della formula di stima di impatto alla popolazione 30+ delle sezi
 
 - *stato attuale 2025* ($E_{\text{real}}$), considera la distribuzione osservata dell'esposizione ambientale all'inquinante $NO_2$ nel 2025; 
 
-- *controfattuale OMS* ($E_{\text{unexp}}$), considera una esposizione pari a $NO_2 = 10 ~ \mu g~m^-3$ per tutte le sezioni censuarie superiori a tale valore soglia.
+- *controfattuale OMS* ($E_{\text{unexp}}$), considera una esposizione pari a $NO_2 = 10 ~ \mu g~m^{-3}$ per tutte le sezioni censuarie superiori a tale valore soglia.
 
 Il $\Delta C$ per ciascuna sezione censuaria è quindi rappresentato dalla differenza tra la concentrazione ambientale osservata (*reale/stimata*) ed il valore soglia (*cutoff*) fissato in $10 \ \mu g/m^3$, che rappresenta il livello ambientale di riferimento per la media annuale previsto dalle linee guida OMS sulla qualità dell'aria [@who_aq:2021].
 
