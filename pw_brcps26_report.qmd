@@ -159,7 +159,7 @@ Da notare che $\Delta C$ rappresenta il differenziale di esposizione in eccesso 
 
 Dal punto di vista matematico si può dimostrare [^nota] che la valutazione di impatto sanitario fatta aggregando preventivamente i dati di esposizione (a livello di sezione censuaria, di comune o di regione) tende a *sovrastimare in modo sistematico* il reale impatto rispetto ad un'analisi condotta alla massima risoluzione spaziale disponibile (idealmente individuale!) e poi aggregata a posteriori. 
 
-Per questa motivazione, nella presente analisi il $\Delta C$ viene calcolato e la funzione di stima $AC$ applicata separatamente *per ciascuna sezione censuaria*, prima di qualunque aggregazione dei risultati. *La sezione censuaria definisce l'unità geografica dei dati ambientali e sanitari con la granularità spaziale più fine effettivamente disponibile* cioè, effettivamente accessibile, considerate le limitazioni della normativa per la tutela della *privacy* dei dati sanitari individuali.
+Per questa motivazione, nella presente analisi il differenziale di concentrazione $\Delta C_{\text{NO}_2}$ viene calcolato e la funzione di stima dei casi attribuibili/anno $(AC)$ applicata separatamente *per ciascuna sezione censuaria*, prima di qualunque aggregazione dei risultati. *La sezione censuaria definisce l'unità geografica dei dati ambientali e sanitari con la granularità spaziale più fine effettivamente disponibile* cioè, effettivamente accessibile, considerate le limitazioni della normativa per la tutela della *privacy* dei dati sanitari individuali.
 
 [^nota]: Si rimanda al testo riportato in Appendice per una dimostrazione rigorosa.
 
@@ -198,7 +198,6 @@ Complessivamente tutte le sezioni del Veneto coprono una superficie di `r format
 L'unità di analisi censuaria garantisce quindi, almeno in riferimento ai valori mediani, una granularità spaziale sufficientemente fine  da consentire una caratterizzazione accettabile della popolazione coinvolta [^nota-ha]; tuttavia, l'asimmetria e la multimodalità della distribuzione impongono di considerare con attenzione la presenza di sezioni con dimensioni e densità molto eterogenee, non facilmente generalizzabili né in termini di estensione spaziale né di popolazione coinvolta.
 
 [^nota-ha]: L'estensione della sezione *mediana* corrisponde circa ad una superficie equivalente ad un quadrato di lato 170 m. 
-
 
 ```{r}
 #| label: fig-map-sez21
@@ -406,10 +405,9 @@ Le due linee verticali tratteggiate in verde delimitano l'intervallo di confiden
 L'incremento del valore centrale della distribuzione bootstrap ($144$ casi/anno) rispetto alla stima deterministica riferita al solo anno 2025 ($109$ casi/anno) è riconducibile all'effetto della variabilità introdotta con il processo di bootstrapping determinata da: la dipendenza spaziale introdotta dal "clustering comunale", l'inclusione delle concentrazioni di $\text{NO}_2$ degli anni precedenti (2019-2024), storicamente più elevate rispetto al 2025, integrata con la propagazione *log-normale* del rischio epidemiologico $RR$, ha l'effetto di traslare la distribuzione empirica verso valori di impatto sanitario medio complessivamente più elevati.
 
 
-## Discussione
+## Discussione e conclusioni
 
-
-Dal punto di vista dell'intrepretazione epidemiologica la stima puntale ottenuta dalla valutazione di impatto sanitario rappresenta il numero di *casi/anno teorici (decessi evitabili)* nell'eventualità per cui tutte le sezioni censuarie del Veneto siano esposte ad un livello di concentrazione ambientale di $NO_2 \leq 10\ \mu g~m^{-3}$, che rappresenta la soglia OMS stabilita dalle attuali evidenze scientifiche per escludere significativi (misurabili) effetti sanitari.
+Dal punto di vista dell'intrepretazione epidemiologica dei risultati la stima ottenuta dalla valutazione di impatto sanitario rappresenta il numero di *casi/anno teorici cioè i decessi evitabili* nell'eventualità in cui tutte le sezioni censuarie del Veneto siano esposte ad un livello di concentrazione ambientale di $NO_2 \leq 10\ \mu g~m^{-3}$, che rappresenta la soglia OMS stabilita dalle attuali evidenze scientifiche per escludere significativi (misurabili) effetti sanitari (malattie per cause respiratorie codici ICD-10: J00-J99).
 
 here a short recap of main findings
 
@@ -419,8 +417,6 @@ here a short recap of main findings
 
 Traccia di Sviluppo: Sezione 5 — Discussione
 Sintesi dei risultati principali: Riconfigurare i 109 casi attribuibili/anno (AF = 2,86%), evidenziando come l'impatto sanitario si concentri nelle aree ad alta densità abitativa dell'asse pedemontano e metropolitano (Padova, Venezia, Verona).  Valore epidemiologico del meso-livello: Discutere l'importanza di aver calcolato la VIS prima di qualsiasi aggregazione, richiamando la prova matematica della Disuguaglianza di Jensen per confermare la robustezza della stima rispetto ai classici studi ecologici.  Critica e risoluzione del Bootstrap: Argomentare la violazione dell'assunzione di scambiabilità nel bootstrap naive per riga. Proporre come soluzione l'impiego di un Cluster Bootstrap (raggruppando per Comune o Distretto Sanitario) o di uno Spatial Block Bootstrap, capaci di preservare la struttura di dipendenza spaziale e restituire intervalli di confidenza realistici. 
-
-## Conclusioni
 
 ....
 
