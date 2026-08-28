@@ -348,10 +348,28 @@ La stima dei casi attribuibili per l'anno di riferimento 2025, estesa a tutte le
 
 Assumendo il valore centrale del Rischio Relativo di letteratura OMS ($RR = 1{.}05$), la stima determina per l'intera regione una frazione attribuibile (AF) pari al 2.86% dei casi attesi. Applicando gli estremi dell'intervallo di incertezza del $RR$ ($1{.}03 - 1{.}07$), il carico di mortalità varia deterministicamente da un valore minimo di 66.3 casi/anno ($\text{AF}_{\text{low}} = 1{.}74\%$) a un massimo di 150.0 casi/anno ($\text{AF}_{\text{upp}} = 3{.}95\%$).
 
+
+Nella @fig-map-sez-af viene riprodotta la frazione attribuibile (AF) nelle szioni censuarie del Veneto, cioè il rapporto tra casi attribuibili e casi attesi annui che rappresenta la frazione di casi per malattie respiratorie potenzialmente evitabile attraverso l’azzeramento del differenziale di esposizione rispetto al controfattuale OMS.
+
+```{r}
+#| label: fig-map-sez-af
+#| fig-cap: "Frazione attribuibile (AF) nelle sezioni della Regione Veneto (anno 2025)."
+#| fig-align: "center"
+#| out-height: "0.4\\textheight"
+#| out-width: "!\\textheight"
+#| echo: false
+#| fig-pos: "H"
+
+
+knitr::include_graphics("./fig_tab/map_AF_sezioni_no2_2025.png")
+
+```
+
+
 Nella @tbl-ac-prov viene riportato per l'anno 2025 il dettaglio stratificato per Provincia del numero di casi attesi, del valore centrale ($\text{AC}$), degli estremi inferiore ($\text{AC}_{\text{low}}$) e superiore ($\text{AC}_{\text{upp}}$) dei casi attribuibili e della frazione attribuibile ($\text{AF}$).
 
 
-| Provincia | Attesi | AC | AF | AC low | AC upp |
+| Provincia | Attesi | AC | AF | $AC_{low}$ | $AC_{upp}$ |
 | :--- | ---: | ---: | ---: | ---: | ---: |
 | Belluno | 209 | 0.21 | 0.0010 | 0.13 | 0.29 |
 | Padova | 766 | 27.10 | 0.0354 | 16.50 | 37.30 |
@@ -367,13 +385,6 @@ Occorre tuttavia precisare che gli estremi $\text{AC}_{\text{low}}$ e $\text{AC}
 
 Per tentare di superare questa rigidità ed estendere l'analisi a una distribuzione empirica della variabilità della stima, è stata implementata la procedura di *non-parametric bootstrap* descritta nella sezione @sec-methods. 
 
-Questo approccio statistico ha consentito di propagare simultaneamente tre delle principali sorgenti di incertezza del modello:
-
-- la componente spaziale, modellata tramite il ricampionamento clustered delle sezioni censuarie per tenere conto della dipendenza tra osservazioni adiacenti;
-
-- la componente epidemiologica, valutata estraendo ad ogni iterazione il Rischio Relativo ($RR$) da una distribuzione log-normale incentrata sul valore centrale OMS ($RR = 1{.}05$);
-
-- la componente temporale, introdotta mediante la perturbazione stocastica dei livelli medi annui di $\text{NO}_2$ lungo la serie storica 2019-2025.
 
 I percentili $2{.}5^\circ$ e $97{.}5^\circ$ della distribuzione empirica così generata definiscono l'intervallo di confidenza al 95% (IC 95%), fornendo una quantificazione dell'incertezza decisamente più robusta rispetto ai calcoli deterministici fissi (@tbl-boot-spattemp).
 
@@ -383,7 +394,11 @@ I percentili $2{.}5^\circ$ e $97{.}5^\circ$ della distribuzione empirica così g
 
 : Statisitche desctittive della distribuzione empirica bootstrap del numero di casi attribuibili/anno (AC). {#tbl-boot-spattemp}
 
-La @fig-boot-spattemp illustra la curva di densità di probabilità associata alla distribuzione empirica dei casi attribuibili.
+La @fig-boot-spattemp illustra la curva di densità di probabilità associata alla distribuzione empirica dei casi attribuibili. Si nota una distribuzione unimodale caratterizzata da asimmetria positiva (coda della densità allungata verso i valori superiori). 
+
+La linea tratteggiata rossa identifica la stima centrale della distribuzione a circa 144 casi/anno. Le due linee verticali tratteggiate in verde delimitano l'intervallo di confidenza empirico al 95%: l'estremo inferiore ($\text{IC } 95\%\text{ inf.}$) si attesta a circa 83 casi/anno ($2{,}5^\circ$ percentile), mentre l'estremo superiore ($\text{IC } 95\%\text{ sup.}$) raggiunge circa i 224 casi/anno ($97{,}5^\circ$ percentile). L'area ombreggiata sottesa alla curva racchiude la massa di probabilità centrale corrispondente a tale intervallo. Infine, lLa linea punteggiata in grigio corrispondente a circa 109 casi/anno rappresenta l'entità della stima puntuale discussa in precedenza e riferita all'anno 2025.
+
+L'incremento del valore centrale della distribuzione bootstrap (circa $144$ casi/anno) rispetto alla stima deterministica riferita al solo anno 2025 (circa $109$ casi/anno) è riconducibile all'effetto della variabilità introdotta con il processo di bootstrapping e determinata da: la dipendenza spaziale introdotta dal "clustering comunale", l'inclusione delle concentrazioni di $\text{NO}_2$ degli anni precedenti (2019-2024), storicamente più elevate rispetto al 2025, integrata con la propagazione *log-normale* del rischio epidemiologico $RR$, ha l'effetto di traslare la distribuzione empirica verso valori di impatto sanitario medio complessivamente più elevati.
 
 ```{r}
 #| label: fig-boot-spattemp
@@ -394,16 +409,10 @@ La @fig-boot-spattemp illustra la curva di densità di probabilità associata al
 #| echo: false
 #| fig-pos: "H"
 
-knitr::include_graphics("./fig_tab/ac_resp_bootstrap_density_spat_temp_no_labs.png")
+#knitr::include_graphics("./fig_tab/ac_resp_bootstrap_density_spat_temp_no_labs.png")
+knitr::include_graphics("./fig_tab/ac_resp_bootstrap_density_spat_temp_no_labs_e_stima_puntuale.png")
 
 ```
-
-Dall'analisi della figura si nota una distribuzione unimodale caratterizzata da asimmetria positiva (coda della densità allungata verso i valori superiori). La linea tratteggiata rossa identifica la stima centrale della distribuzione a circa 144 casi/anno.
-
-Le due linee verticali tratteggiate in verde delimitano l'intervallo di confidenza empirico al 95%: l'estremo inferiore ($\text{IC } 95\%\text{ inf.}$) si attesta a circa 83 casi/anno ($2{,}5^\circ$ percentile), mentre l'estremo superiore ($\text{IC } 95\%\text{ sup.}$) raggiunge circa i 224 casi/anno ($97{,}5^\circ$ percentile). L'area ombreggiata sottesa alla curva racchiude la massa di probabilità centrale corrispondente a tale intervallo.
-
-L'incremento del valore centrale della distribuzione bootstrap ($144$ casi/anno) rispetto alla stima deterministica riferita al solo anno 2025 ($109$ casi/anno) è riconducibile all'effetto della variabilità introdotta con il processo di bootstrapping determinata da: la dipendenza spaziale introdotta dal "clustering comunale", l'inclusione delle concentrazioni di $\text{NO}_2$ degli anni precedenti (2019-2024), storicamente più elevate rispetto al 2025, integrata con la propagazione *log-normale* del rischio epidemiologico $RR$, ha l'effetto di traslare la distribuzione empirica verso valori di impatto sanitario medio complessivamente più elevati.
-
 
 ## Discussione e conclusioni
 
@@ -412,6 +421,16 @@ Dal punto di vista dell'intrepretazione epidemiologica dei risultati la stima ot
 here a short recap of main findings
 
 *qui sui contenuti del bootstrapping*
+
+Questo approccio statistico ha consentito di propagare simultaneamente tre delle principali sorgenti di incertezza del modello:
+
+- la componente spaziale, modellata tramite il ricampionamento clustered delle sezioni censuarie per tenere conto della dipendenza tra osservazioni adiacenti;
+
+- la componente epidemiologica, valutata estraendo ad ogni iterazione il Rischio Relativo ($RR$) da una distribuzione log-normale incentrata sul valore centrale OMS ($RR = 1{.}05$);
+
+- la componente temporale, introdotta mediante la perturbazione stocastica dei livelli medi annui di $\text{NO}_2$ lungo la serie storica 2019-2025.
+
+
 
 ...dire che si tratta di una stima "inerentemente" distorta? Violazione dell'i.i.d. punto più rilevante: Il bootstrap non parametrico classico assume osservazioni scambiabili e di fatto non lo sono. Se c'è autocorrelazione spaziale o dipendenza temporale, il bootstrap "naive" per riga produce SE sistematicamente sottostimati perché rompe la struttura di dipendenza e tratta osservazioni correlate come indipendenti. La soluzione è block bootstrap, cluster bootstrap (per provincia/cluster geografico), o bootstrap spaziale (block spaziale).
 
