@@ -11,3 +11,12 @@
 
 % Forces this specific document to start numbering at Page 2
 \setcounter{page}{2} 
+
+% this is for customizing TOC indice
+\usepackage{tocloft}
+
+% Add dot leaders to top-level sections
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+
+% Set dot spacing for all levels (default is 4.5; 1.5 is tight, 8 is sparse)
+\renewcommand{\cftdotsep}{4.5}

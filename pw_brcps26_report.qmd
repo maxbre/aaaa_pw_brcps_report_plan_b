@@ -16,7 +16,11 @@ format:
     toc: true
     toc-title: "Indice"
     toc-depth: 3
+    colorlinks: true
+    toccolor: "NavyBlue" #xcolor names
     number-depth: 3
+    lof: false
+    lot: false
     header-includes:
       - \usepackage{tikz}
       - \usetikzlibrary{arrows.meta}
@@ -58,11 +62,11 @@ Opzione 3, migliore?
 
 *Concentrazioni atmosferiche di $\text{NO}_2$ ed impatto sanitario in Regione Veneto: una stima controfattuale ad alta risoluzione spaziale con propagazione dell’incertezza.*
 
-## Sommario {.unnumbered}
+## Sommario {.unnumbered .unlisted}
 
 150 parole
 
-## Abstract {.unnumbered}
+## Abstract {.unnumbered .unlisted}
 
 150 words
 
@@ -119,28 +123,23 @@ Ai fini del calcolo dei decessi attesi nella classe 30+ di ciascuna sezione cens
 
 I tassi di mortalità per cause respiratorie definiti a livello di Provincia (dato ISTAT) variano nel range compreso tra il 0.084% e il 0.140%, con una media regionale pari a circa 0.107%, cioè circa 107 casi ogni 100 000 residenti in Veneto.
 
-I *casi attesi* sono il numero di decessi teoricamente osservabili ogni anno calcolati sulla base della popolazione esposta (sezioni censuarie anno 2021) ed i tassi grezzi provinciali (2024 per la mortalità).
+I *casi attesi* sono il numero di decessi teoricamente osservabili ogni anno calcolati sulla base della popolazione esposta 30+ nelle sezioni censuarie anno 2021 ed i tassi grezzi provinciali 2024 per la mortalità per cause respiratorie.
 
 La media annuale della concentrazione ambientale di biossido di azoto $NO_2$ attribuita alle singole sezioni censuarie in Regione Veneto, è stata ottenuta tramite operazioni geografiche di *overlay*, definita da una  *media zonale pesata sulla superficie di intersezione*, tra il disegno delle sezioni censuarie ed il grigliato di output del modello fotochimico euleriano *CAMx*. 
 Il modello fotochimico  di dispersione atmosferica *CAMx*, distribuito da *Ramboll Environ* (http://www.camx.com/), è lo strumento operativo della catena modellistica SPIAIR implementata da ARPAV per la stima degli inquinanti atmosferici in Regione Veneto su un grigliato regolare di output con una risoluzione orizzontale di 4 km. 
 
-Per valutare la presenza, l'entità e la direzione dei trend temporali nelle concentrazioni medie annuali comunali di $NO_2$, sono stati utilizzati il test non parametrico di Mann-Kendall e lo stimatore della pendenza di Sen (Sen's slope). Entrambi i metodi sono robusti alla presenza di outlier e non richiedono assunzioni sulla distribuzione dei dati. Per controllare l'inflazione dei falsi positivi dovuta ai test simultanei condotti su tutti i Comuni, i $p$-value di Mann-Kendall sono stati corretti con la procedura di Benjamini-Hochberg (False Discovery Rate - FDR); i trend sono stati considerati statisticamente significativi per valori di $p$-value aggiustato inferiori ad $\alpha = 0.05$.
+Per valutare la presenza, l'entità e la direzione dei trend temporali nelle concentrazioni medie annuali comunali di $NO_2$, sono stati utilizzati il test non parametrico di Mann-Kendall e lo stimatore della pendenza di Sen (Sen's slope). Entrambi i metodi sono robusti alla presenza di outlier e non richiedono assunzioni sulla distribuzione dei dati. Per controllare l'inflazione dei falsi positivi dovuta ai test simultanei condotti su tutti i Comuni, i $p$-value di Mann-Kendall sono stati corretti con la procedura di Benjamini-Hochberg (False Discovery Rate - FDR). I trend sono considerati statisticamente significativi per valori di $p$-value aggiustato inferiori ad $\alpha = 0.05$.
 
 La variabili demografiche aggregate per sezione censuaria, rappresentate dalla popolazione totale residente e la popolazione in classe d'età 30+, sono state ricavate dalla rielaborazione dei dati disponibili nel database ISTAT per l'anno 2021 denominato *"Basi territoriali e variabili censuarie"* (https://www.istat.it/notizia/basi-territoriali-e-variabili-censuarie/).
 
 *Valutazione di impatto sanitario (VIS)*
 
-Per quantificare l'impatto sanitario è stato impiegato un coefficiente di esposizione calibrato sulla stima del Rischio Relativo ($RR$) desunto dalla letteratura internazionale OMS [@hrapie-2:2025], in particolare il ($RR$) di *mortalità per cause respiratorie* (Codici ICD-10: J00-J99) nella classe d'età 30+, che risulta compreso tra il $3\%$ e il $7\%$, con un valore centrale pari al $5\%$, per ogni aumento della concentrazione di $10 \ \mu g~m^{-3}$.
-
-L'assunzione della stima di impatto sanitario è che esista una *trasportabilità"* del $RR$ da letteratura OMS sulla popolazione delle sezioni censuarie ISTAT della Regione Veneto. 
+L'impatto sanitario è stato valutato tramite un coefficiente di esposizione calibrato sulla stima del Rischio Relativo ($RR$) desunto dalla letteratura internazionale OMS [@hrapie-2:2025], in particolare il ($RR$) di *mortalità per cause respiratorie* (Codici ICD-10: J00-J99) nella classe d'età 30+, che risulta compreso tra il $3\%$ e il $7\%$, con un valore centrale pari al $5\%$, per ogni aumento della concentrazione di $10 \ \mu g~m^{-3}$. 
+L'assunzione della stima è che esista una *"trasportabilità"* del $RR$ da letteratura OMS sulla popolazione delle sezioni censuarie ISTAT della Regione Veneto.
 
 Per quantificare la relazione tra l'esposizione controfattuale ai livelli ambientali di *biossido di azoto* ($NO_2$) e la mortalità per cause respiratorie nella popolazione della classe 30+, *residente nelle sezioni censuarie ISTAT* in Regione Veneto, è stata implementata la formula di calcolo del software *WHO AirQ+*, ampiamente utilizzato nelle stime di impatto sanitario [@who_airq:2020].
 
-I *casi attribuibili* sono la quota di casi attesi attribuibile al differenziale di esposizione e rappresentano i casi potenzialmente evitabili ogni anno con l’azzeramento del differenziale di esposizione controfattuale.
-
-La *frazione attribuibile* è la frazione derivante dal rapporto tra casi attribuibili e casi attesi annui e rappresenta la frazione di mortalità potenzialmente evitabile attraverso con l’azzeramento del differenziale di esposizione controfattuale.
-
-La formula di stima dei casi attribuibili ($AC$) e della frazione attribuibile ($AF$) presuppone una relazione di tipo *log-lineare* basata sulla funzione di concentrazione-risposta:
+I *casi attribuibili* sono la quota di casi attesi attribuibile al differenziale di esposizione e rappresentano i casi potenzialmente evitabili ogni anno con l’azzeramento del differenziale di esposizione controfattuale. La formula di stima dei casi attribuibili ($AC$) e della frazione attribuibile ($AF$) presuppone una relazione di tipo *log-lineare* basata sulla funzione di concentrazione-risposta:
 
 $$AF = \frac{RR - 1}{RR} = 1 - \frac{1}{e^{\beta \cdot \Delta C}} = 1 - e^{-\beta \cdot \Delta C}$$
 $$AC = N \cdot B \cdot AF = N \cdot B \cdot \left(1 - e^{-\beta \cdot \Delta C}\right)$$
@@ -156,6 +155,10 @@ dove:
 - $B$ è il tasso basale grezzo di incidenza dell'esito sanitario considerato (es. mortalità per cause respiratorie);
 
 Da notare che $\Delta C$ rappresenta il differenziale di esposizione in eccesso rispetto ad una soglia di riferimento controfattuale (target). Il $\Delta C$ di esposizione in eccesso rispetto alla soglia target di $10 \ \mu g/m^3$ impiegata nel presente studio [@who_aq:2021], è stato calcolato azzerando i valori nelle sezioni con livelli di inquinamento inferiori a tale soglia, evitando così di attribuire all'inquinante un *paradossale effetto protettivo*.
+
+La *frazione attribuibile* $AF$ è la frazione data dal rapporto tra casi attribuibili e casi attesi annui e rappresenta la frazione di mortalità potenzialmente evitabile attraverso l’azzeramento del differenziale di esposizione controfattuale. In altri termini $AF$ risponde alla domanda: "quale percentuale dei casi osservati tra gli esposti è causata  dall'inquinamento?".
+
+Il numeratore di $AF$, il termine $(RR - 1)$, rappresenta il rischio in eccesso attribuibile al fattore ambientale (il "delta di pericolo" portato dal $NO_2$). Il denominatore $(RR)$ rappresenta la totalità del rischio "subito" dalla popolazione esposta. La frazione $\frac{RR - 1}{RR}$ indica la proporzione dei casi sanitari che non si sarebbero verificati (evitati) se l'esposizione all'inquinante fosse stata eliminata o ridotta sotto soglia.
 
 Dal punto di vista matematico si può dimostrare [^nota] che la valutazione di impatto sanitario fatta aggregando preventivamente i dati di esposizione (a livello di sezione censuaria, di comune o di regione) tende a *sovrastimare in modo sistematico* il reale impatto rispetto ad un'analisi condotta alla massima risoluzione spaziale disponibile (idealmente individuale!) e poi aggregata a posteriori. 
 
@@ -189,21 +192,20 @@ Gli intervalli di confidenza al 95% sono stati stimati con il metodo dei percent
 
 Le analisi statistiche sono state effettuate in ambiente di programmazione *R (v. 4.5+)* [@R_manual:2022], con l'impiego di pacchetti dedicati: `tydyverse` e `viridis` per il *data wrangling* e per la restituzione grafica, `sf` e `terra` per l'analisi e la manipolazione dei dati georeferenziati. Questo documento è stato redatto in modo dinamico con *Quarto* (https://quarto.org/), sistema *open source* di pubblicazione scientifica che garantisce trasparenza e riproducibilità (*reproducible research*).
 
+
 ## Risultati
 
 Secondo il censimento ISTAT 2021, in Regione Veneto (@fig-map-sez21) sono presenti `r format(43447, big.mark = " ")` sezioni censuarie abitate che rappresentano un totale di `r format(4847745, big.mark = " ")` residenti. La popolazione in classe d'età 30+ è costituita da `r format(3521995, big.mark = " ")` residenti, circa il 73% della popolazione totale. 
 
-Complessivamente tutte le sezioni del Veneto coprono una superficie di `r format(14511, big.mark = " ")` $km^2$, con una densità media di 334 $ab~km^2$. La sezione censuaria *mediana* ha un'estensione  pari a circa 2.90 $ha$, con una densità abitativa *mediana* pari a 13.5 $ab~ha^{-1}$. 
+Le sezioni del Veneto coprono una superficie di `r format(14511, big.mark = " ")` $km^2$, con una densità media di 334 $ab~km^2$. La sezione censuaria *mediana* ha un'estensione  pari a circa 2.90 $ha$, con una densità abitativa *mediana* pari a 13.5 $ab~ha^{-1}$. L'unità di analisi sezione censuaria garantisce quindi, almeno in riferimento ai valori mediani, una granularità spaziale sufficientemente fine da consentire una caratterizzazione accettabile della popolazione coinvolta [^nota-ha]. Tuttavia, l'asimmetria e la multimodalità della distribuzione impongono di considerare con attenzione la presenza di sezioni con dimensioni e densità eterogenee, non facilmente generalizzabili in termini di estensione spaziale e di popolazione.
 
-L'unità di analisi censuaria garantisce quindi, almeno in riferimento ai valori mediani, una granularità spaziale sufficientemente fine  da consentire una caratterizzazione accettabile della popolazione coinvolta [^nota-ha]; tuttavia, l'asimmetria e la multimodalità della distribuzione impongono di considerare con attenzione la presenza di sezioni con dimensioni e densità molto eterogenee, non facilmente generalizzabili né in termini di estensione spaziale né di popolazione coinvolta.
-
-[^nota-ha]: L'estensione della sezione *mediana* corrisponde circa ad una superficie equivalente ad un quadrato di lato 170 m. 
+[^nota-ha]: L'estensione della sezione *mediana* copre una superficie equivalente ad un quadrato di lato circa 170 m. 
 
 ```{r}
 #| label: fig-map-sez21
 #| fig-cap: "Sezioni censuarie ISTAT 2021 Regione Veneto."
 #| fig-align: "center"
-#| out-height: "0.45\\textheight"
+#| out-height: "0.4\\textheight"
 #| out-width: "!\\textheight"
 #| echo: false
 #| fig-pos: "H"
@@ -216,7 +218,7 @@ In @fig-map-pop30p viene riprodotta la distribuzione spaziale della popolazione 
 
 La @fig-map-attesi rappresenta il numero di casi attesi/anno per cause respiratorie (codici ICD-10: J00-J99), cioè  il numero di decessi teoricamente osservabili ogni anno calcolati sulla base della popolazione esposta 30+ (sezioni censuarie ISTAT anno 2021) ed i tassi grezzi provinciali (tasso ISTAT anno 2024 per la causa di mortalità respiratoria).
 
-E' necessario precisare che le mappe in @fig-map-pop30p e @fig-map-attesi sono delle rappresentazioni geografiche di tipo "demografico-attuariale" che restituiscono la popolazione *target* (a rischio) rispetto alla quale è stata effettuata la valutazione di impatto sanitario, cioè il conteggio dei casi attribuibili/anno.
+E' necessario precisare che la @fig-map-pop30p e la @fig-map-attesi sono rappresentazioni geografiche di tipo "demografico" che restituiscono la popolazione *target* (a rischio) rispetto alla quale è stata effettuata la valutazione di impatto sanitario.
 
 \newpage
 
@@ -312,7 +314,7 @@ knitr::include_graphics("./fig_tab/no2_boxplot_no2_provincia.png")
 
 ```{r}
 #| label: fig-exp-pop_prov
-#| fig-cap: "Esposizione cumulata popolazione ai livelli ambeintali $NO_2$."
+#| fig-cap: "Esposizione cumulata popolazione ai livelli ambientali $NO_2$ nel 2019 e nel 2025."
 #| fig-align: "center"
 #| out-height: "0.4\\textheight"
 #| out-width: "!\\textheight"
@@ -414,70 +416,92 @@ knitr::include_graphics("./fig_tab/ac_resp_bootstrap_density_spat_temp_no_labs_e
 
 ```
 
+In termini di sensitività dei risultati è significativo apprezzare l'entità della variabilità introdotta dal processo di bootstrapping spaziotemporale completo con "clustering comunale", così come sopra descritto, rispetto ad un "semplice" processo di bootstraping che considera le sezioni censuarie come completamente indipendenti.
+
+In termini di sensitività dei risultati, è particolarmente significativo apprezzare l'entità della variabilità introdotta dal processo di bootstrapping spazio-temporale *completo con clustering comunale* rispetto a un approccio *"semplice" (naive)* che considera le sezioni censuarie come totalmente indipendenti.
+
+Il confronto tra i due metodi, illustrato in @fig-boot-comp, evidenzia marcate differenze nelle curve di densità di probabilità, sia nella stima di tendenza centrale, sia nell'ampiezza della dispersione della stima dei casi attribuibili. 
+
+Assumendo l'indipendenza delle osservazioni, la procedura di bootstrap semplice (curva rossa) collassa attorno a una stima centrale significativamente più bassa (pari all'incirca a 109 casi/anno) e presenta un picco di densità molto stretto ed elevato (prossimo a 0,019). Questa formulazione del bootstrap sottostima drasticamente la variabilità del sistema, restituendo un intervallo di confidenza artificialmente ristretto (circa tra 50 e 180 casi/anno) a causa della rottura della struttura di autocorrelazione spaziale e dell'assenza di perturbazione temporale interannuale. 
+
+Invece, nel bootstrap spazio-temporale con clustering comunale (curva ciano), preservando la dipendenza spaziale mediante ricampionamento per cluster comunali e integrando la fluttuazione temporale del $\text{NO}_2$ lungo la serie storica, la distribuzione si sposta verso destra (stima centrale attorno a 144 casi/anno) e mostra una varianza decisamente più ampia e schiacciata. La coda superiore si estende ben oltre i 200 casi/anno, riflettendo una stima che propaga correttamente l'incertezza cumulativa.
+
+Dal punto di vista metodologico, questo confronto dimostra chiaramente come un approccio di bootstrap semplice soffra di un bias da "falsa  precisione", ignorando la struttura di raggruppamento territoriale. L'adozione del bootstrap spazio-temporale clustered si conferma quindi importante per evitare un eccesso di ottimismo analitico.
+
+
+```{r}
+#| label: fig-boot-comp
+#| fig-cap: "Confronto procedur di stima bootstrap (AC) casi atrribuibili/anno in Regione Veneto."
+#| fig-align: "center"
+#| out-height: "0.4\\textheight"
+#| out-width: "!\\textheight"
+#| echo: false
+#| fig-pos: "H"
+
+knitr::include_graphics("./fig_tab/bootstrap_comparison_res_simple_spattemp.png")
+
+```
+
+
 ## Discussione e conclusioni
 
-Dal punto di vista dell'intrepretazione epidemiologica dei risultati la stima ottenuta dalla valutazione di impatto sanitario rappresenta il numero di *casi/anno teorici cioè i decessi evitabili* nell'eventualità in cui tutte le sezioni censuarie del Veneto siano esposte ad un livello di concentrazione ambientale di $NO_2 \leq 10\ \mu g~m^{-3}$, che rappresenta la soglia OMS stabilita dalle attuali evidenze scientifiche per escludere significativi (misurabili) effetti sanitari (malattie per cause respiratorie codici ICD-10: J00-J99).
+Dal punto di vista dell'interpretazione epidemiologica dei risultati, la stima ottenuta dalla valutazione di impatto sanitario rappresenta il numero di *casi/anno teorici*, cioè i decessi evitabili nell'eventualità in cui tutte le sezioni censuarie del Veneto siano esposte ad un livello di concentrazione ambientale di $NO_2 \leq 10\ \mu g~m^{-3}$, soglia OMS stabilita dalle attuali evidenze scientifiche per escludere significativi (misurabili) effetti sanitari (malattie per cause respiratorie codici ICD-10: J00-J99).
 
-here a short recap of main findings
+Il confronto tra la stima puntuale riferita al solo anno 2025 (circa 109 casi/anno) e la stima centrale ottenuta dalla procedura di bootstrap spazio-temporale (circa 144 casi/anno, IC 95% 83–224) mette in luce un aspetto metodologico rilevante: affidarsi al solo dato deterministico dell'ultimo anno disponibile rischia di sottostimare il reale carico sanitario atteso, poiché non tiene conto né della variabilità storica dell'esposizione (concentrazioni di NO2 nel periodo 2019-2025, sistematicamente più elevate nei primi anni della serie), né dell'incertezza epidemiologica associata al Rischio Relativo di letteratura.
 
-*qui sui contenuti del bootstrapping*
+Il confronto tra bootstrap "naive" (sezioni indipendenti) e bootstrap con clustering comunale (@fig-boot-comp) conferma inoltre come l'assunzione di indipendenza tra sezioni censuarie porti a una falsa precisione: ignorare l'autocorrelazione spaziale comprime artificialmente l'intervallo di confidenza (circa 50-180 casi/anno) restituendo un'illusione di accuratezza non giustificata dai dati.
 
-Questo approccio statistico ha consentito di propagare simultaneamente tre delle principali sorgenti di incertezza del modello:
+Da un punto di vista di supporto alle decisioni di sanità pubblica, la stima più prudente e metodologicamente robusta da comunicare ai decisori è quindi quella bootstrap che integra le tre fonti di incertezza (spaziale, epidemiologica, temporale) piuttosto che il singolo valore puntuale 2025.
 
-- la componente spaziale, modellata tramite il ricampionamento clustered delle sezioni censuarie per tenere conto della dipendenza tra osservazioni adiacenti;
+L'analisi evidenzia inoltre una marcata eterogeneità territoriale del carico sanitario attribuibile (@tbl-ac-prov, @tbl-diff-prov). 
+Le province di Padova e Venezia concentrano la quota maggiore di casi attribuibili (rispettivamente circa 27 e 24 casi/anno, con AF pari al 3,5% e 3,8% dei casi attesi), coerentemente con i più alti differenziali di esposizione rispetto alla soglia controfattuale OMS. 
+Al contrario, la provincia di Belluno presenta un impatto sanitario pressoché trascurabile (AF = 0,1%), risultato atteso vista la ridotta pressione emissiva e le caratteristiche orografiche dell'area, meno soggetta all'accumulo tipico del Bacino Padano. 
 
-- la componente epidemiologica, valutata estraendo ad ogni iterazione il Rischio Relativo ($RR$) da una distribuzione log-normale incentrata sul valore centrale OMS ($RR = 1{.}05$);
+Questa distribuzione disomogenea conferma che eventuali politiche regionali di riduzione dell'esposizione a $NO_2$ potrebbero ottenere il maggior beneficio sanitario se prioritariamente indirizzate alle aree di pianura a maggiore pressione antropica (densità abitativa, riscaldamento domestico, traffico veicolare, insediamenti produttivi), piuttosto che con un approccio omogeneo sull'intero territorio regionale.
 
-- la componente temporale, introdotta mediante la perturbazione stocastica dei livelli medi annui di $\text{NO}_2$ lungo la serie storica 2019-2025.
+*Limiti dello studio*
 
+Alcuni limiti metodologici vanno esplicitati ed evidenziati:
 
+- natura ecologica dello studio: l'unità di analisi è la sezione censuaria e non l'individuo; i risultati vanno quindi interpretati a livello aggregato di popolazione, evitando l'inferenza diretta a livello individuale (*ecological fallacy*), come già richiamato negli obiettivi; in particolare tutti i confondenti di tipo individuale rimangono non risolti fino a quando si opera nell'ambito di stime di gruppo;
 
-...dire che si tratta di una stima "inerentemente" distorta? Violazione dell'i.i.d. punto più rilevante: Il bootstrap non parametrico classico assume osservazioni scambiabili e di fatto non lo sono. Se c'è autocorrelazione spaziale o dipendenza temporale, il bootstrap "naive" per riga produce SE sistematicamente sottostimati perché rompe la struttura di dipendenza e tratta osservazioni correlate come indipendenti. La soluzione è block bootstrap, cluster bootstrap (per provincia/cluster geografico), o bootstrap spaziale (block spaziale).
+- trasportabilità delle stime: sia il Rischio Relativo (derivato dalla letteratura internazionale OMS/HRAPIE-2) sia i tassi di mortalità di base (stimati a livello provinciale e attribuiti alle sezioni censuarie) presuppongono un'ipotesi di trasportabilità che non tiene conto di eventuali differenze locali nella suscettibilità della popolazione, nella composizione demografica o nella qualità delle cure sanitarie;
 
-Traccia di Sviluppo: Sezione 5 — Discussione
-Sintesi dei risultati principali: Riconfigurare i 109 casi attribuibili/anno (AF = 2,86%), evidenziando come l'impatto sanitario si concentri nelle aree ad alta densità abitativa dell'asse pedemontano e metropolitano (Padova, Venezia, Verona).  Valore epidemiologico del meso-livello: Discutere l'importanza di aver calcolato la VIS prima di qualsiasi aggregazione, richiamando la prova matematica della Disuguaglianza di Jensen per confermare la robustezza della stima rispetto ai classici studi ecologici.  Critica e risoluzione del Bootstrap: Argomentare la violazione dell'assunzione di scambiabilità nel bootstrap naive per riga. Proporre come soluzione l'impiego di un Cluster Bootstrap (raggruppando per Comune o Distretto Sanitario) o di uno Spatial Block Bootstrap, capaci di preservare la struttura di dipendenza spaziale e restituire intervalli di confidenza realistici. 
+- aggregazione spaziale e sovrastima sistematica: come dimostrato in Appendice, calcolare l'impatto sanitario su dati di esposizione pre-aggregati porterebbe a una sovrastima sistematica rispetto a un'analisi condotta alla massima risoluzione disponibile; per questo motivo la stima dei casi attribuibili è stata effettuata a livello di singola sezione censuaria prima di ogni aggregazione, mitigando (ma non eliminando del tutto, vista la risoluzione di 4 km del modello CAMx) questo tipo di bias;
 
-....
+- risoluzione del dato di esposizione: il grigliato modellistico SPIAIR/CAMx a 4 km, per quanto rappresenti lo strumento operativo di riferimento in Regione Veneto, non è in grado di catturare completamente la variabilità di micro-scala, con un possibile effetto di *exposure misclassification* residua anche al netto della disaggregazione per sezione censuaria;
 
-La quantificazione dell'impatto sanitario dell'inquinamento atmosferico a livello di sezioni censuarie presenta rilevanti sfide analitiche, legate principalmente alla presenza di *confondimento spaziale* e *collinearità* tra le caratteristiche geografiche ed i livelli espositivi [@ramsey_ps:2019]. Per tentare di superare questi limiti, è necessario adottare un framework di *inferenza causale* [@dominici_cas_evi:2017] con l'obiettivo di isolare il ruolo dei confondenti socio-demografici e territoriali 
+- singolo inquinante: la valutazione si concentra esclusivamente su $NO_2$, mentre nella realtà la popolazione è co-esposta a una miscela di inquinanti (in particolare $PM_{2.5}$) con possibili effetti sinergici o di confondimento non catturabili dal presente modello concentrazione-risposta;
 
-....
+- scelta della soglia controfattuale: il valore di $10\ \mu g~m^{-3}$ riflette le linee guida OMS 2021, ma scenari controfattuali alternativi (es. riduzioni percentuali uniformi, o soglie nazionali/regionali) potrebbero restituire stime di impatto sensibilmente diverse.
 
+*Conclusioni e possibili sviluppi futuri*
 
+Nonostante questi limiti, lo studio conferma che l'esposizione a $NO_2$ resta un determinante ambientale non trascurabile della mortalità per cause respiratorie in Regione Veneto, con un carico sanitario stimato tra le 83 e le 224 unità/anno (IC 95% bootstrap) concentrato prevalentemente nelle aree di pianura a maggiore densità abitativa e pressione antropica.
 
- Traccia di Sviluppo: Sezione 6 — Conclusioni e Sviluppi Futuri
-Implicazioni per la programmazione regionale: Concludere che, sebbene la serie 2019-2025 registri un trend decrescente significativo, il raggiungimento del target OMS ($10\ \mu\text{g/m}^3$) richiede politiche mirate sui settori emissivi chiave (traffico e riscaldamento) nelle aree a maggior impatto.  
-Superamento dei limiti basali via Approccio Bayesiano: Proporre l'introduzione di modelli gerarchici Bayesiene con Empirical Bayes Smoothing per stabilizzare i tassi di mortalità sulle piccole aree e l'impiego di strutture autoregressive spaziali (CAR/MICAR) per modellare la dipendenza vicinale. 
-Spatial Causal Inference e MAUP: Riconoscere i limiti del disegno ecologico discutendo il Modifiable Areal Unit Problem (effetti di scala e zonalità) e ipotizzando l'evoluzione verso framework di inferenza causale spaziale (Pirani et al., 2020; Akbari et al., 2021) in grado di valutare la violazione dell'ipotesi SUTVA dovuta all'interazione tra sezioni adiacenti.  
+Il percorso metodologico proposto -- disaggregazione a livello di sezione censuaria, propagazione dell'incertezza tramite bootstrap spazio-temporale con *clustering* comunale -- rappresenta una base di partenza replicabile per la costruzione di uno strumento quantitativo di supporto alla programmazione regionale in materia di Ambiente e Sanità Pubblica.
 
+La quantificazione dell'impatto sanitario da inquinamento atmosferico a livello di sezioni censuarie presenta tuttavia rilevanti sfide analitiche, legate principalmente alla presenza di *confondimento spaziale* e *collinearità* tra le caratteristiche geografiche ed i livelli espositivi [@ramsey_ps:2019]. Per tentare di superare questi limiti è necessario adottare un framework di *inferenza causale* [@dominici_cas_evi:2017], con l'obiettivo di isolare il ruolo dei confondenti socio-demografici e territoriali.
 
-*i confondenti di tipo individuale rimangono non risolti fino a quando si opera nell'ambito di stime di gruppo...*
+Sviluppi futuri dello studio potranno riguardare:
 
+- l'adozione di tecniche di inferenza causale più robuste (propensity score, IPTW, g-computation) rispetto all'approccio descrittivo qui adottato, così da rafforzare l'interpretazione causale del legame tra esposizione e impatto sanitario;
 
-*Limiti dello studio e possibili sviluppi futuri*
+- l'impiego di uno smussamento bayesiano empirico (*Empirical Bayes Smoothing*) per la stima del tasso di mortalità nei piccoli comuni, eventualmente integrato con la modellazione della dipendenza spaziale;
 
-....
+- l'inserimento esplicito dell'incertezza associata ai tassi di mortalità di base e alla stima della popolazione residente in ciascuna sezione censuaria;
 
-- smussamento bayesiano empirico per calcolo tasso mortalità piccoli comuni, eventualmente integrato con dipendenza spaziale 
+- l'adozione di strutture autoregressive spaziali (CAR/MICAR, *Conditional Autoregressive* / *Multivariate Conditional Autoregressive*) con *prior* spaziali, strumenti bayesiani avanzati per l'analisi di dati distribuiti su un territorio suddiviso in regioni (comuni, province, pixel di griglia), che riflettono la tendenza di aree geografiche vicine a condividere caratteristiche ambientali e di popolazione simili.
 
-- inserimento incertezza nei tassi di mortalità e nella popolazione residente nella sezione censuaria
+Un ulteriore limite strutturale del disegno ecologico riguarda il *Modifiable Areal Unit Problem* (MAUP): la modifica della scala geografica o dei confini delle unità territoriali di analisi può alterare sensibilmente i risultati statistici. Il MAUP si manifesta su due livelli distinti:
 
-- Utilizzare strutture autoregressive spaziali (CAR/MICAR), prior spaziali, per riflettere il fatto che aree geografiche vicine tendono ad avere caratteristiche ambientali e di popolazione simili tra loro, strumenti statistici avanzati (bayesiani) usati per analizzare dati distribuiti su un territorio diviso in regioni (es. comuni, province, pixel di una griglia), CAR (Conditional Autoregressive), MICAR (Multivariate Conditional Autoregressive)
+- *effetto di scala* (*scale effect*): le sezioni censuarie presentano un'elevata varianza interna ma una forte dipendenza di vicinato; l'aggregazione a livello comunale "ammorbidisce" tale varianza, ma è anche il livello al quale operano tipicamente la governance amministrativa ed i confondenti ambientali di natura macro;
 
-- exploit in more details the autocorrelation of census tracts, may be a solution the use of MEM moran's eigenvector maps? I have done it, but the risk is oversaturation and no clear causal meaning for MEM (and it does not exists in fact!)...
+- *effetto di zonalità* (*zone effect*): il raggruppamento delle sezioni censuarie in unità amministrative (es. Comune A piuttosto che Comune B) costituisce una scelta arbitraria dal punto di vista meramente bio-fisico dell'esposizione a $NO_2$, indipendente dai reali meccanismi di diffusione dell'inquinante.
 
-- Modifiable Areal Unit Problem (MAUP) se cambio la scala geografica o i confini delle tue unità territoriali, i risultati statistici cambiano. Il MAUP agisce su due livelli:
-  
-- Effetto di Scala (Scale Effect): Le sezioni censuarie hanno molta varianza interna ma una forte dipendenza vicinale. I Comuni (unità aggregate) "ammorbidiscono" la varianza, ma sono il livello al quale operano spesso la governance amministrativa e i confondenti ambientali macro.
-  
-  - Effetto di Zonalità (Zone Effect): Raggruppare 10 sezioni censuarie nel Comune A invece che nel Comune B è una scelta "arbitraria" dal punto di vista meramente biologico/fisico dell'esposizione a $NO_2$.
+Il superamento di questi limiti strutturali potrà essere perseguito attraverso l'adozione di un approccio gerarchico bayesiano, che integri tecniche di Bayesian Smoothing per la stabilizzazione dei tassi di mortalità nelle piccole aree unitamente a strutture autoregressive spaziali (es. modelli CAR/MICAR, Besag-York-Mollié) per la modellazione esplicita della dipendenza di vicinato [@blangiardo_cameletti:2015].
 
-- A NEW COMPREHENSIVE bayesian approach ref @pirani_eps:2020
-
-- spatial causal inference, see refs @akbari_sp_inf:2021
-
-“Stable Unit Treatment Value Assumption” (SUTVA)
-
+Parallelamente, andrà valutata l'estensione del disegno verso framework di *inferenza causale spaziale* (*spatial causal inference*) [@akbari_sp_inf:2023], in grado di verificare l'eventuale violazione dell'assunzione *Stable Unit Treatment Value Assumption* (SUTVA) dovuta all'interazione tra sezioni censuarie adiacenti -- ipotesi implicitamente assunta, ma non formalmente verificata, nell'approccio ecologico qui adottato. Si tratta in particolare di un a violazione riconducibile al fatto che l'esito potenziale di ciascuna sezione censuaria non risulta indipendente dal livello di esposizione delle sezioni adiacenti, venendo meno l'ipotesi di assenza di interferenza tra unità vicine, per via della natura diffusiva del NO2 nell'aria ambiente (spillover spaziale).
 
 ## Bibliografia
 
