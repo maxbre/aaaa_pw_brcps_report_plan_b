@@ -47,32 +47,6 @@ library(magick)
 
 ```
 
-\newpage
-
-Opzione 1, concisa
-
-*Stima controfattuale dell'impatto sanitario delle concentrazioni atmosferiche di $\text{NO}_2$ in Regione Veneto.*
-
-Opzione 2, preferibile ad opzione 1?
-
-*Valutazione controfattuale dell’impatto sanitario da concentrazioni atmosferiche di $\text{NO}_2$ ad alta risoluzione spaziale e propagazione dell’incertezza: il caso della Regione Veneto.*
-
-
-Opzione 3, migliore? 
-
-*Concentrazioni atmosferiche di $\text{NO}_2$ ed impatto sanitario in Regione Veneto: una stima controfattuale ad alta risoluzione spaziale con propagazione dell’incertezza.*
-
-## Sommario {.unnumbered .unlisted}
-
-150 parole
-
-## Abstract {.unnumbered .unlisted}
-
-150 words
-
-
-
-
 \vfill
 
 \begin{footnotesize}
@@ -82,6 +56,29 @@ Opzione 3, migliore?
 La frequenza del Master in \textit{"Biostatistica per la Ricerca Clinica e la Pubblicazione Scientifica (BRCPS 2026)"}, organizzato dall'\textit{Unità di Biostatistica, Epidemiologia e Sanità Pubblica (UBEP)}, presso l'\textit{Università degli Studi di Padova}, è stata resa possibile grazie al finanziamento del \textit{Ministero della Salute}, nell'ambito dei fondi complementari al PNRR, con il progetto PNC PREV-A-2022-12376981: \textit{"Aria outdoor e salute: un atlante integrato a supporto delle decisioni e della ricerca"}.
 
 \end{footnotesize}
+
+\newpage
+
+*Valutazione controfattuale dell’impatto sanitario da concentrazioni atmosferiche di $\text{NO}_2$ ad alta risoluzione spaziale e propagazione dell’incertezza: il caso della Regione Veneto.*
+
+
+## Sommario {.unnumbered .unlisted}
+
+L'inquinamento atmosferico da biossido di azoto (NO2) è indicato in letteratura come un determinante ambientale per la mortalità respiratoria, la cui entità viene stimata in Regione Veneto attraverso una valutazione controfattuale di impatto sanitario.
+Il *project-work* propone una stima del numero di casi attribuibili a livello di sezione censuaria ISTAT, per la popolazione in classe d'età 30+, basata sull'evidenza causale OMS/HRAPIE-2 (RR=1.05 per 10 $\mu g~m^{-3}$) e sulla modellistica ambientale a 4 km. Il differenziale di esposizione rispetto alla soglia OMS di 10 $\mu g~m^{-3}$  è stato calcolato per singola sezione censuaria prima di ogni aggregazione, per limitare la sovrastima sistematica. La stima puntuale 2025 restituisce 109 casi/anno; un bootstrap spazio-temporale, che integra incertezza spaziale, epidemiologica e temporale, fornisce una stima più robusta di 144 casi/anno (IC 95%: 83-224), con eterogeneità provinciale marcata. Vengono discussi i limiti metodologici (natura ecologica, trasportabilità, scala di aggregazione) ed i possibili sviluppi verso modelli bayesiani spaziali e inferenza causale spaziale.
+
+\newpage
+
+*Counterfactual health impact assessment of high-resolution ambient $\text{NO}_2$ concentrations with uncertainty propagation: the case of the Veneto Region.*
+
+## Abstract {.unnumbered .unlisted}
+
+
+Ambient nitrogen dioxide (NO2) pollution is indicated in the literature as an environmental determinant of respiratory mortality, whose magnitude is estimated for the Veneto Region through a counterfactual health impact assessment. This *project-work* estimates the number of attributable cases at the ISTAT census-section level, for the population aged 30+, based on causal evidence from WHO/HRAPIE-2 literature (RR=1.05 per 10 $\mu g~m^{-3}$ increase) and on the dispersion model at 4 km resolution. The exposure differential relative to the WHO guideline threshold was computed at census-section level before any aggregation, limiting systematic overestimation. The 2025 point estimate yields 109 attributable cases/year; a spatio-temporal bootstrap procedure, integrating spatial, epidemiological and temporal uncertainty, provides a more robust estimate of 144 cases/year (95% CI: 83-224), with marked provincial heterogeneity. Methodological limitations (ecological design, transportability, aggregation scale) and possible developments toward Bayesian spatial models and spatial causal inference are discussed.
+
+
+
+
 
 \newpage
 
@@ -300,7 +297,7 @@ knitr::include_graphics("./fig_tab/map_sezioni_no2_2025.png")
 #| label: fig-no2-boxplot-prov
 #| fig-cap: "Boxplot concentrazioni $NO_2$ (2025) per sezioni censuarie Regione Veneto."
 #| fig-align: "center"
-#| out-height: "0.4\\textheight"
+#| out-height: "0.42\\textheight"
 #| out-width: "!\\textheight"
 #| echo: false
 #| fig-pos: "H"
@@ -314,9 +311,9 @@ knitr::include_graphics("./fig_tab/no2_boxplot_no2_provincia.png")
 
 ```{r}
 #| label: fig-exp-pop_prov
-#| fig-cap: "Esposizione cumulata popolazione ai livelli ambientali $NO_2$ nel 2019 e nel 2025."
+#| fig-cap: "Esposizione cumulata popolazione ai livelli ambientali $NO_2$ nel 2019 e 2025."
 #| fig-align: "center"
-#| out-height: "0.4\\textheight"
+#| out-height: "0.43\\textheight"
 #| out-width: "!\\textheight"
 #| echo: false
 #| fig-pos: "H"
@@ -420,7 +417,7 @@ In termini di sensitività dei risultati, è particolarmente significativo appre
 
 In @tbl-boot-comp sono riportate le principali metriche di confronto dei risultati del bootstrap eseguito con due modalità alternative: semplice (osservazioni indipendenti riferite al solo anno 2025) e spazio-temporale (clustering comunale e perturbazione temporale anni 2019-2025.
 
-| Metrica | Bootstrap Semplice 2025 | Boostrap Spazio Temporale |
+| Metrica | Semplice | Spazio Temporale |
 |:---|---:|---:|
 | Mediana | 109.2 | 143.5 |
 | SD | 21.5 | 36.1 |
@@ -512,7 +509,11 @@ Un ulteriore limite strutturale del disegno ecologico riguarda il *Modifiable Ar
 
 Il superamento di questi limiti strutturali potrà essere perseguito attraverso l'adozione di un approccio gerarchico bayesiano, che integri tecniche di Bayesian Smoothing per la stabilizzazione dei tassi di mortalità nelle piccole aree unitamente a strutture autoregressive spaziali (es. modelli CAR/MICAR, Besag-York-Mollié) per la modellazione esplicita della dipendenza di vicinato [@blangiardo_cameletti:2015].
 
-Parallelamente, andrà valutata l'estensione del disegno verso un framework di *inferenza causale spaziale* (*spatial causal inference*) [@akbari_sp_inf:2023], in grado di verificare l'eventuale violazione dell'assunzione *Stable Unit Treatment Value Assumption* (SUTVA) dovuta all'interazione tra sezioni censuarie adiacenti - ipotesi implicitamente assunta, ma non formalmente verificata, nell'approccio ecologico qui adottato. Si tratta in particolare di una violazione riconducibile al fatto che l'esito potenziale di ciascuna sezione censuaria non risulta indipendente dal livello di esposizione delle sezioni adiacenti, venendo meno l'ipotesi di assenza di interferenza tra unità vicine, per via della natura diffusiva del $NO_2$ nell'aria ambiente (*spillover* spaziale).
+Parallelamente, potrà essere considerata l'estensione del disegno verso un *framework* di inferenza causale spaziale (*spatial causal inference*) [@akbari_sp_inf:2023]. Tale approccio consentirebbe di formalizzare esplicitamente l'indipendenza tra le unità di analisi. Infatti, il calcolo dei casi attribuibili applicato separatamente a ciascuna sezione censuaria presuppone che l'esito atteso di un'unità non dipenda dal livello di esposizione delle sezioni limitrofe - un'approssimazione operativa ragionevole, ma poco verosimile rispetto alla natura diffusiva degl inquinanti ($NO_2$) nell'aria ambiente, che genera fenomeni di *spillover* spaziale tra sezioni censuarie contigue.
+
+Pur non trattandosi di un disegno causale in senso stretto, tale limite concettuale - riconducibile alla più generale ipotesi di indipendenza tra unità propria tipica dei dei framework controfattuali - offre una chiave di lettura nuovo per inquadrare l'approccio ecologico adottato e per orientare i possibili sviluppi metodologici. 
+
+Un limite concettualmente distinto riguarda inoltre la dimensione temporale: i valori di esposizione osservati in anni successivi per una medesima sezione censuaria non sono tra loro indipendenti, ma presentano una struttura di autocorrelazione temporale che l'attuale procedura di bootstrap tenta di catturare tramite il ricampionamento della serie storica 2019-2025, senza tuttavia modellarla esplicitamente attraverso un impianto di serie storiche o processi spazio-temporali dedicati.
 
 ## Bibliografia
 
