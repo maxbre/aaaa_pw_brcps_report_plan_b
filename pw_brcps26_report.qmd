@@ -338,10 +338,24 @@ Il differenziale di esposizione tra il valore attuale (2025) di concentrazione d
 
 : Statistiche descrittive stratificate per Provincia del differenziale di esposizione tra il livello ambientale di $NO_2$ ($\mu g~m^{-3}$) ed il valore guida OMS ($10\ \mu g~m^{-3}$). {#tbl-diff-prov}
 
+Nella @fig-map-sez-delta-no2 viene rappresentata per le sezioni censuarie del Veneto la distribuzione spaziale del differenziale di concentrazione di $NO_2$ tra il valore attuale del 2025 ed il valore controfattuale previsto dalle linee guida OMS fissato nella soglia di $10\ \mu g~m^{-3}$. 
 
-La valutazione di impatto sanitario [^nota-formula] per ciascuna sezione censuaria si basa sul differenziale di concentrazione ambientale tra lo stato attuale ed il controfattuale previsto dalle linee guida OMS e fissato in un valore soglia di $10\ \mu g~m^{-3}$.
+La stima di impatto sanitario per ciascuna sezione censuaria è basata su questo differenziale tramite l'applicazione della funzione concentrazione risposta definita nella sezione -@sec-methods [Materiali e metodi](#sec-methods) ed analizzata in dettaglio nell'Appendice.
 
-[^nota-formula]: La stima è stata ottenuta con l'applicazione della funzione concentrazione risposta definita nella sezione -@sec-methods [Materiali e metodi](#sec-methods) ed analizzata in dettaglio nell'Appendice.
+
+```{r}
+#| label: fig-map-sez-delta-no2
+#| fig-cap: "Differenziale di concentrazione ambientale $NO_2$ per anno 2025."
+#| fig-align: "center"
+#| out-height: "0.4\\textheight"
+#| out-width: "!\\textheight"
+#| echo: false
+#| fig-pos: "H"
+
+
+knitr::include_graphics("./fig_tab/map_sezioni_delta_no2_2025_target_oms.png")
+
+```
 
 La stima dei casi attribuibili per l'anno di riferimento 2025, estesa a tutte le sezioni censuarie della Regione Veneto, restituisce un valore puntuale centrale di *109 casi/anno per cause respiratorie (codici ICD-10: J00-J99) nella popolazione di età pari o superiore a 30 anni*. 
 
