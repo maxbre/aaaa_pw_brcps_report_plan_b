@@ -338,9 +338,9 @@ Il differenziale di esposizione tra il valore attuale (2025) di concentrazione d
 
 : Statistiche descrittive stratificate per Provincia del differenziale di esposizione tra il livello ambientale di $NO_2$ ($\mu g~m^{-3}$) ed il valore guida OMS ($10\ \mu g~m^{-3}$). {#tbl-diff-prov}
 
-Nella @fig-map-sez-delta-no2 viene rappresentata per le sezioni censuarie del Veneto la distribuzione spaziale del differenziale di concentrazione di $NO_2$ tra il valore attuale del 2025 ed il valore controfattuale previsto dalle linee guida OMS fissato nella soglia di $10\ \mu g~m^{-3}$. 
+Nella @fig-map-sez-delta-no2 viene rappresentata per le sezioni censuarie del Veneto la distribuzione spaziale del differenziale di esposizione di $NO_2$ calcolato tra il valore di concentrazione ambientale del 2025 ed il valore controfattuale previsto dalle linee guida OMS fissato nella soglia di $10\ \mu g~m^{-3}$. 
 
-La stima di impatto sanitario per ciascuna sezione censuaria è basata su questo differenziale tramite l'applicazione della funzione concentrazione risposta definita nella sezione -@sec-methods [Materiali e metodi](#sec-methods) ed analizzata in dettaglio nell'Appendice.
+La stima di impatto sanitario per ciascuna sezione censuaria è basata su questo differenziale di esposizione tramite l'applicazione della funzione concentrazione risposta definita nella sezione -@sec-methods [Materiali e metodi](#sec-methods) ed analizzata in dettaglio nell'Appendice.
 
 
 ```{r}
@@ -445,8 +445,6 @@ In @tbl-boot-comp sono riportate le principali metriche di confronto dei risulta
 
 Il confronto tra i due metodi, illustrato in @fig-boot-comp, evidenzia marcate differenze nelle curve di densità di probabilità, sia nella stima di tendenza centrale, sia nell'ampiezza della dispersione della stima dei casi attribuibili. 
 
-
-
 ```{r}
 #| label: fig-boot-comp
 #| fig-cap: "Confronto procedur di stima bootstrap (AC) casi atrribuibili/anno in Regione Veneto."
@@ -515,19 +513,15 @@ Sviluppi futuri dello studio potranno riguardare:
 
 - l'adozione di strutture autoregressive spaziali (CAR/MICAR, *Conditional Autoregressive* / *Multivariate Conditional Autoregressive*) con *prior* spaziali, strumenti bayesiani avanzati per l'analisi di dati distribuiti su un territorio suddiviso in regioni (comuni, province, pixel di griglia), che riflettono la tendenza di aree geografiche vicine a condividere caratteristiche ambientali e di popolazione simili.
 
-Un ulteriore limite strutturale del disegno ecologico riguarda il *Modifiable Areal Unit Problem* (MAUP). La modifica della scala geografica o dei confini delle unità territoriali di analisi può alterare sensibilmente i risultati statistici. Questo si manifesta su due livelli distinti:
+Un limite strutturale degli studi ecologici è il *Modifiable Areal Unit Problem* (MAUP), secondo cui la dimensione e i confini delle aree analizzate possono alterare i risultati statistici.
+Questo si verifica innanzitutto per via dell'*effetto di scala*: allargando l'unità d'analisi — ad esempio passando dai micro-dati delle sezioni censuarie all'aggregato del comune — i dati tendono a mediarsi tra loro. Questa aggregazione appiattisce la variabilità locale e rischia di nascondere i picchi di esposizione presenti nei singoli quartieri.
+A questo si affianca l'*effetto di zonalità*, per cui la scelta di come tracciare i confini territoriali rimane un'arbitrarietà geografica: le barriere amministrative tra comuni non riflettono la reale dispersione fisica del $NO_2$, che segue dinamiche ambientali (fisico-chmiche) del tutto indipendenti.
 
-- *effetto di scala* (*scale effect*): le sezioni censuarie presentano un'elevata varianza interna ma una forte dipendenza di vicinato; l'aggregazione a livello comunale "ammorbidisce" tale varianza, ma è anche il livello al quale operano tipicamente la governance amministrativa ed i confondenti ambientali di natura macro;
-
-- *effetto di zonalità* (*zone effect*): il raggruppamento delle sezioni censuarie in unità amministrative (es. Comune A piuttosto che Comune B) costituisce una scelta arbitraria dal punto di vista meramente bio-fisico dell'esposizione a $NO_2$, indipendente dai reali meccanismi di diffusione dell'inquinante.
-
-Il superamento di questi limiti strutturali potrà essere perseguito attraverso l'adozione di un approccio gerarchico bayesiano, che integri tecniche di Bayesian Smoothing per la stabilizzazione dei tassi di mortalità nelle piccole aree unitamente a strutture autoregressive spaziali (es. modelli CAR/MICAR, Besag-York-Mollié) per la modellazione esplicita della dipendenza di vicinato [@blangiardo_cameletti:2015].
+Il superamento di questi limiti strutturali potrà essere perseguito attraverso l'adozione di un approccio che integri tecniche di Bayesian Smoothing per la stabilizzazione dei tassi di mortalità nelle piccole aree unitamente a strutture autoregressive spaziali (es. modelli CAR/MICAR, Besag-York-Mollié) per la modellazione esplicita della dipendenza di vicinato [@blangiardo_cameletti:2015].
 
 Parallelamente, potrà essere considerata l'estensione del disegno verso un *framework* di inferenza causale spaziale (*spatial causal inference*) [@akbari_sp_inf:2023]. Tale approccio consentirebbe di formalizzare esplicitamente l'indipendenza tra le unità di analisi. Infatti, il calcolo dei casi attribuibili applicato separatamente a ciascuna sezione censuaria presuppone che l'esito atteso di un'unità non dipenda dal livello di esposizione delle sezioni limitrofe - un'approssimazione operativa ragionevole, ma poco verosimile rispetto alla natura diffusiva degl inquinanti ($NO_2$) nell'aria ambiente, che genera fenomeni di *spillover* spaziale tra sezioni censuarie contigue.
 
-Pur non trattandosi di un disegno causale in senso stretto, tale limite concettuale - riconducibile alla più generale ipotesi di indipendenza tra unità propria tipica dei dei framework controfattuali - offre una chiave di lettura nuovo per inquadrare l'approccio ecologico adottato e per orientare i possibili sviluppi metodologici. 
-
-Un limite concettualmente distinto riguarda inoltre la dimensione temporale: i valori di esposizione osservati in anni successivi per una medesima sezione censuaria non sono tra loro indipendenti, ma presentano una struttura di autocorrelazione temporale che l'attuale procedura di bootstrap tenta di catturare tramite il ricampionamento della serie storica 2019-2025, senza tuttavia modellarla esplicitamente attraverso un impianto di serie storiche o processi spazio-temporali dedicati.
+Un limite concettualmente distinto riguarda, inoltre, la dimensione temporale: i valori di esposizione osservati in anni successivi per una medesima sezione censuaria non sono tra loro indipendenti, ma presentano una struttura di autocorrelazione temporale che l'attuale procedura di bootstrap tenta di catturare tramite il ricampionamento della serie storica 2019-2025, senza tuttavia modellarla esplicitamente attraverso un impianto di serie storiche o processi spazio-temporali dedicati.
 
 ## Bibliografia
 
