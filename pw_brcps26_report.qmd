@@ -65,7 +65,7 @@ La frequenza del Master in \textit{"Biostatistica per la Ricerca Clinica e la Pu
 ## Sommario {.unnumbered .unlisted}
 
 L'inquinamento atmosferico da biossido di azoto (NO2) è indicato in letteratura come un determinante ambientale per la mortalità respiratoria, la cui entità viene stimata in Regione Veneto attraverso una valutazione controfattuale di impatto sanitario.
-Il *project-work* propone una stima del numero di casi attribuibili a livello di sezione censuaria ISTAT, per la popolazione in classe d'età 30+, basata sull'evidenza causale OMS/HRAPIE-2 (RR=1.05 per 10 $\mu g~m^{-3}$) e sulla modellistica ambientale a 4 km. Il differenziale di esposizione rispetto alla soglia OMS di 10 $\mu g~m^{-3}$  è stato calcolato per singola sezione censuaria prima di ogni aggregazione, per limitare la sovrastima sistematica. La stima puntuale 2025 restituisce 109 casi/anno; un bootstrap spazio-temporale, che integra incertezza spaziale, epidemiologica e temporale, fornisce una stima più robusta di 144 casi/anno (IC 95%: 83-224), con eterogeneità provinciale marcata. Vengono discussi i limiti metodologici (natura ecologica, trasportabilità, scala di aggregazione) ed i possibili sviluppi verso modelli bayesiani spaziali e inferenza causale spaziale.
+Il *project-work* propone una stima del numero di casi attribuibili a livello di sezione censuaria ISTAT, per la popolazione in classe d'età 30+, basata sull'evidenza causale OMS/HRAPIE-2 (RR=1.05 per 10 $\mu g~m^{-3}$) e sulla modellistica ambientale a 4 km. Il differenziale di esposizione rispetto alla soglia OMS di 10 $\mu g~m^{-3}$  è stato calcolato per singola sezione censuaria prima di ogni aggregazione, per limitare la sovrastima sistematica. La stima puntuale 2025 restituisce 109 casi/anno; un bootstrap spazio-temporale, che integra incertezza spaziale, epidemiologica e temporale, fornisce una stima più robusta di 144 casi/anno (IC 95%: 83-224), con eterogeneità provinciale marcata. Vengono discussi i limiti metodologici (natura ecologica, trasportabilità, scala di aggregazione) ed i possibili sviluppi verso modelli di tipo spaziale più evoluti.
 
 \newpage
 
@@ -74,7 +74,7 @@ Il *project-work* propone una stima del numero di casi attribuibili a livello di
 ## Abstract {.unnumbered .unlisted}
 
 
-Ambient nitrogen dioxide (NO2) pollution is indicated in the literature as an environmental determinant of respiratory mortality, whose magnitude is estimated for the Veneto Region through a counterfactual health impact assessment. This *project-work* estimates the number of attributable cases at the ISTAT census-section level, for the population aged 30+, based on causal evidence from WHO/HRAPIE-2 literature (RR=1.05 per 10 $\mu g~m^{-3}$ increase) and on the dispersion model at 4 km resolution. The exposure differential relative to the WHO guideline threshold was computed at census-section level before any aggregation, limiting systematic overestimation. The 2025 point estimate yields 109 attributable cases/year; a spatio-temporal bootstrap procedure, integrating spatial, epidemiological and temporal uncertainty, provides a more robust estimate of 144 cases/year (95% CI: 83-224), with marked provincial heterogeneity. Methodological limitations (ecological design, transportability, aggregation scale) and possible developments toward Bayesian spatial models and spatial causal inference are discussed.
+Ambient nitrogen dioxide (NO2) pollution is indicated in the literature as an environmental determinant of respiratory mortality, whose magnitude is estimated for the Veneto Region through a counterfactual health impact assessment. This *project-work* estimates the number of attributable cases at the ISTAT census-section level, for the population aged 30+, based on causal evidence from WHO/HRAPIE-2 literature (RR=1.05 per 10 $\mu g~m^{-3}$ increase) and on the atmospheric dispersion model at 4 km resolution. The exposure differential relative to the WHO guideline threshold was computed at census-section level before any aggregation, limiting systematic overestimation. The 2025 point estimate yields 109 attributable cases/year; a spatio-temporal bootstrap procedure, integrating spatial, epidemiological and temporal uncertainty, provides a more robust estimate of 144 cases/year (95% CI: 83-224), with marked provincial heterogeneity. Methodological limitations (ecological design, transportability, aggregation scale) and possible developments toward more evolved spatial models.
 
 
 
@@ -96,7 +96,7 @@ Il *biossido di azoto* ($NO_2$), un inquinante emesso in prevalenza dai processi
 
 Lo studio si propone una valutazione controfattuale di impatto sanitario (VIS) del numero di eventi (casi attribuibili) associati all'esposizione a lungo termine (media annuale) ai livelli ambientali di $NO_2$, attraverso l'impiego dell'evidenza causale di letteratura (*Risk Ratio*) [@hrapie-2:2025], applicata alla popolazione in classe d'età 30+ residente nelle sezioni censuarie in Regione Veneto (ISTAT 20219.
 
-In assenza di dati individuali georeferenziati - di fatto inaccessibili per le stringenti normative di tutela della *privacy*  -, la stima si avvale delle *sezioni censuarie ISTAT* come unità fondamentale di analisi perché rappresentano il migliore livello di granularità spaziale disponibile (accessibile) ed offrono un buon compromesso computazionale ed epidemiologico per approssimare l'esposizione all'$\text{NO}_2$ e cercare limitare i fattori di confondimento locali (non individuali). L'interpretazione dei risultati deve comunque tenere conto della natura *aggregata* dei dati, riferendo le valutazioni di impatto sanitario a livello *aggregato* di popolazione e territorio (*ecological effect*), evitando l'erronea inferenza diretta a livello individuale (*ecological fallacy*).
+In assenza di dati individuali georeferenziati - di fatto inaccessibili per le stringenti normative di tutela della *privacy*  -, la stima si avvale delle *sezioni censuarie ISTAT* come unità fondamentale di analisi perché rappresentano il migliore livello di granularità spaziale disponibile (accessibile) ed offrono un buon compromesso computazionale ed epidemiologico per approssimare l'esposizione all'$\text{NO}_2$ e cercare di limitare i fattori di confondimento locali (non individuali). L'interpretazione dei risultati deve comunque tenere conto della natura *aggregata* dei dati, riferendo le valutazioni di impatto sanitario a livello *aggregato* di popolazione e territorio (*ecological effect*), evitando l'erronea inferenza diretta a livello individuale (*ecological fallacy*).
 
 L'obiettivo secondario dello studio è delineare un possibile percorso di sviluppo metodologico per stimare in modo robusto il numero di *casi attribuibili* associati all'inquinamento atmosferico e riconducibili a specifici scenari controfattuali in Regione Veneto. 
 In prospettiva futura i risultati possono rappresentare la base conoscitiva per definire uno strumento operativo di analisi quantitativa e di supporto decisionale alla programmazione ed alla valutazione delle Politiche Regionali in materia di Ambiente e Sanità Pubblica.
@@ -107,7 +107,7 @@ In prospettiva futura i risultati possono rappresentare la base conoscitiva per 
 
 L'unità statistica di analisi è rappresentata dalla sezione censuaria ISTAT definita come la minima unità territoriale di rilevazione aggregata della popolazione (43.447 sezioni in Regione Veneto da censimento ISTAT 2021). 
 
-Si tratta di uno studio *ecologico* su base territoriale in cui tutte le variabili analizzate - esposizione atmosferica ($\text{NO}_2$), popolazione residente, stima mortalità basale -, sono sempre misurate e riferite alla sezione censuaria. 
+Si tratta di uno studio *ecologico* su base territoriale in cui tutte le variabili analizzate - esposizione atmosferica ($\text{NO}_2$), popolazione residente, stima mortalità basale -, sono sempre misurate e/o indirettamente riferite alla sezione censuaria. 
 L'impiego della sezione censuaria ha l'obiettivo di cogliere l'eterogeneità spaziale dell'inquinamento atmosferico ad una risoluzione geografica il più possibile 'fine', riducendo la variabilità intra-unitaria (di gruppo) e limitando il rischio di errore di classificazione dell'esposizione (*exposure misclassification*). 
 
 *Dataset e test statistici*
@@ -120,7 +120,7 @@ Ai fini del calcolo dei decessi attesi nella classe 30+ di ciascuna sezione cens
 
 I tassi di mortalità per cause respiratorie definiti a livello di Provincia (dato ISTAT) variano nel range compreso tra il 0.084% e il 0.140%, con una media regionale pari a circa 0.107%, cioè circa 107 casi ogni 100 000 residenti in Veneto.
 
-I *casi attesi* sono il numero di decessi teoricamente osservabili ogni anno calcolati sulla base della popolazione esposta 30+ nelle sezioni censuarie anno 2021 ed i tassi grezzi provinciali 2024 per la mortalità per cause respiratorie.
+I *casi attesi* sono il numero di decessi teoricamente osservabili ogni anno calcolati sulla base della popolazione esposta 30+ nelle sezioni censuarie (anno 2021) ed i tassi grezzi provinciali per la mortalità per cause respiratorie (anno 2024).
 
 La media annuale della concentrazione ambientale di biossido di azoto $NO_2$ attribuita alle singole sezioni censuarie in Regione Veneto, è stata ottenuta tramite operazioni geografiche di *overlay*, definita da una  *media zonale pesata sulla superficie di intersezione*, tra il disegno delle sezioni censuarie ed il grigliato di output del modello fotochimico euleriano *CAMx*. 
 Il modello fotochimico  di dispersione atmosferica *CAMx*, distribuito da *Ramboll Environ* (http://www.camx.com/), è lo strumento operativo della catena modellistica SPIAIR implementata da ARPAV per la stima degli inquinanti atmosferici in Regione Veneto su un grigliato regolare di output con una risoluzione orizzontale di 4 km. 
@@ -134,9 +134,9 @@ La variabili demografiche aggregate per sezione censuaria, rappresentate dalla p
 L'impatto sanitario è stato valutato tramite un coefficiente di esposizione calibrato sulla stima del Rischio Relativo ($RR$) desunto dalla letteratura internazionale OMS [@hrapie-2:2025], in particolare il ($RR$) di *mortalità per cause respiratorie* (Codici ICD-10: J00-J99) nella classe d'età 30+, che risulta compreso tra il $3\%$ e il $7\%$, con un valore centrale pari al $5\%$, per ogni aumento della concentrazione di $10 \ \mu g~m^{-3}$. 
 L'assunzione della stima è che esista una *"trasportabilità"* del $RR$ da letteratura OMS sulla popolazione delle sezioni censuarie ISTAT della Regione Veneto.
 
-Per quantificare la relazione tra l'esposizione controfattuale ai livelli ambientali di *biossido di azoto* ($NO_2$) e la mortalità per cause respiratorie nella popolazione della classe 30+, *residente nelle sezioni censuarie ISTAT* in Regione Veneto, è stata implementata la formula di calcolo del software *WHO AirQ+*, ampiamente utilizzato nelle stime di impatto sanitario [@who_airq:2020].
+Per quantificare la relazione causale tra l'esposizione controfattuale ai livelli ambientali di *biossido di azoto* ($NO_2$) e la mortalità per cause respiratorie nella popolazione della classe 30+, *residente nelle sezioni censuarie ISTAT* in Regione Veneto, è stata implementata la formula di calcolo del software *WHO AirQ+*, ampiamente utilizzato nelle stime di impatto sanitario [@who_airq:2020].
 
-I *casi attribuibili* sono la quota di casi attesi attribuibile al differenziale di esposizione e rappresentano i casi potenzialmente evitabili ogni anno con l’azzeramento del differenziale di esposizione controfattuale. La formula di stima dei casi attribuibili ($AC$) e della frazione attribuibile ($AF$) presuppone una relazione di tipo *log-lineare* basata sulla funzione di concentrazione-risposta:
+I *casi attribuibili* sono la quota di casi attesi associati al differenziale di esposizione e rappresentano i casi potenzialmente evitabili ogni anno con l’azzeramento del differenziale di esposizione controfattuale. La formula di stima dei casi attribuibili ($AC$) e della frazione attribuibile ($AF$) presuppone una relazione di tipo *log-lineare* basata sulla funzione di concentrazione-risposta:
 
 $$AF = \frac{RR - 1}{RR} = 1 - \frac{1}{e^{\beta \cdot \Delta C}} = 1 - e^{-\beta \cdot \Delta C}$$
 $$AC = N \cdot B \cdot AF = N \cdot B \cdot \left(1 - e^{-\beta \cdot \Delta C}\right)$$
@@ -181,7 +181,7 @@ Per il calcolo degli intervalli di confidenza al 95% (IC 95%) della stima puntua
 
 - *epidemiologica*, valutata estraendo, ad ogni iterazione di bootstrap, il Rischio Relativo ($RR$) da una distribuzione *log-normale* incentrata sul valore centrale OMS ($RR = 1.05$);
 
-- *temporale*, valutata tramite l'introduzione della perturbazione conseguente all'estrazione casuale del *valore medio annuale* di $NO_2$ riferito agli anni dal 2019 al 2025.
+- *temporale*, valutata tramite l'introduzione della perturbazione conseguente all'estrazione casuale del *valore medio annuale* di $NO_2$ per ciascuna sezione censuaria, riferito agli anni dal 2019 al 2025.
 
 Gli intervalli di confidenza al 95% sono stati stimati con il metodo dei percentili (2.5° e 97.5° percentile) sulla distribuzione empirica generata dal *bootstrapping*.
 
@@ -194,7 +194,7 @@ Le analisi statistiche sono state effettuate in ambiente di programmazione *R (v
 
 Secondo il censimento ISTAT 2021, in Regione Veneto (@fig-map-sez21) sono presenti `r format(43447, big.mark = " ")` sezioni censuarie abitate che rappresentano un totale di `r format(4847745, big.mark = " ")` residenti. La popolazione in classe d'età 30+ è costituita da `r format(3521995, big.mark = " ")` residenti, circa il 73% della popolazione totale. 
 
-Le sezioni del Veneto coprono una superficie di `r format(14511, big.mark = " ")` $km^2$, con una densità media di 334 $ab~km^2$. La sezione censuaria *mediana* ha un'estensione  pari a circa 2.90 $ha$, con una densità abitativa *mediana* pari a 13.5 $ab~ha^{-1}$. L'unità di analisi sezione censuaria garantisce quindi, almeno in riferimento ai valori mediani, una granularità spaziale sufficientemente fine da consentire una caratterizzazione accettabile della popolazione coinvolta [^nota-ha]. Tuttavia, l'asimmetria e la multimodalità della distribuzione impongono di considerare con attenzione la presenza di sezioni con dimensioni e densità eterogenee, non facilmente generalizzabili in termini di estensione spaziale e di popolazione.
+Le sezioni del Veneto coprono una superficie di `r format(14511, big.mark = " ")` $km^2$, con una densità media di 334 $ab~km^2$. La sezione censuaria *mediana* ha un'estensione  pari a circa 2.90 $ha$, con una densità abitativa *mediana* pari a 13.5 $ab~ha^{-1}$. L'unità di analisi sezione censuaria garantisce quindi, almeno in riferimento ai valori mediani, una granularità spaziale sufficientemente fine da consentire una caratterizzazione accettabile dell'entità della popolazione residente  in ciascuna sezione censuaria [^nota-ha]. Tuttavia, l'asimmetria e la multimodalità della distribuzione della popolazione impongono di considerare con attenzione la presenza di sezioni censuarie con dimensioni e densità eterogenee, non facilmente generalizzabili in termini di estensione spaziale e di popolazione residente.
 
 [^nota-ha]: L'estensione della sezione *mediana* copre una superficie equivalente ad un quadrato di lato circa 170 m. 
 
@@ -254,9 +254,9 @@ La mappa rappresenta il livello di esposizione alle concentrazioni ambientali di
 
 Per la Regione Veneto la popolazione delle sezioni censuarie risulta esposta ad una concentrazione *media pesata* (*PWE population weighted exposure*) di $NO_2$ pari a $16\ \mu g~m^{-3}$ mentre il valore medio pesato a livello provinciale è compreso entro l'intervallo tra circa $7\ \mu g~m^{-3}$, per la Provincia di Belluno, e circa $18\ \mu g~m^{-3}$, per le Province di Padova e Venezia.
 
-Per una valutazione comparata dei valori di concentrazione ambientale di $NO_2$ rispetto alla serie storica registrata dal 2019 si rimanda al grafico in @fig-no2-boxplot-prov che riporta anche l'indicazione del valore target OMS $10\ \mu g~m^{-3}$, utilizzato come soglia di valutazione controfattuale.
+Per una valutazione comparata dei valori di concentrazione ambientale di $NO_2$ rispetto alla serie storica registrata dal 2019 si rimanda al grafico *boxplot* in @fig-no2-boxplot-prov che riporta anche l'indicazione del valore target OMS $10\ \mu g~m^{-3}$, utilizzato come soglia di valutazione controfattuale.
 
-Per contestualizzare in modo più preciso l'esposizione della popolazione 30+ residente nelle sezioni censuarie del Veneto rispetto ai livelli ambientali di $NO_2$, in @fig-exp-pop_prov viene riprodotta la curva cumulata della percentuale di popolazione soggetta ai livelli di concentrazione ambientale. Nel grafico sono riprodotte per semplicità solo le curve relative al 2019 ed al 2025 stratificate per Provincia che evidenziano un significativo miglioramento del livello di esposizione nel corso del tempo e contemporaneamente definiscono il "margine" necessario per raggiungere il controfattuale OMS di $10\ \mu g~m^{-3}$.
+Per contestualizzare in modo più preciso l'esposizione della popolazione 30+ residente nelle sezioni censuarie del Veneto rispetto ai livelli ambientali di $NO_2$, in @fig-exp-pop_prov viene riprodotta la curva cumulata della percentuale di popolazione soggetta ai livelli di concentrazione ambientale. Nel grafico sono riprodotte per semplicità solo le curve relative al 2019 ed al 2025 stratificate per Provincia che evidenziano un significativo miglioramento del livello di esposizione nel corso del tempo e contemporaneamente definiscono il "margine" necessario per raggiungere la soglia controfattuale OMS di $10\ \mu g~m^{-3}$.
 
 Per un inquadramento generale della serie storica delle concentrazioni ambientali di $NO_2$ stimate per il periodo dal 2019 al 2025 tramite la catena modellistica implementata nella Regione Veneto ed una valutazione del trend annuale a livello comunale si rimanda ai dati e grafici riportati in Appendice (@fig-map-no2-ts e @fig-map-mk-sen).
 
@@ -324,7 +324,9 @@ knitr::include_graphics("./fig_tab/no2_exp_pop_2019_2025_by_province.png")
 
 \newpage
 
-Il differenziale di esposizione tra il valore attuale (2025) di concentrazione di $NO_2$ in ciascuna sezione censuaria della regione Veneto rispetto al valore controfattuale  di $10\ \mu g~m^{-3}$, previsto dalle linee guida OMS per escludere significativi effetti sulla salute. è risultato in media di $5.7\ \mu g~m^{-3}$, con un valore mediano di $5.9\ \mu g~m^{-3}$ ed un range interquartile di $3.9\ \mu g~m^{-3}$. Il differenziale appare tuttavia significativamente diversificato se consideriamo la stratificazione su base provinciale riportatao in @tbl-diff-prov.
+Il differenziale di esposizione tra il valore attuale (2025) di concentrazione di $NO_2$ in ciascuna sezione censuaria della regione Veneto rispetto al valore controfattuale  di $10\ \mu g~m^{-3}$, previsto dalle linee guida OMS per escludere significativi effetti sulla salute, è risultato in media di $5.7\ \mu g~m^{-3}$, con un valore mediano di $5.9\ \mu g~m^{-3}$ ed un range interquartile di $3.9\ \mu g~m^{-3}$.
+
+Il differenziale appare tuttavia significativamente diversificato se consideriamo la stratificazione su base provinciale riportato in @tbl-diff-prov.
 
 | Provincia | Media    | Mediana    | Min     | Max     | IQR     |
 |:----------|---------:|-----------:|--------:|--------:|--------:|
@@ -357,7 +359,7 @@ knitr::include_graphics("./fig_tab/map_sezioni_delta_no2_2025_target_oms.png")
 
 ```
 
-La stima dei casi attribuibili per l'anno di riferimento 2025, estesa a tutte le sezioni censuarie della Regione Veneto, restituisce un valore puntuale centrale di *109 casi/anno per cause respiratorie (codici ICD-10: J00-J99) nella popolazione di età pari o superiore a 30 anni*. 
+La stima dei casi attribuibili per l'anno di riferimento 2025, estesa a tutte le sezioni censuarie della Regione Veneto, restituisce un valore puntuale centrale di *109 casi/anno per cause respiratorie (codici ICD-10: J00-J99) per la popolazione di età pari o superiore a 30 anni*. 
 
 Assumendo il valore centrale del Rischio Relativo di letteratura OMS ($RR = 1{.}05$), la stima determina per l'intera regione una frazione attribuibile (AF) pari al 2.86% dei casi attesi. Applicando gli estremi dell'intervallo di incertezza del $RR$ ($1{.}03 - 1{.}07$), il carico di mortalità varia deterministicamente da un valore minimo di 66.3 casi/anno ($\text{AF}_{\text{low}} = 1{.}74\%$) a un massimo di 150.0 casi/anno ($\text{AF}_{\text{upp}} = 3{.}95\%$).
 
@@ -407,11 +409,11 @@ I percentili $2{.}5^\circ$ e $97{.}5^\circ$ della distribuzione empirica così g
 
 : Statisitche desctittive della distribuzione empirica bootstrap del numero di casi attribuibili/anno (AC). {#tbl-boot-spattemp}
 
-La @fig-boot-spattemp illustra la curva di densità di probabilità associata alla distribuzione empirica dei casi attribuibili. Si nota una distribuzione unimodale caratterizzata da asimmetria positiva (coda della densità allungata verso i valori superiori). 
+La @fig-boot-spattemp illustra la curva di densità di probabilità associata alla distribuzione empirica dei casi attribuibili generata con il processo di bootstrapping. Si nota una distribuzione unimodale caratterizzata da asimmetria positiva (coda della densità allungata verso i valori superiori). 
 
-La linea tratteggiata rossa identifica la stima centrale della distribuzione a circa 144 casi/anno. Le due linee verticali tratteggiate in verde delimitano l'intervallo di confidenza empirico al 95%: l'estremo inferiore ($\text{IC } 95\%\text{ inf.}$) si attesta a circa 83 casi/anno ($2{,}5^\circ$ percentile), mentre l'estremo superiore ($\text{IC } 95\%\text{ sup.}$) raggiunge circa i 224 casi/anno ($97{,}5^\circ$ percentile). L'area ombreggiata sottesa alla curva racchiude la massa di probabilità centrale corrispondente a tale intervallo. Infine, lLa linea punteggiata in grigio corrispondente a circa 109 casi/anno rappresenta l'entità della stima puntuale discussa in precedenza e riferita all'anno 2025.
+La linea tratteggiata rossa identifica la stima centrale della distribuzione a circa 144 casi/anno. Le due linee verticali tratteggiate in verde delimitano l'intervallo di confidenza empirico al 95%: l'estremo inferiore ($\text{IC } 95\%\text{ inf.}$) si attesta a circa 83 casi/anno ($2{,}5^\circ$ percentile), mentre l'estremo superiore ($\text{IC } 95\%\text{ sup.}$) raggiunge circa i 224 casi/anno ($97{,}5^\circ$ percentile). L'area ombreggiata sottesa alla curva racchiude la massa di probabilità centrale corrispondente a tale intervallo. Infine, la linea punteggiata in grigio corrispondente a circa 109 casi/anno rappresenta l'entità della stima puntuale discussa in precedenza e riferita alla stima deterministica per l'anno 2025.
 
-L'incremento del valore centrale della distribuzione bootstrap (circa $144$ casi/anno) rispetto alla stima deterministica riferita al solo anno 2025 (circa $109$ casi/anno) è riconducibile all'effetto della variabilità introdotta con il processo di bootstrapping e determinata da: la dipendenza spaziale introdotta dal "clustering comunale", l'inclusione delle concentrazioni di $\text{NO}_2$ degli anni precedenti (2019-2024), storicamente più elevate rispetto al 2025, integrata con la propagazione *log-normale* del rischio epidemiologico $RR$, ha l'effetto di traslare la distribuzione empirica verso valori di impatto sanitario medio complessivamente più elevati.
+L'incremento del valore centrale della distribuzione bootstrap (circa $144$ casi/anno) rispetto alla stima deterministica riferita all'anno 2025 (circa $109$ casi/anno) è riconducibile all'effetto della variabilità introdotta con il processo di bootstrapping e determinata dalla dipendenza spaziale introdotta dal "clustering comunale", dall'inclusione delle concentrazioni di $\text{NO}_2$ degli anni precedenti (2019-2024), storicamente più elevate rispetto al 2025, integrata con la propagazione *log-normale* del rischio epidemiologico $RR$ che ha l'effetto di traslare la distribuzione empirica verso valori di impatto sanitario medio complessivamente più elevati.
 
 ```{r}
 #| label: fig-boot-spattemp
@@ -427,9 +429,9 @@ knitr::include_graphics("./fig_tab/ac_resp_bootstrap_density_spat_temp_no_labs_e
 
 ```
 
-In termini di sensitività dei risultati, è particolarmente significativo apprezzare l'entità della variabilità introdotta dal processo di bootstrapping spazio-temporale *completo con clustering comunale* rispetto a un approccio *"semplice" (naive)* che considera le sezioni censuarie come totalmente indipendenti e solo per le concentraizoni ambientali riferita all'anno 2025.
+In termini di sensitività dei risultati, è particolarmente significativo apprezzare l'entità della variabilità introdotta dal processo di bootstrapping spazio-temporale *completo con clustering comunale* rispetto a un approccio *"semplice"* che considera le sezioni censuarie come totalmente indipendenti e solo per le concentrazioni ambientali riferite all'anno 2025.
 
-In @tbl-boot-comp sono riportate le principali metriche di confronto dei risultati del bootstrap eseguito con due modalità alternative: semplice (osservazioni indipendenti riferite al solo anno 2025) e spazio-temporale (clustering comunale e perturbazione temporale anni 2019-2025.
+In @tbl-boot-comp sono riportate le principali metriche di confronto dei risultati del bootstrap eseguito con le due modalità alternative: semplice (osservazioni indipendenti riferite al solo anno 2025) e spazio-temporale (clustering comunale e perturbazione temporale anni 2019-2025).
 
 | Metrica | Semplice | Spazio Temporale |
 |:---|---:|---:|
@@ -459,9 +461,9 @@ knitr::include_graphics("./fig_tab/bootstrap_comparison_res_simple_spattemp.png"
 ```
 
 Assumendo l'indipendenza delle osservazioni, la procedura di bootstrap semplice (curva rossa) collassa attorno a una stima centrale significativamente più bassa (pari all'incirca a 109 casi/anno) e presenta un picco di densità molto stretto ed elevato (prossimo a 0,019). Questa formulazione del bootstrap sottostima drasticamente la variabilità del sistema, restituendo un intervallo di confidenza artificialmente ristretto (circa tra 50 e 180 casi/anno) a causa della rottura della struttura di autocorrelazione spaziale e dell'assenza di perturbazione temporale interannuale. 
-Invece, nel bootstrap spazio-temporale con clustering comunale (curva ciano), preservando la dipendenza spaziale mediante ricampionamento per cluster comunali e integrando la fluttuazione temporale del $\text{NO}_2$ lungo la serie storica, la distribuzione si sposta verso destra (stima centrale attorno a 144 casi/anno) e mostra una varianza decisamente più ampia e schiacciata. La coda superiore si estende ben oltre i 200 casi/anno, riflettendo una stima che propaga correttamente l'incertezza cumulativa.
+Invece, nel bootstrap spazio-temporale con clustering comunale (curva ciano), preservando la dipendenza spaziale mediante ricampionamento per cluster comunali e integrando la fluttuazione temporale del $\text{NO}_2$ lungo la serie storica, la distribuzione si sposta verso destra (stima centrale attorno a 144 casi/anno) e mostra una varianza decisamente più ampia e schiacciata. La coda superiore si estende ben oltre i 200 casi/anno, riflettendo una stima che propaga l'incertezza cumulativa.
 
-Dal punto di vista metodologico, questo confronto dimostra chiaramente come un approccio di bootstrap semplice soffra di un bias da "falsa  precisione", ignorando la struttura di raggruppamento territoriale. L'adozione del bootstrap spazio-temporale clustered si conferma quindi importante per evitare un eccesso di ottimismo analitico.
+Dal punto di vista metodologico, questo confronto dimostra chiaramente come un approccio di bootstrap semplice soffra di un *bias* da "falsa  precisione", ignorando la struttura di raggruppamento territoriale. L'adozione del bootstrap spazio-temporale clustered si conferma quindi importante per evitare un eccesso di ottimismo analitico.
 
 ## Discussione e conclusioni
 
@@ -477,7 +479,7 @@ L'analisi evidenzia  una marcata eterogeneità territoriale del carico sanitario
 Le province di Padova e Venezia concentrano la quota maggiore di casi attribuibili (rispettivamente circa 27 e 24 casi/anno, con AF pari al 3,5% e 3,8% dei casi attesi), coerentemente con i più alti differenziali di esposizione rispetto alla soglia controfattuale OMS (@tbl-diff-prov). 
 Al contrario, la provincia di Belluno presenta un impatto sanitario pressoché trascurabile (AF = 0,1%), risultato atteso vista la ridotta pressione emissiva e le caratteristiche orografiche dell'area, meno soggetta all'accumulo tipico del Bacino Padano. 
 
-Questa distribuzione disomogenea conferma che eventuali politiche regionali di riduzione dell'esposizione a $NO_2$ potrebbero ottenere il maggior beneficio sanitario se prioritariamente indirizzate alle aree di pianura a maggiore pressione antropica (densità abitativa, riscaldamento domestico, traffico veicolare, insediamenti produttivi), piuttosto che con un approccio omogeneo sull'intero territorio regionale.
+Questa distribuzione disomogenea conferma che eventuali politiche regionali di riduzione dell'esposizione a $NO_2$ potrebbero ottenere il maggior beneficio sanitario se prioritariamente indirizzate alle aree di pianura a maggiore pressione antropica (densità abitativa, riscaldamento domestico, traffico veicolare, insediamenti produttivi), piuttosto che con un approccio indifferenziato sull'intero territorio regionale.
 
 *Limiti dello studio*
 
@@ -491,7 +493,7 @@ Alcuni limiti metodologici vanno esplicitati ed evidenziati:
 
 - *risoluzione del dato di esposizione*: il grigliato modellistico SPIAIR/CAMx a 4 km, per quanto rappresenti lo strumento operativo di riferimento in Regione Veneto, non è in grado di catturare completamente la variabilità di micro-scala, con un possibile effetto di *exposure misclassification* residua anche al netto della disaggregazione per sezione censuaria;
 
-- *singolo inquinante*: la valutazione si concentra esclusivamente su $NO_2$, mentre nella realtà la popolazione è co-esposta a una miscela di inquinanti (in particolare $PM_{2.5}$) con possibili effetti sinergici o di confondimento non catturabili dal presente modello concentrazione-risposta;
+- *singolo inquinante*: la valutazione si concentra esclusivamente su $NO_2$, mentre nella realtà la popolazione è co-esposta a una miscela di inquinanti (in particolare $PM_{2.5}$) con possibili effetti sinergici o di confondimento non catturabili dal  modello deterministico concentrazione-risposta;
 
 - *scelta della soglia controfattuale*: il valore di $10\ \mu g~m^{-3}$ riflette le linee guida OMS 2021, ma scenari controfattuali alternativi (es. riduzioni percentuali uniformi, o soglie nazionali/regionali) potrebbero restituire stime di impatto sensibilmente diverse.
 
