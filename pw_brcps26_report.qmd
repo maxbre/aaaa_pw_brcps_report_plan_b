@@ -43,7 +43,7 @@ csl: csl/apa-no-ampersand.csl
 # ---- Caricamento delle librerie ----
 library(tidyverse)
 library(knitr)
-library(magick)
+#library(magick)
 
 ```
 
@@ -65,7 +65,7 @@ La frequenza del Master in \textit{"Biostatistica per la Ricerca Clinica e la Pu
 ## Sommario {.unnumbered .unlisted}
 
 L'inquinamento atmosferico da biossido di azoto (NO2) è indicato in letteratura come un determinante ambientale per la mortalità respiratoria, la cui entità viene stimata in Regione Veneto attraverso una valutazione controfattuale di impatto sanitario.
-Il *project-work* propone una stima del numero di casi attribuibili a livello di sezione censuaria ISTAT, per la popolazione in classe d'età 30+, basata sull'evidenza causale OMS/HRAPIE-2 (RR=1.05 per 10 $\mu g~m^{-3}$) e sulla modellistica ambientale a 4 km. Il differenziale di esposizione rispetto alla soglia OMS di 10 $\mu g~m^{-3}$  è stato calcolato per singola sezione censuaria prima di ogni aggregazione, per limitare la sovrastima sistematica. La stima puntuale 2025 restituisce 109 casi/anno; un bootstrap spazio-temporale, che integra incertezza spaziale, epidemiologica e temporale, fornisce una stima più robusta di 144 casi/anno (IC 95%: 83-224), con eterogeneità provinciale marcata. Vengono discussi i limiti metodologici (natura ecologica, trasportabilità, scala di aggregazione) ed i possibili sviluppi verso modelli di tipo spaziale più evoluti.
+Il *project-work* propone una stima del numero di casi attribuibili a livello di sezione censuaria ISTAT, per la popolazione in classe d'età 30+, basata sull'evidenza causale OMS/HRAPIE-2 (RR=1.05 per 10 $\mu g~m^{-3}$) e sulla modellistica ambientale a 4 km. Il differenziale di esposizione rispetto alla soglia OMS di 10 $\mu g~m^{-3}$  è stato calcolato per singola sezione censuaria prima di ogni aggregazione, per limitare la sovrastima sistematica. La stima puntuale 2025 restituisce 109 casi/anno mentre la procedura di bootstrap, che integra incertezza epidemiologica e temporale, fornisce una stima più robusta di 148 casi/anno (IC 95%: 86-211), con eterogeneità provinciale marcata. Vengono discussi i limiti metodologici (natura ecologica, trasportabilità, scala di aggregazione) ed i possibili sviluppi verso modelli di tipo spaziale più evoluti.
 
 \newpage
 
@@ -74,7 +74,7 @@ Il *project-work* propone una stima del numero di casi attribuibili a livello di
 ## Abstract {.unnumbered .unlisted}
 
 
-Ambient nitrogen dioxide (NO2) pollution is indicated in the literature as an environmental determinant of respiratory mortality, whose magnitude is estimated for the Veneto Region through a counterfactual health impact assessment. This *project-work* estimates the number of attributable cases at the ISTAT census-section level, for the population aged 30+, based on causal evidence from WHO/HRAPIE-2 literature (RR=1.05 per 10 $\mu g~m^{-3}$ increase) and on the atmospheric dispersion model at 4 km resolution. The exposure differential relative to the WHO guideline threshold was computed at census-section level before any aggregation, limiting systematic overestimation. The 2025 point estimate yields 109 attributable cases/year; a spatio-temporal bootstrap procedure, integrating spatial, epidemiological and temporal uncertainty, provides a more robust estimate of 144 cases/year (95% CI: 83-224), with marked provincial heterogeneity. Methodological limitations (ecological design, transportability, aggregation scale) and possible developments toward more evolved spatial models.
+Ambient nitrogen dioxide (NO2) pollution is indicated in the literature as an environmental determinant of respiratory mortality, whose magnitude is estimated for the Veneto Region through a counterfactual health impact assessment. This *project-work* estimates the number of attributable cases at the ISTAT census-section level, for the population aged 30+, based on causal evidence from WHO/HRAPIE-2 literature (RR=1.05 per 10 $\mu g~m^{-3}$ increase) and on the atmospheric dispersion model at 4 km resolution. The exposure differential relative to the WHO guideline threshold was computed at census-section level before any aggregation, limiting systematic overestimation. The 2025 point estimate yields 109 attributable cases/year whilst the bootstrap procedure, integrating epidemiological and temporal uncertainty, provides a more robust estimate of 148 cases/year (95% CI: 86-211), with marked provincial heterogeneity. Methodological limitations (ecological design, transportability, aggregation scale) and possible developments toward more evolved spatial models.
 
 
 
@@ -184,6 +184,24 @@ Per il calcolo degli intervalli di confidenza al 95% (IC 95%) della stima puntua
 - *temporale*, valutata tramite l'introduzione della perturbazione conseguente all'estrazione casuale del *valore medio annuale* di $NO_2$ per ciascuna sezione censuaria, riferito agli anni dal 2019 al 2025.
 
 Gli intervalli di confidenza al 95% sono stati stimati con il metodo dei percentili (2.5° e 97.5° percentile) sulla distribuzione empirica generata dal *bootstrapping*.
+
+
+
+
+Per il calcolo degli intervalli di confidenza al 95% (IC 95%) della stima puntuale del numero di casi attribuibili, è stata implementata una procedura di *non-parametric bootstrap* che ha integrato due distinte fonti di incertezza:
+
+- epidemiologica, valutata estraendo, ad ogni iterazione di bootstrap, il Rischio Relativo ($RR$) da una distribuzione log-normale incentrata sul valore centrale OMS ($RR = 1{,}051$);
+
+- temporale, valutata tramite l'introduzione della perturbazione conseguente all'estrazione casuale con reinserimento del valore medio annuale di $\text{NO}_2$ per ciascuna sezione censuaria, riferito alla serie storica 2019-2025.
+
+Per garantire la correttezza metodologica della simulazione probabilistica, la procedura di bootstrap non parametrica include una fase di *calibrazione della popolazione totale*. 
+Nel ricampionamento con reinserimento delle unità territoriali (sezioni di censimento), la somma delle popolazioni delle unità estratte in ogni iterazione ($P_{\text{boot}}$) varia inevitabilmente attorno alla media. Poiché le sezioni censuarie presentano dimensioni demografiche eterogenee, l'estrazione casuale di un numero maggiore di sezioni ad alta o bassa densità abitativa altera la dimensione del bacino di popolazione complessivo. Se quindi i casi attribuibili ($AC$) vengono calcolati direttamente su $P_{\text{boot}}$, l'ampiezza dell'intervallo di confidenza finale rifletterebbe un artefatto del campionamento demografico, anziché la vera incertezza dell'impatto sanitario.
+Per risolvere questa distorsione, ogni replica bootstrap applica un fattore di scala di calibrazione ($w_b$):
+$$w_b = \frac{P_{\text{regionale}}}{P_{\text{boot}}}$$
+dove $P_{\text{regionale}}$ è la popolazione totale effettiva della regione Veneto (parametro fisso e privo di incertezza campionaria). 
+La popolazione di ogni unità estratta viene riproporzionata ($P_{i, \text{cal}} = P_i \cdot w_b$), garantendo che in ogni replica valga esattamente il vincolo:
+$$\sum_{i} P_{i, \text{cal}} = P_{\text{regionale}}$$
+Gli intervalli di confidenza al 95% sono stati stimati con il metodo dei percentili (2,5° e 97,5° percentile) sulla distribuzione empirica generata dal bootstrapping.
 
 *Software*
 
@@ -363,7 +381,6 @@ La stima dei casi attribuibili per l'anno di riferimento 2025, estesa a tutte le
 
 Assumendo il valore centrale del Rischio Relativo di letteratura OMS ($RR = 1{.}05$), la stima determina per l'intera regione una frazione attribuibile (AF) pari al 2.86% dei casi attesi. Applicando gli estremi dell'intervallo di incertezza del $RR$ ($1{.}03 - 1{.}07$), il carico di mortalità varia deterministicamente da un valore minimo di 66.3 casi/anno ($\text{AF}_{\text{low}} = 1{.}74\%$) a un massimo di 150.0 casi/anno ($\text{AF}_{\text{upp}} = 3{.}95\%$).
 
-
 Nella @fig-map-sez-af viene riprodotta la frazione attribuibile (AF) nelle szioni censuarie del Veneto, cioè il rapporto tra casi attribuibili e casi attesi annui che rappresenta la frazione di casi per malattie respiratorie potenzialmente evitabile attraverso l’azzeramento del differenziale di esposizione rispetto al controfattuale OMS.
 
 ```{r}
@@ -396,24 +413,14 @@ Nella @tbl-ac-prov viene riportato per l'anno 2025 il dettaglio stratificato per
 
 : Stima del numero di casi attribuibili/anno (AC) stratificati per Provincia (anno 2025). {#tbl-ac-prov}
 
-Occorre tuttavia precisare che gli estremi $\text{AC}_{\text{low}}$ e $\text{AC}_{\text{upp}}$ riportati nella @tbl-ac-prov rappresentano dei valori deterministici, calcolati *staticamente* a partire dagli intervalli di confidenza del $RR$ da letteratura OMS ($1.03 - 1.07$). 
+Occorre tuttavia precisare che gli estremi $\text{AC}_{\text{low}}$ e $\text{AC}_{\text{upp}}$ riportati nella @tbl-ac-prov rappresentano dei valori deterministici, calcolati direttamente a partire dagli intervalli di confidenza del $RR$ da letteratura OMS ($1.03 - 1.07$). 
 
-Per tentare di superare questa rigidità ed estendere l'analisi a una distribuzione empirica della variabilità della stima, è stata implementata la procedura di *non-parametric bootstrap* descritta nella sezione @sec-methods. 
+Per tentare di superare questa rigidità deterministica ed estendere l'analisi a una distribuzione empirica della variabilità della stima, è stata implementata la procedura di *non-parametric bootstrap* descritta nella sezione @sec-methods. 
 
+L'approccio deterministico fornisce un'unica stima puntuale dei casi attribuibili ($AC$) mentre l'applicazione del bootstrap non parametrico permette di propagare l'incertezza parametrica del rischio relativo ($RR$) e della variabilità temporale delle esposizioni, consentendo una caratterizzazione probabilistica dell'impatto sanitario e fornendo intervalli di confidenza al $95\%$ indispensabili per la valutazione del rischio in Sanità Pubblica.
 
-I percentili $2{.}5^\circ$ e $97{.}5^\circ$ della distribuzione empirica così generata definiscono l'intervallo di confidenza al 95% (IC 95%), fornendo una quantificazione dell'incertezza decisamente più robusta rispetto ai calcoli deterministici fissi (@tbl-boot-spattemp).
+La @fig-boot-spattemp illustra la curva di densità di probabilità associata alla distribuzione empirica dei casi attribuibili generata con il processo di bootstrapping. La linea tratteggiata rossa identifica la stima centrale della distribuzione a circa 148 casi/anno. Le due linee verticali tratteggiate in verde delimitano l'intervallo di confidenza empirico al 95%: l'estremo inferiore ($\text{IC } 95\%\text{ inf.}$) si attesta a circa 86 casi/anno ($2{.}5^\circ$ percentile), mentre l'estremo superiore ($\text{IC } 95\%\text{ sup.}$) raggiunge circa i 211 casi/anno ($97{.}5^\circ$ percentile). L'area ombreggiata sottesa alla curva racchiude la massa di probabilità centrale corrispondente a tale intervallo. Infine, la linea punteggiata (in grigio) corrispondente a circa 109 casi/anno rappresenta l'entità della stima discussa in precedenza e riferita alla stima puntuale per l'anno 2025.
 
-|       | Media | Mediana | SD   | Q2.5 | Q97.5 |
-|:------|------:|--------:|-----:|-----:|------:|
-|AC/anno| 146.1 |   143.5 | 36.1 | 83.1 | 224.2 |
-
-: Statisitche desctittive della distribuzione empirica bootstrap del numero di casi attribuibili/anno (AC). {#tbl-boot-spattemp}
-
-La @fig-boot-spattemp illustra la curva di densità di probabilità associata alla distribuzione empirica dei casi attribuibili generata con il processo di bootstrapping. Si nota una distribuzione unimodale caratterizzata da asimmetria positiva (coda della densità allungata verso i valori superiori). 
-
-La linea tratteggiata rossa identifica la stima centrale della distribuzione a circa 144 casi/anno. Le due linee verticali tratteggiate in verde delimitano l'intervallo di confidenza empirico al 95%: l'estremo inferiore ($\text{IC } 95\%\text{ inf.}$) si attesta a circa 83 casi/anno ($2{,}5^\circ$ percentile), mentre l'estremo superiore ($\text{IC } 95\%\text{ sup.}$) raggiunge circa i 224 casi/anno ($97{,}5^\circ$ percentile). L'area ombreggiata sottesa alla curva racchiude la massa di probabilità centrale corrispondente a tale intervallo. Infine, la linea punteggiata in grigio corrispondente a circa 109 casi/anno rappresenta l'entità della stima puntuale discussa in precedenza e riferita alla stima deterministica per l'anno 2025.
-
-L'incremento del valore centrale della distribuzione bootstrap (circa $144$ casi/anno) rispetto alla stima deterministica riferita all'anno 2025 (circa $109$ casi/anno) è riconducibile all'effetto della variabilità introdotta con il processo di bootstrapping e determinata dalla dipendenza spaziale introdotta dal "clustering comunale", dall'inclusione delle concentrazioni di $\text{NO}_2$ degli anni precedenti (2019-2024), storicamente più elevate rispetto al 2025, integrata con la propagazione *log-normale* del rischio epidemiologico $RR$ che ha l'effetto di traslare la distribuzione empirica verso valori di impatto sanitario medio complessivamente più elevati.
 
 ```{r}
 #| label: fig-boot-spattemp
@@ -424,62 +431,47 @@ L'incremento del valore centrale della distribuzione bootstrap (circa $144$ casi
 #| echo: false
 #| fig-pos: "H"
 
-#knitr::include_graphics("./fig_tab/ac_resp_bootstrap_density_spat_temp_no_labs.png")
 knitr::include_graphics("./fig_tab/ac_resp_bootstrap_density_spat_temp_no_labs_e_stima_puntuale.png")
 
 ```
 
-In termini di sensitività dei risultati, è particolarmente significativo apprezzare l'entità della variabilità introdotta dal processo di bootstrapping spazio-temporale *completo con clustering comunale* rispetto a un approccio *"semplice"* che considera le sezioni censuarie come totalmente indipendenti e solo per le concentrazioni ambientali riferite all'anno 2025.
+L'incremento del valore centrale della distribuzione bootstrap (circa $148$ casi/anno) rispetto alla stima deterministica riferita all'anno 2025 (circa $109$ casi/anno) è riconducibile all'effetto della variabilità introdotta con il processo di bootstrapping e determinata dall'inclusione delle concentrazioni di $\text{NO}_2$ degli anni precedenti (2019-2024), storicamente più elevate rispetto al 2025, integrata con la propagazione *log-normale* del rischio epidemiologico $RR$ che ha l'effetto di traslare la distribuzione empirica verso valori di impatto sanitario medio complessivamente più elevati.
 
-In @tbl-boot-comp sono riportate le principali metriche di confronto dei risultati del bootstrap eseguito con le due modalità alternative: semplice (osservazioni indipendenti riferite al solo anno 2025) e spazio-temporale (clustering comunale e perturbazione temporale anni 2019-2025).
+I percentili $2{.}5^\circ$ e $97{.}5^\circ$ della distribuzione empirica generata con il processo di bootstrap definiscono l'intervallo di confidenza al 95% (IC 95%) e forniscono una quantificazione dell'incertezza più robusta rispetto ai calcoli deterministici fissi riferiti al solo 2025.
 
-| Metrica | Semplice | Spazio Temporale |
-|:---|---:|---:|
-| Mediana | 109.2 | 143.5 |
-| SD | 21.5 | 36.1 |
-| Q2.5 | 67.3 | 83.1 |
-| Q97.5 | 152.2 | 224.2 |
-| Ampiezza IC95 | 84.8 | 141.1 |
-| Ratio SD | 1.0 | 1.7 |
-
-
-: Confronto tra le prestazioni analitiche del bootstrap semplice e spazio-temporale. {#tbl-boot-comp}
-
-Il confronto tra i due metodi, illustrato in @fig-boot-comp, evidenzia marcate differenze nelle curve di densità di probabilità, sia nella stima di tendenza centrale, sia nell'ampiezza della dispersione della stima dei casi attribuibili. 
+In @tbl-boot sono riportate le metriche descrittive della distribuzione empirica bootstrap in termini di numero di casi attribuibili/anno (AC), frazione attribuibile/anno (AF).
 
 ```{r}
-#| label: fig-boot-comp
-#| fig-cap: "Confronto procedur di stima bootstrap (AC) casi atrribuibili/anno in Regione Veneto."
-#| fig-align: "center"
-#| out-height: "0.4\\textheight"
-#| out-width: "!\\textheight"
+#| label: tbl-boot
+#| tbl-cap: "Sintesi metriche della distribuzione bootstrap probabilistica."
 #| echo: false
-#| fig-pos: "H"
+#| message: false
+#| warning: false
 
-knitr::include_graphics("./fig_tab/bootstrap_comparison_res_simple_spattemp.png")
 
+summary_table <- read_csv('./fig_tab/tbl_bootstrap_summary_short.csv')
+
+summary_table  |> 
+  mutate(across(c(media, mediana, sd, ci_025, ci_975), ~ round(.x, 2))) |> 
+  kable(
+    col.names = c("Metrica", "Media", "Mediana", "SD", "IC 2.5%", "IC 97.5%", "IC 95%"),
+    align = c("l", "c", "c", "c", "c", "c", "c")
+  )
+  
 ```
-
-Assumendo l'indipendenza delle osservazioni, la procedura di bootstrap semplice (curva rossa) collassa attorno a una stima centrale significativamente più bassa (pari all'incirca a 109 casi/anno) e presenta un picco di densità molto stretto ed elevato (prossimo a 0,019). Questa formulazione del bootstrap sottostima drasticamente la variabilità del sistema, restituendo un intervallo di confidenza artificialmente ristretto (circa tra 50 e 180 casi/anno) a causa della rottura della struttura di autocorrelazione spaziale e dell'assenza di perturbazione temporale interannuale. 
-Invece, nel bootstrap spazio-temporale con clustering comunale (curva ciano), preservando la dipendenza spaziale mediante ricampionamento per cluster comunali e integrando la fluttuazione temporale del $\text{NO}_2$ lungo la serie storica, la distribuzione si sposta verso destra (stima centrale attorno a 144 casi/anno) e mostra una varianza decisamente più ampia e schiacciata. La coda superiore si estende ben oltre i 200 casi/anno, riflettendo una stima che propaga l'incertezza cumulativa.
-
-Dal punto di vista metodologico, questo confronto dimostra chiaramente come un approccio di bootstrap semplice soffra di un *bias* da "falsa  precisione", ignorando la struttura di raggruppamento territoriale. L'adozione del bootstrap spazio-temporale clustered si conferma quindi importante per evitare un eccesso di ottimismo analitico.
 
 ## Discussione e conclusioni
 
 Dal punto di vista dell'interpretazione epidemiologica dei risultati, la stima ottenuta dalla valutazione di impatto sanitario rappresenta il numero di *casi/anno teorici*, cioè i decessi evitabili nell'eventualità in cui tutte le sezioni censuarie del Veneto siano esposte ad un livello di concentrazione ambientale di $NO_2 \leq 10\ \mu g~m^{-3}$, soglia OMS stabilita dalle attuali evidenze scientifiche per escludere significativi (misurabili) effetti sanitari (malattie per cause respiratorie codici ICD-10: J00-J99).
 
-Il confronto tra la stima puntuale riferita al solo anno 2025 (circa 109 casi/anno) e la stima centrale ottenuta dalla procedura di bootstrap spazio-temporale (circa 144 casi/anno, IC 95% 83–224) mette in luce un aspetto metodologico rilevante: affidarsi al solo dato deterministico dell'ultimo anno disponibile rischia di sottostimare il reale carico sanitario atteso, poiché non tiene conto né della variabilità storica dell'esposizione (concentrazioni di NO2 nel periodo 2019-2025, sistematicamente più elevate nei primi anni della serie), né dell'incertezza epidemiologica associata al Rischio Relativo di letteratura.
+Il confronto tra la stima puntuale riferita all'anno 2025 (circa 109 casi/anno) e la stima centrale ottenuta dalla procedura di bootstrap spazio-temporale (circa 148 casi/anno, IC 95% 86–211) mette in luce un aspetto metodologico significativo: affidarsi al solo dato deterministico dell'ultimo anno disponibile rischia di sottostimare il carico sanitario atteso, poiché non tiene conto né della variabilità storica dell'esposizione (concentrazioni di NO2 nel periodo 2019-2025, sistematicamente più elevate nei primi anni della serie), né dell'incertezza epidemiologica associata al Rischio Relativo di letteratura.
 
-Il confronto tra bootstrap "naive" (sezioni indipendenti) e bootstrap con clustering comunale (@fig-boot-comp) conferma inoltre come l'assunzione di indipendenza tra sezioni censuarie porti a una falsa precisione: ignorare l'autocorrelazione spaziale comprime artificialmente l'intervallo di confidenza (circa 50-180 casi/anno) restituendo un'apparente accuratezza non giustificata dai dati.
+Da un punto di vista di supporto alle decisioni di Sanità Pubblica, la stima più prudente e metodologicamente robusta da comunicare ai decisori è quindi quella ottenuta dal bootstrap che integra le due fonti di incertezza (epidemiologica, temporale).
 
-Da un punto di vista di supporto alle decisioni di sanità pubblica, la stima più prudente e metodologicamente robusta da comunicare ai decisori è quindi quella ottenuta dal bootstrap che integra le tre fonti di incertezza (spaziale, epidemiologica, temporale) piuttosto che il singolo valore puntuale riferito al 2025.
+D'altro canto l'analisi dettagliata per l'anno 2025 evidenzia alcuni aspetti interessanti che derivano da una marcata eterogeneità territoriale del carico sanitario attribuibile (@tbl-ac-prov). 
+Le province di Padova e Venezia concentrano la quota maggiore di casi attribuibili (rispettivamente circa 27 e 24 casi/anno, con AF pari al 3,5% e 3,8% dei casi attesi), coerentemente con i più alti differenziali di esposizione rispetto alla soglia controfattuale OMS (@tbl-diff-prov). Al contrario, la provincia di Belluno presenta un impatto sanitario pressoché trascurabile (AF = 0,1%), risultato atteso vista la ridotta pressione emissiva e le caratteristiche orografiche dell'area, meno soggetta all'accumulo tipico del Bacino Padano. 
 
-L'analisi evidenzia  una marcata eterogeneità territoriale del carico sanitario attribuibile (@tbl-ac-prov). 
-Le province di Padova e Venezia concentrano la quota maggiore di casi attribuibili (rispettivamente circa 27 e 24 casi/anno, con AF pari al 3,5% e 3,8% dei casi attesi), coerentemente con i più alti differenziali di esposizione rispetto alla soglia controfattuale OMS (@tbl-diff-prov). 
-Al contrario, la provincia di Belluno presenta un impatto sanitario pressoché trascurabile (AF = 0,1%), risultato atteso vista la ridotta pressione emissiva e le caratteristiche orografiche dell'area, meno soggetta all'accumulo tipico del Bacino Padano. 
-
-Questa distribuzione disomogenea conferma che eventuali politiche regionali di riduzione dell'esposizione a $NO_2$ potrebbero ottenere il maggior beneficio sanitario se prioritariamente indirizzate alle aree di pianura a maggiore pressione antropica (densità abitativa, riscaldamento domestico, traffico veicolare, insediamenti produttivi), piuttosto che con un approccio indifferenziato sull'intero territorio regionale.
+Questa distribuzione disomogenea conferma che eventuali politiche regionali di riduzione dell'esposizione a $NO_2$ potrebbero ottenere il maggior beneficio sanitario se prioritariamente indirizzate alle aree di pianura a maggiore pressione antropica (densità abitativa, riscaldamento domestico, traffico veicolare, insediamenti produttivi), rispetto ad un approccio indifferenziato sull'intero territorio regionale.
 
 *Limiti dello studio*
 
@@ -497,11 +489,15 @@ Alcuni limiti metodologici vanno esplicitati ed evidenziati:
 
 - *scelta della soglia controfattuale*: il valore di $10\ \mu g~m^{-3}$ riflette le linee guida OMS 2021, ma scenari controfattuali alternativi (es. riduzioni percentuali uniformi, o soglie nazionali/regionali) potrebbero restituire stime di impatto sensibilmente diverse.
 
-*Conclusioni e possibili sviluppi futuri*
+- *assunzione di indipendenza spaziale* tra le sezioni censuarie che non viene cattaurata dall'attuale implementazione della procedura di bootstrap.
 
-Nonostante questi limiti, lo studio conferma che l'esposizione a $NO_2$ resta un determinante ambientale non trascurabile della mortalità per cause respiratorie in Regione Veneto, con un carico sanitario stimato tra le 83 e le 224 unità/anno (IC 95% bootstrap) concentrato prevalentemente nelle aree di pianura a maggiore densità abitativa e pressione antropica.
+- *trattazione dell'autocorrelazione temporale*: i valori di esposizione osservati in anni successivi per una medesima sezione censuaria non sono tra loro indipendenti, ma presentano una struttura di autocorrelazione temporale che l'attuale procedura di bootstrap tenta di catturare tramite il ricampionamento della serie storica 2019-2025, senza tuttavia modellarla esplicitamente attraverso un impianto di serie storiche o processi spazio-temporali dedicati.
 
-Il percorso metodologico proposto - disaggregazione a livello di sezione censuaria, propagazione dell'incertezza tramite bootstrap spazio-temporale con *clustering* comunale - rappresenta una base replicabile per la costruzione di uno strumento quantitativo di supporto alla programmazione regionale in materia di Ambiente e Sanità Pubblica.
+*Conclusioni metodologiche e possibili sviluppi futuri*
+
+Nonostante questi limiti, lo studio conferma che l'esposizione a $NO_2$ resta un determinante ambientale non trascurabile della mortalità per cause respiratorie in Regione Veneto, con un carico sanitario stimato tra le 86 e le 211 unità/anno (IC 95% bootstrap) concentrato prevalentemente nelle aree di pianura a maggiore densità abitativa e pressione antropica.
+
+Il percorso metodologico proposto - disaggregazione a livello di sezione censuaria, propagazione dell'incertezza tramite bootstrap rappresenta una base replicabile per la costruzione di uno strumento quantitativo di supporto alla programmazione regionale in materia di Ambiente e Sanità Pubblica.
 
 La quantificazione dell'impatto sanitario da inquinamento atmosferico a livello di sezioni censuarie presenta tuttavia rilevanti sfide analitiche, legate principalmente alla presenza di *confondimento spaziale* e *collinearità* tra le caratteristiche geografiche ed i livelli espositivi [@ramsey_ps:2019]. Per tentare di superare questi limiti è necessario adottare un framework di *inferenza causale* [@dominici_cas_evi:2017], con l'obiettivo di isolare almeno il ruolo dei confondenti socio-demografici e territoriali (in mancanza di dati individuali utilizzabili per questo scopo).
 
@@ -513,17 +509,15 @@ Sviluppi futuri dello studio potranno riguardare:
 
 - l'inserimento esplicito dell'incertezza associata ai tassi di mortalità di base e alla stima della popolazione residente in ciascuna sezione censuaria;
 
-- l'adozione di strutture autoregressive spaziali (CAR/MICAR, *Conditional Autoregressive* / *Multivariate Conditional Autoregressive*) con *prior* spaziali, strumenti avanzati per l'analisi di dati distribuiti su un territorio suddiviso in regioni (comuni, province, pixel di griglia), che riflettono la tendenza di aree geografiche vicine a condividere caratteristiche ambientali e di popolazione simili.
+- l'adozione di strutture autoregressive spaziali (*CAR/MICAR, Conditional Autoregressive* / *Multivariate Conditional Autoregressive*) con *prior* spaziali, strumenti avanzati per l'analisi di dati distribuiti su un territorio suddiviso in regioni (comuni, province, pixel di griglia), che riflettono la tendenza di aree geografiche vicine a condividere caratteristiche ambientali e di popolazione simili.
 
-Un limite strutturale degli studi ecologici è il *Modifiable Areal Unit Problem* (MAUP), secondo cui la dimensione e i confini delle aree analizzate possono alterare i risultati statistici.
+Un limite strutturale degli studi ecologici è il *Modifiable Areal Unit Problem (MAUP)*, secondo cui la dimensione e i confini delle aree analizzate possono alterare i risultati statistici.
 Questo si verifica innanzitutto per via dell'*effetto di scala*: allargando l'unità d'analisi — ad esempio passando dai micro-dati delle sezioni censuarie all'aggregato del comune — i dati tendono a mediarsi tra loro. Questa aggregazione appiattisce la variabilità locale e rischia di nascondere i picchi di esposizione presenti nei singoli quartieri.
 A questo si affianca l'*effetto di zonalità*, per cui la scelta di come tracciare i confini territoriali rimane un'arbitrarietà geografica: le barriere amministrative tra comuni non riflettono la reale dispersione fisica del $NO_2$, che segue dinamiche ambientali (fisico-chmiche) del tutto indipendenti.
 
-Il superamento di questi limiti strutturali potrà essere perseguito attraverso l'adozione di un approccio che integri tecniche di Bayesian Smoothing per la stabilizzazione dei tassi di mortalità nelle piccole aree unitamente a strutture autoregressive spaziali (es. modelli CAR/MICAR, Besag-York-Mollié) per la modellazione esplicita della dipendenza di vicinato [@blangiardo_cameletti:2015].
+Il superamento di questi limiti strutturali potrà essere perseguito attraverso l'adozione di un approccio che integri tecniche di Bayesian Smoothing per la stabilizzazione dei tassi di mortalità nelle piccole aree unitamente a strutture autoregressive spaziali (es. modelli CAR/MICAR, Besag-York-Mollié) per la modellazione esplicita della dipendenza di vicinato [@blangiardo_cameletti:2015] o l'analisi dell'autocorrelazione spaziale (I di Moran), al fine di modellare esplicitamente la dipendenza geografica ad alta risoluzione e la struttura di covarianza residua.
 
 Parallelamente, potrà essere considerata l'estensione del disegno verso un *framework* di inferenza causale spaziale (*spatial causal inference*) [@akbari_sp_inf:2023]. Tale approccio consentirebbe di formalizzare esplicitamente l'indipendenza tra le unità di analisi. Infatti, il calcolo dei casi attribuibili applicato separatamente a ciascuna sezione censuaria presuppone che l'esito atteso di un'unità non dipenda dal livello di esposizione delle sezioni limitrofe - un'approssimazione operativa ragionevole, ma poco verosimile rispetto alla natura diffusiva degl inquinanti ($NO_2$) nell'aria ambiente, che genera fenomeni di *spillover* spaziale tra sezioni censuarie contigue.
-
-Un limite concettualmente distinto riguarda, inoltre, la dimensione temporale: i valori di esposizione osservati in anni successivi per una medesima sezione censuaria non sono tra loro indipendenti, ma presentano una struttura di autocorrelazione temporale che l'attuale procedura di bootstrap tenta di catturare tramite il ricampionamento della serie storica 2019-2025, senza tuttavia modellarla esplicitamente attraverso un impianto di serie storiche o processi spazio-temporali dedicati.
 
 ## Bibliografia
 
