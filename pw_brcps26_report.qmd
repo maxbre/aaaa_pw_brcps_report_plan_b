@@ -59,7 +59,7 @@ La frequenza del Master in \textit{"Biostatistica per la Ricerca Clinica e la Pu
 
 \newpage
 
-*Valutazione controfattuale dell’impatto sanitario da concentrazioni atmosferiche di $\text{NO}_2$ ad alta risoluzione spaziale e propagazione dell’incertezza. Il caso studio della Regione Veneto.*
+*Valutazione di impatto sanitario da $\text{NO}_2$ atmosferico: analisi controfattuale ed incertezza di stima. Il caso studio della Regione Veneto.*
 
 
 ## Sommario {.unnumbered .unlisted}
@@ -69,7 +69,7 @@ Il *project-work* propone una stima del numero di casi attribuibili a livello di
 
 \newpage
 
-*Counterfactual health impact assessment of high-resolution ambient $\text{NO}_2$ concentrations with uncertainty propagation. The case study of the Veneto Region.*
+*Health Impact Assessment of Atmospheric $\text{NO}_2$: Counterfactual Analysis and Estimation Uncertainty. The Case Study of the Veneto Region.*
 
 ## Abstract {.unnumbered .unlisted}
 
