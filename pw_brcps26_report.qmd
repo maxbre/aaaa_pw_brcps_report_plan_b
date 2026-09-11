@@ -394,17 +394,23 @@ Nella @tbl-ac-prov viene riportato per l'anno 2025 il dettaglio stratificato per
 
 E' necessario precisare che gli estremi $\text{AC}_{\text{low}}$ e $\text{AC}_{\text{upp}}$ riportati nella @tbl-ac-prov rappresentano dei valori deterministici, calcolati direttamente dall'intervallo di variabilità del $RR$ da letteratura OMS ($1.03 - 1.07$). 
 
-La stima puntuale riferita al 2025, ottenuta applicando il valore centrale del rischio relativo (1.05) è stata confrontata con una simulazione Monte Carlo nella quale il RR è stato estratto da una distribuzione lognormale parametrizzata sul relativo intervallo di confidenza. Poiché esposizione, popolazione e mortalità basale sono mantenute fisse, la simulazione propaga esclusivamente l’incertezza epidemiologica del RR. La sostanziale corrispondenza tra la stima deterministica e la mediana simulata, nonché tra gli estremi deterministici e i percentili della simulazione conferma la coerenza numerica dell’implementazione.
+La stima puntuale riferita al 2025, ottenuta applicando il valore centrale del rischio relativo ($RR_{10}=1{.}05$), è stata confrontata con una simulazione Monte Carlo nella quale il $RR$ è stato estratto da una distribuzione lognormale parametrizzata sulla stima centrale e sul relativo intervallo di confidenza al 95%. Poiché le concentrazioni modellate per il 2025, la popolazione e i tassi di mortalità basale sono mantenuti fissi, la simulazione propaga esclusivamente l'incertezza epidemiologica associata al $RR$. I percentili della distribuzione simulata possono pertanto essere interpretati come un intervallo di confidenza al 95% dei casi attribuibili propagato dal $RR$, condizionato agli altri input del modello, che sono trattati come noti.
 
-La @fig-sim-2025 illustra la curva di densità di probabilità associata alla distribuzione empirica dei casi attribuibili generata con il processo di simulazione relativo all'anno 2025.
+La @fig-sim-2025 mostra la distribuzione simulata dei casi attribuibili per il 2025. La mediana è pari a circa 108,7 casi/anno e risulta sostanzialmente coincidente con la stima puntuale deterministica di 109 casi/anno. Il 2,5° e il 97,5° percentile si attestano rispettivamente a circa 67,6 e 149,7 casi/anno e definiscono l'intervallo di confidenza al 95% propagato dall'incertezza epidemiologica del $RR$. Tali valori sono coerenti con gli estremi deterministici ottenuti applicando direttamente alla funzione di impatto il limite inferiore ($RR=1{.}03$) e quello superiore ($RR=1{.}07$), pari rispettivamente a 66,3 e 150,0 casi/anno. Le modeste differenze osservate sono attribuibili all'approssimazione Monte Carlo e agli arrotondamenti numerici.
 
-La linea tratteggiata rossa identifica la mediana simulata pari a circa 109 casi/anno. Le due linee verticali tratteggiate in verde delimitano l'intervallo di simulazione al 95%: l'estremo inferiore ($\text{IC } 95\%\text{ inf.}$) si attesta in circa 68 casi/anno ($2{.}5^\circ$ percentile), mentre l'estremo superiore ($\text{IC } 95\%\text{ sup.}$) raggiunge circa 150 casi/anno ($97{.}5^\circ$ percentile). L'area ombreggiata sottesa alla curva racchiude la massa di probabilità centrale corrispondente all'intervallo di simulazione al 95%.
+
+La corrispondenza tra i due approcci è attesa, poiché la funzione che lega il $RR$ ai casi attribuibili è monotonicamente crescente. Essa costituisce quindi una verifica della coerenza numerica dell'implementazione, ma non rappresenta una validazione indipendente della stima né introduce ulteriori fonti di informazione. Il vantaggio della simulazione consiste nella possibilità di descrivere l'intera distribuzione probabilistica dell'impatto e di estendere in futuro la propagazione dell'incertezza ad altri parametri del modello.
+
+Separatamente, la variabilità delle esposizioni nel periodo 2019–2025 è stata analizzata mediante una simulazione Monte Carlo con ricampionamento degli scenari annuali. A ogni iterazione è stato selezionato con uguale probabilità uno degli anni compresi tra il 2019 e il 2025, utilizzando simultaneamente per tutte le sezioni censuarie il corrispondente campo spaziale delle concentrazioni di $\mathrm{NO}_2$. È stato inoltre estratto un valore del $RR$ dalla medesima distribuzione lognormale impiegata nella simulazione 2025. La popolazione e i tassi di mortalità sono stati mantenuti fissi, in modo da isolare, a parità di struttura demografica e sanitaria, l'effetto delle differenze tra gli scenari annuali di esposizione.
+
+La simulazione storica risponde pertanto alla seguente domanda: quale sarebbe il carico sanitario attribuibile sulla popolazione di riferimento se il profilo di esposizione ambientale coincidesse con quello di un anno selezionato casualmente tra il 2019 e il 2025, tenendo conto anche dell'incertezza epidemiologica del $RR$?
+
 
 ```{r}
 #| label: fig-sim-2025
-#| fig-cap: "Simulazione distibuzione (AC) casi attribuibili/anno in Regione Veneto nel 2025."
+#| fig-cap: "Distribuzione Monte Carlo dei casi attribuibili/anno per mortalità respiratoria nella popolazione 30+ della Regione Veneto nel 2025. Le linee verdi delimitano l'IC 95% propagato dall'incertezza epidemiologica del rischio relativo."
 #| fig-align: "center"
-#| out-height: "0.6\\textheight"
+#| out-height: "0.7\\textheight"
 #| out-width: "!\\textheight"
 #| echo: false
 #| fig-pos: "H"
@@ -413,16 +419,23 @@ knitr::include_graphics("./fig_tab/ac_sim_2025.png")
 
 ```
 
-Per la stima 2025 è stata applicata una simulazione Monte Carlo finalizzata alla propagazione dell’incertezza epidemiologica del rischio relativo. Separatamente, la variabilità delle esposizioni nel periodo 2019–2025 è stata valutata mediante una simulazione Monte Carlo con ricampionamento degli scenari annuali di esposizione. 
-La simulazione storica aggiunge la variabilità dell’esposizione tra il 2019 e il 2025 e risponde ad una domanda diversa: "Qual è l'entità del carico sanitario sulla stessa popolazione e con gli stessi tassi di mortalità se l’esposizione ambientale risulta quella di un anno scelto casualmente tra il 2019 e il 2025?".
+La linea tratteggiata rossa identifica la mediana simulata pari a circa 109 casi/anno. Le due linee verticali tratteggiate in verde delimitano l'intervallo di simulazione al 95%: l'estremo inferiore ($\text{IC } 95\%\text{ inf.}$) si attesta in circa 68 casi/anno ($2{.}5^\circ$ percentile), mentre l'estremo superiore ($\text{IC } 95\%\text{ sup.}$) raggiunge circa 150 casi/anno ($97{.}5^\circ$ percentile). L'area ombreggiata sottesa alla curva racchiude la massa di probabilità centrale corrispondente all'intervallo di simulazione al 95%.
 
-La @fig-sim-hist ... qui commento
+
+La @fig-sim-hist mostra che la distribuzione storica presenta una mediana pari a circa 145,8 casi attribuibili/anno e un intervallo di simulazione al 95% compreso tra circa 81,5 e 230,5 casi/anno. Rispetto alla mediana della simulazione specifica per il 2025, il valore centrale della distribuzione storica è superiore di circa 37 casi/anno, corrispondenti a un incremento relativo di circa il 34%. Anche l'intervallo storico risulta più ampio, poiché combina l'incertezza epidemiologica del $RR$ con la variabilità delle concentrazioni di $\mathrm{NO}_2$ tra i diversi anni.
+
+Il valore centrale più elevato della simulazione storica è coerente con la presenza, soprattutto nella prima parte della serie, di concentrazioni mediamente superiori rispetto a quelle modellate per il 2025. Questo risultato non implica che la stima puntuale del 2025 sottostimi il carico sanitario del medesimo anno: indica, piuttosto, che il 2025 rappresenta uno scenario di esposizione relativamente favorevole rispetto a gran parte del periodo 2019–2025.
+
+L'intervallo della simulazione storica non costituisce un intervallo di confidenza della stima 2025, né una previsione del carico sanitario futuro. Esso descrive la distribuzione dell'impatto ottenuta assegnando uguale probabilità agli scenari annuali osservati nel periodo considerato. Poiché la serie comprende soltanto sette anni ed è caratterizzata da un andamento temporale decrescente, la distribuzione deve essere interpretata come un'analisi descrittiva e di sensibilità rispetto alla scelta dell'anno di esposizione, non come la distribuzione di un processo temporale stazionario.
+
+Nel complesso, le due simulazioni forniscono informazioni complementari: la prima quantifica l'incertezza epidemiologica della stima specifica per il 2025, mentre la seconda colloca tale stima nel contesto della variabilità ambientale osservata tra il 2019 e il 2025.
+
 
 ```{r}
 #| label: fig-sim-hist
-#| fig-cap: "Simulazione distibuzione (AC) casi attribuibili/anno in Regione Veneto nel periodo 2019-2025."
+#| fig-cap: "Distribuzione Monte Carlo dei casi attribuibili/anno ottenuta ricampionando gli scenari annuali di esposizione a $NO_2$ del periodo 2019–2025. Le linee verdi delimitano l'intervallo di simulazione al 95%."
 #| fig-align: "center"
-#| out-height: "0.6\\textheight"
+#| out-height: "0.7\\textheight"
 #| out-width: "!\\textheight"
 #| echo: false
 #| fig-pos: "H"
@@ -431,68 +444,61 @@ knitr::include_graphics("./fig_tab/ac_sim_hist.png")
 
 ```
 
-L’intervallo della simulazione 2025 deriva solamente dal RR. La maggiore ampiezza dell’intervallo storico deriva anche dalle differenze di esposizione tra gli anni.
-
-Poiché popolazione e tassi vengono mantenuti fissi, le differenze tra gli anni sono attribuibili esclusivamente alle diverse concentrazioni modellate di $NO_"$. È quindi una forma di standardizzazione utile per mostrare l’effetto del cambiamento ambientale.
-
-La simulazione storica non modifica la stima specifica del 2025, ma la colloca nel contesto della variabilità ambientale osservata tra il 2019 e il 2025. Il confronto mostra quanto il carico sanitario attribuibile dipenda dalla scelta dell’anno di esposizione e consente di valutare se il 2025 rappresenti uno scenario tipico oppure particolarmente favorevole rispetto al periodo considerato.
 
 ## Discussione e conclusioni
 
-Dal punto di vista epidemiologico, la stima ottenuta con la valutazione di impatto sanitario rappresenta il numero di *casi/anno teorici*, cioè i decessi evitabili nell'eventualità in cui tutte le sezioni censuarie della Regione Veneto siano esposte ad un livello di concentrazione ambientale di $NO_2 \leq 10\ \mu g~m^{-3}$, corrispondente al livello guida OMS 2021 per la media annuale assunta nel presente studio come concentrazione controfattuale di riferimento. Non rappresenta necessariamente una soglia biologica al di sotto della quale il rischio sanitario sia nullo.
+La valutazione di impatto sanitario quantifica il numero di decessi per cause respiratorie stimati come potenzialmente evitabili nello scenario controfattuale in cui, nelle sezioni censuarie con concentrazioni medie annuali di $\mathrm{NO}_2$ superiori a $10\ \mu g\,m^{-3}$, l'esposizione sia ricondotta al livello guida OMS 2021. Tale valore è assunto come concentrazione controfattuale di riferimento e non deve essere interpretato come una soglia biologica al di sotto della quale il rischio sanitario sia necessariamente nullo.
 
-----
+Per il 2025, la valutazione restituisce una stima puntuale di circa 109 casi attribuibili/anno, corrispondenti al 2,86% dei decessi respiratori attesi nella popolazione di età pari o superiore a 30 anni. La simulazione Monte Carlo, limitata alla propagazione dell'incertezza epidemiologica del $RR$, produce una mediana di 108,7 casi/anno e un IC 95% compreso tra 67,6 e 149,7 casi/anno. La vicinanza tra questi risultati e quelli ottenuti applicando deterministicamente il valore centrale e gli estremi dell'intervallo del $RR$ conferma la coerenza numerica della procedura. L'intervallo deve tuttavia essere interpretato come condizionato alle concentrazioni modellate, alla popolazione e ai tassi di mortalità, che nella simulazione sono considerati privi di incertezza.
 
-La distribuzione ottenuta includendo gli anni 2019–2025 presenta un valore centrale superiore alla stima specifica del 2025, poiché incorpora anni caratterizzati da concentrazioni mediamente più elevate. Le due quantità rispondono pertanto a domande parzialmente differenti.
+L'analisi territoriale evidenzia una marcata eterogeneità del carico sanitario attribuibile. Le province di Padova e Venezia presentano il maggior numero di casi attribuibili, rispettivamente circa 27 e 24 casi/anno, con frazioni attribuibili pari al 3,5% e al 3,8% dei casi attesi. Belluno mostra invece un impatto stimato molto contenuto, con una frazione attribuibile prossima allo 0,1%, coerentemente con i minori differenziali di esposizione rispetto allo scenario controfattuale. Questi risultati indicano che i potenziali benefici sanitari delle politiche di riduzione dell'$\mathrm{NO}_2$ non sarebbero distribuiti uniformemente nel territorio regionale e risulterebbero maggiori nelle aree di pianura caratterizzate da più elevata densità abitativa e pressione antropica.
 
-----
+La simulazione storica restituisce una mediana di 145,8 casi attribuibili/anno e un intervallo di simulazione al 95% pari a 81,5–230,5 casi/anno. Il valore centrale, superiore di circa il 34% rispetto alla simulazione 2025, riflette l'inclusione di scenari annuali caratterizzati da concentrazioni di $\mathrm{NO}_2$ mediamente più elevate. La maggiore ampiezza dell'intervallo storico mostra inoltre che la scelta dell'anno di esposizione contribuisce in misura rilevante alla variabilità della stima di impatto.
 
-L'analisi dettagliata per l'anno 2025 evidenzia alcuni aspetti interessanti che derivano da una marcata eterogeneità territoriale del carico sanitario attribuibile (@tbl-ac-prov). 
-Le province di Padova e Venezia concentrano la quota maggiore di casi attribuibili (rispettivamente circa 27 e 24 casi/anno, con AF pari al 3,5% e 3,8% dei casi attesi), coerentemente con i più alti differenziali di esposizione rispetto alla soglia controfattuale OMS (@tbl-diff-prov). Al contrario, la Provincia di Belluno presenta un impatto sanitario pressoché trascurabile (AF = 0,1%), risultato atteso vista la ridotta pressione emissiva e le caratteristiche orografiche che la rendono un territorio meno soggetto all'accumulo inquinante tipico delle zone di pianura. 
+Le due distribuzioni non rappresentano stime alternative della stessa quantità. La simulazione 2025 quantifica l'incertezza epidemiologica associata al carico stimato per uno specifico anno; la simulazione storica descrive invece la sensibilità dell'impatto alla variabilità degli scenari ambientali osservati nel periodo 2019–2025. Quest'ultima non modifica la stima del 2025 e non costituisce una previsione, ma consente di riconoscere che il 2025 si colloca in una condizione relativamente favorevole rispetto agli anni precedenti.
 
-Questa distribuzione disomogenea dei casi attesi conferma che eventuali politiche regionali di riduzione dell'esposizione a $NO_2$ potrebbero ottenere il maggior beneficio sanitario se prioritariamente indirizzate alle aree di pianura a maggiore pressione antropica (densità abitativa, riscaldamento domestico, traffico veicolare, insediamenti produttivi), rispetto all'applicazione di un approccio indifferenziato sull'intero territorio regionale.
-
-Lo studio conferma che l'esposizione a $NO_2$ resta un determinante ambientale non trascurabile della mortalità per cause respiratorie in Regione Veneto, con un carico sanitario stimato tra le 86 e le 211 unità/anno (IC 95% bootstrap) concentrato prevalentemente nelle aree di pianura a maggiore densità abitativa e pressione antropica.
+Nel complesso, i risultati indicano, sotto le assunzioni adottate, che l'esposizione a $\mathrm{NO}_2$ eccedente il livello controfattuale di riferimento è associata a un carico non trascurabile di mortalità respiratoria nella popolazione adulta del Veneto. Tale conclusione deve essere formulata in termini di impatto stimato e non come nuova dimostrazione di una relazione causale locale, poiché la funzione concentrazione-risposta è trasferita dalla letteratura OMS/HRAPIE-2 e non stimata direttamente attraverso i dati epidemiologici regionali.
 
 *Caratteristiche e limitazioni dello studio*
 
-Le principali caratteristiche e limitazioni dello studio di impatto sanitario riguardano i seguenti aspetti:
+L'interpretazione dei risultati deve considerare alcune limitazioni rilevanti:
 
-- *natura ecologica*: l'unità di analisi è rappresentata dalla sezione censuaria e quindi i risultati vanno interpretati a livello aggregato di popolazione, evitando l'inferenza diretta a livello individuale (*ecological fallacy*); in particolare, si rileva che tutti i confondenti di tipo individuale rimangono non risolti fino a quando si opera nell'ambito di stime di gruppo;
+- *natura ecologica*: esposizione, popolazione e mortalità sono riferite a unità territoriali aggregate; i risultati riguardano quindi popolazioni e territori e non possono essere trasferiti direttamente al livello individuale;
 
-- *trasportabilità parametri di stima*: sia il Rischio Relativo (derivato dalla letteratura internazionale OMS/HRAPIE-2), sia i tassi di mortalità di base (stimati a livello provinciale e attribuiti alle sezioni censuarie) presuppongono una trasportabilità che non tiene conto di eventuali differenze locali nella suscettibilità della popolazione, nella composizione demografica o nella qualità delle cure sanitarie;
+- *trasportabilità dei parametri*: il $RR$ deriva dalla letteratura internazionale, mentre i tassi di mortalità provinciali sono attribuiti alle sezioni censuarie; entrambe le operazioni presuppongono una trasportabilità che potrebbe non riflettere differenze locali nella struttura demografica, nella suscettibilità e nell'accesso alle cure;
 
-- *aggregazione spaziale e sovrastima sistematica*: come dimostrato in Appendice, calcolare l'impatto sanitario su dati di esposizione pre-aggregati porterebbe a una sovrastima sistematica rispetto a un'analisi condotta alla massima risoluzione disponibile; per questo motivo la stima dei casi attribuibili è stata effettuata a livello di singola sezione censuaria prima di ogni aggregazione, mitigando questo tipo di *bias*;
+- *mortalità basale*: l'impiego di tassi grezzi provinciali per l'intera popolazione 30+ non descrive completamente la diversa composizione per età delle sezioni censuarie e può produrre una classificazione imperfetta del rischio basale;
 
-- *risoluzione del dato di esposizione*: il grigliato modellistico SPIAIR/CAMx a 4 km, per quanto rappresenti lo strumento operativo di riferimento in Regione Veneto, non è in grado di catturare completamente la variabilità di micro-scala, con un possibile effetto di *exposure misclassification* residua anche al netto della disaggregazione per sezione censuaria;
+- *risoluzione dell'esposizione*: la disaggregazione demografica avviene a livello di sezione censuaria, ma la risoluzione effettiva dell'esposizione rimane vincolata al grigliato SPIAIR/CAMx di 4 km, che non può rappresentare interamente la variabilità di microscala;
 
-- *singolo inquinante*: la valutazione si concentra esclusivamente su $NO_2$, mentre nella realtà la popolazione è co-esposta ad una miscela di inquinanti (in particolare $PM_{2.5}$) con possibili effetti sinergici e/o di confondimento non catturabili dal presente modello deterministico concentrazione-risposta;
+- *singolo inquinante*: l'analisi considera esclusivamente l'$\mathrm{NO}_2$ e non permette di separarne completamente il contributo da quello della miscela di inquinanti atmosferici, in particolare dal $PM_{2.5}$;
 
-- *scelta della soglia controfattuale*: il valore di $10\ \mu g~m^{-3}$ riflette le linee guida OMS 2021, ma scenari controfattuali alternativi (es. riduzioni percentuali uniformi, o soglie nazionali/regionali) potrebbero restituire stime di impatto sensibilmente diverse;
+- *scenario controfattuale*: i risultati dipendono dalla scelta di $10\ \mu g\,m^{-3}$ come livello di riferimento; scenari alternativi, quali riduzioni percentuali uniformi o differenti valori target, produrrebbero stime diverse;
 
-- *autocorrelazione spaziale*: la stima bootstrap assume una completa indipendenza tra le sezioni censuarie e necessariamente non riesce a catturare l'eventuale dipendenza spaziale tra sezioni vicine;
+- *propagazione incompleta dell'incertezza*: nella simulazione 2025 viene considerata soltanto l'incertezza del $RR$. Non sono propagate le incertezze relative alle concentrazioni modellate, ai tassi di mortalità, alla popolazione e alla funzione concentrazione-risposta;
 
-- *autocorrelazione temporale*: i valori di esposizione osservati in anni successivi per una medesima sezione censuaria non sono tra loro indipendenti, ma presentano autocorrelazione temporale che l'attuale procedura di bootstrap tenta di catturare tramite il ricampionamento della serie storica 2019-2025, senza tuttavia modellarla esplicitamente attraverso un impianto di serie storiche o processi spazio-temporali dedicati.
+- *interpretazione della simulazione storica*: i sette scenari annuali sono selezionati con uguale probabilità nonostante la presenza di un andamento temporale decrescente e di una possibile autocorrelazione. L'intervallo risultante è pertanto descrittivo e non deve essere interpretato come IC della stima 2025 o come previsione degli anni futuri.
 
 *Conclusioni metodologiche e possibili sviluppi futuri*
 
-Il percorso metodologico proposto — basato sulla disaggregazione a livello di sezione censuaria e sulla propagazione dell'incertezza tramite bootstrap — costituisce una struttura replicabile a supporto della programmazione regionale in materia di Ambiente e Sanità Pubblica.
+Il principale contributo metodologico dello studio consiste nell'applicazione della funzione di impatto alla massima granularità demografica disponibile prima dell'aggregazione regionale e nella separazione tra l'incertezza epidemiologica del rischio relativo e la variabilità degli scenari temporali di esposizione. Questa distinzione evita di combinare indiscriminatamente fonti di variabilità con significati differenti, migliora la trasparenza interpretativa dei risultati e rende la procedura replicabile a supporto della programmazione regionale in materia di ambiente e sanità pubblica.
 
-L'analisi affronta tuttavia limiti strutturali propri degli studi ecologici:
+Permangono, tuttavia, alcuni limiti strutturali propri delle analisi ecologiche su base territoriale:
 
-- *confondimento spaziale e collinearità:* difficoltà nell'isolare l'impatto sanitario dalle caratteristiche socio-demografiche e territoriali [@ramsey_ps:2019].
+* *confondimento spaziale e collinearità*: le caratteristiche socio-demografiche e territoriali possono essere associate sia all'esposizione sia all'esito sanitario, rendendo difficile isolare il contributo specifico dell'inquinante [@ramsey_ps:2019];
 
-- *Modifiable Areal Unit Problem (MAUP):* distorsione legata all'*effetto di scala* (l'aggregazione dei dati appiattisce le variabilità locali) e all'*effetto di zonalità* (i confini amministrativi non riflettono la reale dispersione fisica del $\text{NO}_2$).
+* *Modifiable Areal Unit Problem (MAUP)*: i risultati possono dipendere dalla scala geografica adottata e dalla delimitazione delle unità territoriali; l'aggregazione tende infatti ad appiattire la variabilità locale, mentre i confini amministrativi non coincidono necessariamente con la distribuzione fisica dell'$\mathrm{NO}_2$;
 
-- *spillover spaziale:* il calcolo dei casi attribuibili su singola unità presuppone l'indipendenza tra aree contigue, un'ipotesi semplificativa rispetto alla natura diffusiva degli inquinanti atmosferici.
+* *dipendenza e spillover spaziale*: le concentrazioni e le caratteristiche delle aree contigue non sono indipendenti. L'attuale valutazione conserva la configurazione spaziale delle esposizioni modellate, ma non rappresenta esplicitamente la dipendenza spaziale nell'errore di esposizione e nelle altre componenti d'incertezza.
 
-Per superare tali sfide, i principali sviluppi futuri indirizzeranno tre possibili direttrici metodologiche:
+Un primo sviluppo dovrebbe riguardare la *propagazione integrata dell'incertezza*. Oltre al $RR$, potrebbero essere incluse l'incertezza delle concentrazioni modellate, dei tassi epidemiologici di base e delle stime demografiche sezionali. In particolare, l'errore delle concentrazioni potrebbe essere caratterizzato attraverso il confronto tra le stime modellistiche e le misure delle stazioni di monitoraggio, propagando residui dotati di una struttura spaziale. I tassi di mortalità potrebbero invece essere stratificati per classi d'età e stabilizzati nelle piccole aree mediante modelli gerarchici o tecniche di *Empirical Bayes smoothing* [@blangiardo_cameletti:2015].
 
-- *inferenza causale spaziale (Spatial Causal Inference):* adozione di un framework di inferenza causale [@dominici_cas_evi:2017], tramite *propensity score*, IPTW o *g-computation* esteso al contesto spaziale [@akbari_sp_inf:2023], per isolare il ruolo dei confondenti socio-demografici in assenza di dati individuali;
+Un secondo sviluppo riguarda la *modellazione spaziale e spazio-temporale*. Strutture autoregressive spaziali, quali i modelli CAR/MICAR o Besag–York–Mollié, insieme a indicatori di autocorrelazione come l'$I$ di Moran, permetterebbero di rappresentare la dipendenza di vicinato e la covarianza residua [@blangiardo_cameletti:2015]. Sul piano temporale, la selezione uniforme degli anni potrebbe essere sostituita da un modello che descriva esplicitamente il trend e l'autocorrelazione delle concentrazioni. Ciò consentirebbe di distinguere la variabilità interannuale dal miglioramento strutturale della qualità dell'aria e, sulla base di ipotesi adeguate, di formulare scenari previsivi.
 
-- *modellazione bayesiana e autocorrelazione:* impiego di *Empirical Bayes Smoothing* per stabilizzare i tassi di mortalità nelle piccole aree, integrato da strutture autoregressive spaziali (modelli CAR/MICAR, Besag-York-Mollié) e indici di autocorrelazione ($I$ di Moran) [@blangiardo_cameletti:2015] per modellare la dipendenza di vicinato e la covarianza residua.
+Una terza direttrice è rappresentata dall'*inferenza causale spaziale* (*Spatial Causal Inference*). L'impiego di approcci quali *propensity score*, IPTW o *g-computation*, opportunamente estesi al contesto spaziale [@dominici_cas_evi:2017; @akbari_sp_inf:2023], potrebbe contribuire a controllare i confondenti socio-demografici e territoriali e a distinguere più chiaramente l'effetto attribuibile all'esposizione da quello delle caratteristiche delle popolazioni residenti. La natura aggregata dei dati continuerebbe comunque a richiedere cautela nell'interpretazione causale e impedirebbe un trasferimento automatico dei risultati al livello individuale.
 
-- *propagazione integrata incertezza:* estensione dello schema probabilistico di bootstrap mediante l'inclusione esplicita dell'incertezza associata ai tassi epidemiologici di base e alle stime demografiche sezionali.
+Nel complesso, l'estensione della propagazione dell'incertezza, l'adozione di modelli spaziali e spazio-temporali e l'integrazione di metodi di inferenza causale renderebbero la valutazione più solida e più adatta al supporto quantitativo delle politiche regionali di prevenzione ambientale e sanitaria.
+
 
 \newpage
 
