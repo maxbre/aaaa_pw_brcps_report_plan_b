@@ -59,7 +59,7 @@ La frequenza del Master in \textit{"Biostatistica per la Ricerca Clinica e la Pu
 
 \newpage
 
-*Valutazione di impatto sanitario da $\text{NO}_2$ atmosferico: analisi controfattuale ed incertezza di stima. Il caso studio della Regione Veneto.*
+*Valutazione di impatto sanitario dell’esposizione atmosferica a $\text{NO}_2$: scenario controfattuale e propagazione dell’incertezza. Il caso della Regione Veneto.*
 
 
 ## Sommario {.unnumbered .unlisted}
@@ -69,7 +69,7 @@ Il *project-work* propone una stima del numero di casi attribuibili a livello di
 
 \newpage
 
-*Health Impact Assessment of Atmospheric $\text{NO}_2$: Counterfactual Analysis and Estimation Uncertainty. The Case Study of the Veneto Region.*
+*Health Impact Assessment of Ambient $\text{NO}_2$ Exposure: Counterfactual Scenario and Uncertainty Propagation. The Case of the Veneto Region.*
 
 ## Abstract {.unnumbered .unlisted}
 
@@ -133,7 +133,7 @@ La variabili demografiche aggregate per sezione censuaria, rappresentate dalla p
 L'impatto sanitario è stato valutato tramite un coefficiente di esposizione calibrato sulla stima del Rischio Relativo ($RR$) desunto dalla letteratura internazionale OMS [@hrapie-2:2025], in particolare il $RR$ di *mortalità per cause respiratorie* (Codici ICD-10: J00-J99) nella classe d'età 30+, che risulta compreso tra il $3\%$ e il $7\%$, con un valore centrale pari al $5\%$, per ogni aumento della concentrazione di $10 \ \mu g~m^{-3}$. 
 L'assunzione della stima è che esista una *"trasportabilità"* del $RR$ da letteratura OMS sulla popolazione delle sezioni censuarie ISTAT della Regione Veneto.
 
-Per quantificare la relazione causale tra l'esposizione controfattuale ai livelli ambientali di *biossido di azoto* ($NO_2$) e la mortalità per cause respiratorie nella popolazione della classe 30+, *residente nelle sezioni censuarie ISTAT* in Regione Veneto, è stata implementata la formula di calcolo del software *WHO AirQ+*, ampiamente utilizzato nelle stime di impatto sanitario [@who_airq:2020].
+Per quantificare l'impatto sanitario di esposizione controfattuale ai livelli ambientali di *biossido di azoto* ($NO_2$) dovuto a mortalità per cause respiratorie nella popolazione della classe 30+, *residente nelle sezioni censuarie ISTAT* in Regione Veneto, è stata applicata la funzione concentrazione-risposta implementata nel software *WHO AirQ+* [@who_airq:2020].
 
 I *casi attribuibili* sono la quota di casi attesi associati al differenziale di esposizione e rappresentano i casi *potenzialmente evitabili* ogni anno con l’annullamento del differenziale di esposizione controfattuale. La formula di stima dei casi attribuibili ($AC$) e della frazione attribuibile ($AF$) presuppone una relazione di tipo *log-lineare* basata sulla funzione di concentrazione-risposta:
 
@@ -152,7 +152,7 @@ dove:
 
 Da notare che $\Delta C$ rappresenta il differenziale di esposizione in eccesso rispetto ad una soglia di riferimento controfattuale (target). Il $\Delta C$ di esposizione in eccesso rispetto alla soglia target di $10 \ \mu g/m^3$ impiegata nel presente studio [@who_aq:2021], è stato calcolato azzerando i valori nelle sezioni con livelli di inquinamento inferiori a tale soglia, evitando così di attribuire all'inquinante un *paradossale effetto protettivo*.
 
-La *frazione attribuibile* $AF$ è il rapporto tra casi attribuibili e casi attesi annui e rappresenta la quota di mortalità potenzialmente evitabile attraverso l’azzeramento del differenziale di esposizione controfattuale. In altri termini, $AF$ individua la percentuale dei casi osservati tra gli esposti che è causata dall'inquinamento sulla base della funzione concentrazione risposta.
+La *frazione attribuibile* $AF$ è il rapporto tra casi attribuibili e casi attesi annui e rappresenta la quota di mortalità potenzialmente evitabile attraverso l’azzeramento del differenziale di esposizione controfattuale. In altri termini, $AF$ rappresenta la quota di casi stimata come attribuibile all’esposizione eccedente il livello controfattuale, subordinatamente alla validità della funzione concentrazione-risposta e alle assunzioni del modello.
 
 Il numeratore di $AF$, il termine $(RR - 1)$, rappresenta il rischio in eccesso attribuibile al fattore ambientale (il "delta di pericolo" portato dal $NO_2$). Il denominatore $(RR)$ rappresenta la totalità del rischio "subito" dalla popolazione esposta. La frazione $\frac{RR - 1}{RR}$ indica la proporzione dei casi sanitari che non si sarebbero verificati (evitati) se l'esposizione all'inquinante fosse stata eliminata o ridotta sotto soglia.
 Dal punto di vista matematico si può dimostrare [^nota] che la valutazione di impatto sanitario fatta aggregando preventivamente i dati di esposizione (a livello di sezione censuaria, di comune o di regione) tende a *sovrastimare in modo sistematico* il reale impatto rispetto ad un'analisi condotta alla massima risoluzione spaziale disponibile (idealmente individuale!) e poi aggregata a posteriori. 
@@ -167,29 +167,19 @@ L'applicazione della formula di stima di impatto alla popolazione 30+ delle sezi
 
 - *stato attuale* ($E_{\text{reale}}$), considera la distribuzione osservata dell'esposizione ambientale all'inquinante $NO_2$ nel 2025; 
 
-- *controfattuale* ($E_{\text{cutoff}}$), considera una esposizione pari a $NO_2 = 10 ~ \mu g~m^{-3}$ per tutte le sezioni censuarie superiori a tale valore soglia.
+- *controfattuale* ($E_{\text{cft}}$), considera una esposizione pari a $NO_2 = 10 ~ \mu g~m^{-3}$ per tutte le sezioni censuarie superiori a tale valore soglia.
 
 Il $\Delta C$ associato a ciascuna sezione censuaria è rappresentato dalla differenza tra la concentrazione ambientale osservata (*stato attuale*) ed il valore soglia (*controfattuale*) fissato in $10 \ \mu g/m^3$, che rappresenta il livello ambientale di riferimento per la media annuale previsto dalle linee guida OMS sulla qualità dell'aria [@who_aq:2021], al fine di escludere significativi effetti sulla salute.
 
-*Propagazione incertezza (bootstrap)*
+*Propagazione incertezza (simulazione Monte Carlo)*
 
-Per il calcolo degli intervalli di confidenza al 95% (IC 95%) della stima puntuale del numero di casi attribuibili, è stata implementata una procedura di *non-parametric bootstrap* che ha integrato due distinte fonti di incertezza:
+Al fine di distinguere l’incertezza epidemiologica dalla variabilità temporale dell’esposizione, sono state condotte due analisi probabilistiche separate. 
 
-- *epidemiologica*, epidemiologica, valutata estraendo, ad ogni iterazione di bootstrap, il Rischio Relativo ($RR$) da una distribuzione log-normale incentrata sul valore centrale OMS ($RR = 1{.}05$);
+Nella prima, riferita specificamente al 2025, le concentrazioni modellate, la popolazione e i tassi di mortalità sono stati mantenuti fissi, mentre il rischio relativo è stato estratto da una distribuzione lognormale parametrizzata sulla stima centrale e sul relativo intervallo di confidenza OMS/HRAPIE-2. 
+La distribuzione risultante rappresenta l’incertezza epidemiologica associata alla stima del carico sanitario nel 2025.
 
-- *temporale*, valutata tramite l'introduzione della "perturbazione ambientale" conseguente all'estrazione casuale con reinserimento del valore medio annuale di $\text{NO}_2$ per ciascuna sezione censuaria, riferito alla serie storica 2019-2025.
+Nella seconda analisi, finalizzata a descrivere la variabilità storica del carico sanitario, a ogni iterazione è stato estratto con reinserimento uno degli scenari annuali di esposizione compresi tra il 2019 e il 2025. L’anno estratto è stato applicato simultaneamente a tutte le sezioni censuarie, preservando la configurazione spaziale delle concentrazioni osservata nel corrispondente anno. Anche in questa analisi il rischio relativo è stato estratto dalla relativa distribuzione lognormale. I percentili della distribuzione ottenuta costituiscono un intervallo di simulazione riferito alla combinazione tra variabilità storica dell’esposizione e incertezza epidemiologica e non un intervallo di confidenza specifico per l’anno 2025.
 
-Per garantire la correttezza metodologica della simulazione probabilistica, la procedura di bootstrap non parametrica include una fase di *calibrazione della popolazione totale*.
-
-Nel ricampionamento con reinserimento delle unità territoriali (sezioni di censimento), la somma delle popolazioni delle unità estratte in ogni iterazione ($P_{\text{boot}}$) varia inevitabilmente attorno alla media. Poiché le sezioni censuarie presentano dimensioni demografiche differenti, l'estrazione casuale di un numero maggiore di sezioni ad alta o bassa densità abitativa altera la dimensione del bacino di popolazione complessivo. 
-Se quindi i casi attribuibili ($AC$) venissero calcolati direttamente su $P_{\text{boot}}$, l'ampiezza dell'intervallo di confidenza finale rifletterebbe un artefatto del campionamento demografico, anziché la vera incertezza dell'impatto sanitario.
-
-Per risolvere questa distorsione, ogni replica bootstrap applica un fattore di calibrazione ($w_b$):
-$w_b = \frac{P_{\text{regionale}}}{P_{\text{boot}}}$,
-dove $P_{\text{regionale}}$ è la popolazione 30+ effettiva della Regione Veneto (parametro fisso e privo di incertezza campionaria). 
-La popolazione 30+ di ogni unità estratta viene riproporzionata ($P_{i, \text{cal}} = P_i \cdot w_b$), garantendo che in ogni replica valga esattamente il vincolo:$\sum_{i} P_{i, \text{cal}} = P_{\text{regionale}}$.
-
-Gli intervalli di confidenza al 95% sono stati stimati con il metodo dei percentili (2,5° e 97,5° percentile) sulla distribuzione empirica generata dal bootstrapping.
 
 *Software*
 
@@ -402,60 +392,60 @@ Nella @tbl-ac-prov viene riportato per l'anno 2025 il dettaglio stratificato per
 
 : Stima del numero di casi attribuibili/anno (AC), frazione attribuibile (AF) stratificati per Provincia (anno 2025). {#tbl-ac-prov}
 
-E' necessario precisare che gli estremi $\text{AC}_{\text{low}}$ e $\text{AC}_{\text{upp}}$ riportati nella @tbl-ac-prov rappresentano dei valori deterministici, calcolati direttamente a partire dall'intervallo di confidenza del $RR$ da letteratura OMS ($1.03 - 1.07$). 
+E' necessario precisare che gli estremi $\text{AC}_{\text{low}}$ e $\text{AC}_{\text{upp}}$ riportati nella @tbl-ac-prov rappresentano dei valori deterministici, calcolati direttamente dall'intervallo di variabilità del $RR$ da letteratura OMS ($1.03 - 1.07$). 
 
-Per tentare di superare la rigidità di questa stima di tipo deterministico ed estendere l'analisi ad una distribuzione empirica della variabilità di stima, è stata implementata la procedura di *non-parametric bootstrap* descritta nella sezione @sec-methods. 
+La stima puntuale riferita al 2025, ottenuta applicando il valore centrale del rischio relativo (1.05) è stata confrontata con una simulazione Monte Carlo nella quale il RR è stato estratto da una distribuzione lognormale parametrizzata sul relativo intervallo di confidenza. Poiché esposizione, popolazione e mortalità basale sono mantenute fisse, la simulazione propaga esclusivamente l’incertezza epidemiologica del RR. La sostanziale corrispondenza tra la stima deterministica e la mediana simulata, nonché tra gli estremi deterministici e i percentili della simulazione conferma la coerenza numerica dell’implementazione.
 
-L'approccio deterministico fornisce una stima puntuale dei casi attribuibili ($AC$) mentre l'applicazione del bootstrap non parametrico permette di propagare l'incertezza parametrica del rischio relativo ($RR$) e della variabilità temporale delle esposizioni, consentendo una caratterizzazione probabilistica dell'impatto sanitario e fornendo intervalli di confidenza al $95\%$ indispensabili per una robusta valutazione del rischio in Sanità Pubblica.
+La @fig-sim-2025 illustra la curva di densità di probabilità associata alla distribuzione empirica dei casi attribuibili generata con il processo di simulazione relativo all'anno 2025.
 
-La @fig-boot-spattemp illustra la curva di densità di probabilità associata alla distribuzione empirica dei casi attribuibili generata con il processo di bootstrap non parametrico. La linea tratteggiata rossa identifica la stima centrale della distribuzione pari a circa 148 casi/anno. Le due linee verticali tratteggiate in verde delimitano l'intervallo di confidenza empirico al 95%: l'estremo inferiore ($\text{IC } 95\%\text{ inf.}$) si attesta in circa 86 casi/anno ($2{.}5^\circ$ percentile), mentre l'estremo superiore ($\text{IC } 95\%\text{ sup.}$) raggiunge circa 211 casi/anno ($97{.}5^\circ$ percentile). L'area ombreggiata sottesa alla curva racchiude la massa di probabilità centrale corrispondente all'intervallo di confidenza del 95%. Infine, la linea punteggiata (in grigio) corrispondente a circa 109 casi/anno rappresenta l'entità della stima deterministica puntuale discussa in precedenza per l'anno 2025.
-
+La linea tratteggiata rossa identifica la mediana simulata pari a circa 109 casi/anno. Le due linee verticali tratteggiate in verde delimitano l'intervallo di simulazione al 95%: l'estremo inferiore ($\text{IC } 95\%\text{ inf.}$) si attesta in circa 68 casi/anno ($2{.}5^\circ$ percentile), mentre l'estremo superiore ($\text{IC } 95\%\text{ sup.}$) raggiunge circa 150 casi/anno ($97{.}5^\circ$ percentile). L'area ombreggiata sottesa alla curva racchiude la massa di probabilità centrale corrispondente all'intervallo di simulazione al 95%.
 
 ```{r}
-#| label: fig-boot-spattemp
-#| fig-cap: "Stima bootstrap (AC) casi attribuibili/anno in Regione Veneto."
+#| label: fig-sim-2025
+#| fig-cap: "Simulazione distibuzione (AC) casi attribuibili/anno in Regione Veneto nel 2025."
 #| fig-align: "center"
-#| out-height: "0.4\\textheight"
+#| out-height: "0.6\\textheight"
 #| out-width: "!\\textheight"
 #| echo: false
 #| fig-pos: "H"
 
-knitr::include_graphics("./fig_tab/ac_resp_bootstrap_density_spat_temp_no_labs_e_stima_puntuale.png")
+knitr::include_graphics("./fig_tab/ac_sim_2025.png")
 
 ```
 
-L'incremento del valore centrale della distribuzione bootstrap (circa $148$ casi/anno) rispetto alla stima deterministica riferita all'anno 2025 (circa $109$ casi/anno) è riconducibile all'effetto della variabilità introdotta con il processo di bootstrapping e determinata dall'inclusione delle concentrazioni di $\text{NO}_2$ degli anni precedenti (2019-2024), storicamente più elevate rispetto al 2025, integrata con la propagazione *log-normale* del rischio epidemiologico $RR$ che ha l'effetto complessivo di traslare la distribuzione verso valori di impatto più elevati.
+Per la stima 2025 è stata applicata una simulazione Monte Carlo finalizzata alla propagazione dell’incertezza epidemiologica del rischio relativo. Separatamente, la variabilità delle esposizioni nel periodo 2019–2025 è stata valutata mediante una simulazione Monte Carlo con ricampionamento degli scenari annuali di esposizione. 
+La simulazione storica aggiunge la variabilità dell’esposizione tra il 2019 e il 2025 e risponde ad una domanda diversa: "Qual è l'entità del carico sanitario sulla stessa popolazione e con gli stessi tassi di mortalità se l’esposizione ambientale risulta quella di un anno scelto casualmente tra il 2019 e il 2025?".
 
-I percentili $2{.}5^\circ$ e $97{.}5^\circ$ della distribuzione empirica generata con il processo di bootstrap definiscono l'intervallo di confidenza al 95% (IC 95%) e forniscono una quantificazione dell'incertezza più robusta rispetto ai calcoli deterministici fissi riferiti al solo anno 2025.
-
-In @tbl-boot sono riportate le metriche descrittive della distribuzione empirica bootstrap in termini di numero di casi attribuibili/anno (AC), frazione attribuibile/anno (AF).
+La @fig-sim-hist ... qui commento
 
 ```{r}
-#| label: tbl-boot
-#| tbl-cap: "Sintesi metriche della distribuzione bootstrap probabilistica."
+#| label: fig-sim-hist
+#| fig-cap: "Simulazione distibuzione (AC) casi attribuibili/anno in Regione Veneto nel periodo 2019-2025."
+#| fig-align: "center"
+#| out-height: "0.6\\textheight"
+#| out-width: "!\\textheight"
 #| echo: false
-#| message: false
-#| warning: false
+#| fig-pos: "H"
 
+knitr::include_graphics("./fig_tab/ac_sim_hist.png")
 
-summary_table <- read_csv('./fig_tab/tbl_bootstrap_summary_short.csv')
-
-summary_table  |> 
-  mutate(across(c(media, mediana, sd, ci_025, ci_975, ci_95), ~ round(.x, 2))) |> 
-  kable(
-    col.names = c("Metrica", "Media", "Mediana", "SD", "IC 2.5%", "IC 97.5%", "IC 95%"),
-    align = c("l", "c", "c", "c", "c", "c", "c")
-  )
-  
 ```
+
+L’intervallo della simulazione 2025 deriva solamente dal RR. La maggiore ampiezza dell’intervallo storico deriva anche dalle differenze di esposizione tra gli anni.
+
+Poiché popolazione e tassi vengono mantenuti fissi, le differenze tra gli anni sono attribuibili esclusivamente alle diverse concentrazioni modellate di $NO_"$. È quindi una forma di standardizzazione utile per mostrare l’effetto del cambiamento ambientale.
+
+La simulazione storica non modifica la stima specifica del 2025, ma la colloca nel contesto della variabilità ambientale osservata tra il 2019 e il 2025. Il confronto mostra quanto il carico sanitario attribuibile dipenda dalla scelta dell’anno di esposizione e consente di valutare se il 2025 rappresenti uno scenario tipico oppure particolarmente favorevole rispetto al periodo considerato.
 
 ## Discussione e conclusioni
 
-Dal punto di vista epidemiologico, la stima ottenuta con la valutazione di impatto sanitario rappresenta il numero di *casi/anno teorici*, cioè i decessi evitabili nell'eventualità in cui tutte le sezioni censuarie della Regione Veneto siano esposte ad un livello di concentrazione ambientale di $NO_2 \leq 10\ \mu g~m^{-3}$, che rappresenta la soglia OMS stabilita dalle attuali evidenze scientifiche per escludere significativi (misurabili) effetti sanitari (malattie per cause respiratorie codici ICD-10: J00-J99).
+Dal punto di vista epidemiologico, la stima ottenuta con la valutazione di impatto sanitario rappresenta il numero di *casi/anno teorici*, cioè i decessi evitabili nell'eventualità in cui tutte le sezioni censuarie della Regione Veneto siano esposte ad un livello di concentrazione ambientale di $NO_2 \leq 10\ \mu g~m^{-3}$, corrispondente al livello guida OMS 2021 per la media annuale assunta nel presente studio come concentrazione controfattuale di riferimento. Non rappresenta necessariamente una soglia biologica al di sotto della quale il rischio sanitario sia nullo.
 
-Il confronto tra la stima puntuale riferita all'anno 2025 (circa 109 casi/anno) e la stima centrale ottenuta dalla procedura di bootstrap non parametrico (circa 148 casi/anno, IC 95% 86–211) mette in luce un aspetto metodologico significativo: affidarsi al solo dato deterministico dell'ultimo anno disponibile rischia di sottostimare il carico sanitario atteso, poiché non tiene conto né della variabilità storica dell'esposizione (concentrazioni di NO2 nel periodo 2019-2025, sistematicamente più elevate nei primi anni della serie), né dell'incertezza epidemiologica associata al Rischio Relativo ($RR$).
+----
 
-Da un punto di vista di supporto alle decisioni di Sanità Pubblica, la stima più prudente e metodologicamente robusta da comunicare ai decisori è quella ottenuta dal bootstrap che integra le due fonti di incertezza (epidemiologica, temporale).
+La distribuzione ottenuta includendo gli anni 2019–2025 presenta un valore centrale superiore alla stima specifica del 2025, poiché incorpora anni caratterizzati da concentrazioni mediamente più elevate. Le due quantità rispondono pertanto a domande parzialmente differenti.
+
+----
 
 L'analisi dettagliata per l'anno 2025 evidenzia alcuni aspetti interessanti che derivano da una marcata eterogeneità territoriale del carico sanitario attribuibile (@tbl-ac-prov). 
 Le province di Padova e Venezia concentrano la quota maggiore di casi attribuibili (rispettivamente circa 27 e 24 casi/anno, con AF pari al 3,5% e 3,8% dei casi attesi), coerentemente con i più alti differenziali di esposizione rispetto alla soglia controfattuale OMS (@tbl-diff-prov). Al contrario, la Provincia di Belluno presenta un impatto sanitario pressoché trascurabile (AF = 0,1%), risultato atteso vista la ridotta pressione emissiva e le caratteristiche orografiche che la rendono un territorio meno soggetto all'accumulo inquinante tipico delle zone di pianura. 
