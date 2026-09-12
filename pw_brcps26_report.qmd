@@ -570,24 +570,29 @@ Questa sezione riprende la nota metodologica richiamata in @sec-methods e illust
 La funzione di impatto utilizzata nel presente studio e implementata in *AirQ+* è:
 
 $$f(\Delta C) = 1 - e^{-\beta \cdot \Delta C}$$
-
 Se, infatti, calcoliamo la derivata prima e seconda della funzione rispetto a $\Delta C$, si ottiene:
 
-$$f'(\Delta C) = \beta e^{-\beta \cdot \Delta C} > 0$$
-$$f''(\Delta C) = -\beta^2 e^{-\beta \cdot \Delta C} < 0$$
-La derivata prima positiva indica che la funzione è monotonicamente crescente: all'aumentare del differenziale di esposizione aumentano i casi attribuibili. La derivata seconda negativa indica che la funzione è strettamente concava e presenta incrementi marginali decrescenti.
-
-In altri termini, a parità delle altre condizioni, incrementi successivi di uguale ampiezza in $\Delta C$ producono aumenti progressivamente più contenuti della frazione attribuibile.
+$$
+f'(\Delta C) = \beta e^{-\beta \cdot \Delta C} > 0,
+\qquad
+f''(\Delta C) = -\beta^2 e^{-\beta \cdot \Delta C} < 0
+$$
+La derivata prima positiva indica che la frazione attribuibile aumenta
+all'aumentare del differenziale di esposizione; a parità di decessi
+attesi, aumentano di conseguenza anche i casi attribuibili. La derivata
+seconda negativa indica che la funzione è strettamente concava e presenta
+incrementi marginali decrescenti.
 
 La @fig-f-who riproduce graficamente l'andamento della funzione $f(\Delta C)$ nell'intervallo $\Delta C \in [0, 100] ~\mu g~ m^{-3}$, rendendo visivamente evidenti la monotonia crescente e la concavità appena dimostrate, con la retta tangente nell'origine tracciata come riferimento per apprezzare meglio il progressivo rallentamento dei rendimenti marginali.
+
 
 ```{r}
 #| label: fig-f-who
 #| echo: false
 #| message: false
 #| warning: false
-#| fig-cap: Funzione di stima dell'impatto sanitario in funzione di $\Delta C$
-#| fig-height: 3
+#| fig-cap: 'Funzione di stima dell’impatto sanitario in funzione di $\Delta C$'
+#| fig-height: 2.5
 #| fig-width: 5
 #| fig-pos: "H"
 
@@ -626,24 +631,98 @@ ggplot(df, aes(x = delta_c, y = f_val)) +
 
 ```
 
-La *disuguaglianza di Jensen* [@casella2002statistical] mette in relazione il valore atteso di una funzione con la funzione del valore atteso. Se indichiamo con $\varphi$ una *funzione concava* e con $X$ una variabile casuale con valore atteso finito, vale la seguente relazione:
-
-$$E[\varphi(X)] \le \varphi(E[X])$$
-
-Poiché $f(\Delta C)$ è strettamente concava sul dominio $\Delta C\geq0$, la disuguaglianza può essere applicata ai differenziali non negativi tra le unità territoriali:
-
-$$E[f(\Delta C)] \le f(E[\Delta C])$$
-Con pesi $w_i$ proporzionali ai decessi attesi ($w_i=E_i/\sum_iE_i$), il confronto pertinente è:
+La *disuguaglianza di Jensen* [@casella2002statistical] mette in
+relazione il valore atteso di una funzione con la funzione del valore
+atteso. Se indichiamo con $\varphi$ una funzione concava e con $X$ una
+variabile casuale con valore atteso finito, vale:
 
 $$
-\sum_iw_i f(\Delta C_i)\leq f\!\left(\sum_iw_i\Delta C_i\right).
+\mathbb{E}[\varphi(X)]
+\leq
+\varphi\left(\mathbb{E}[X]\right).
+$$
+
+Poiché $f(\Delta C)$ è strettamente concava sul dominio
+$\Delta C\geq0$, la disuguaglianza può essere applicata ai differenziali
+non negativi tra le unità territoriali:
+
+$$
+\mathbb{E}[f(\Delta C)]
+\leq
+f\left(\mathbb{E}[\Delta C]\right).
+$$
+
+Per applicare questa relazione alla frazione attribuibile regionale è
+necessario specificare rispetto a quali pesi siano calcolati i valori
+attesi. Una media aritmetica attribuirebbe la stessa importanza a ogni
+sezione censuaria, indipendentemente dalla popolazione e dalla mortalità
+basale, e non corrisponderebbe pertanto all'indicatore regionale
+utilizzato nello studio.
+
+Infatti, poiché per ciascuna sezione:
+
+$$
+AC_i=E_i f(\Delta C_i),
+$$
+
+la frazione attribuibile regionale è:
+
+$$
+AF_{\mathrm{Reg}}
+=
+\frac{\sum_i AC_i}{\sum_i E_i}
+=
+\frac{\sum_i E_i f(\Delta C_i)}{\sum_i E_i}.
+$$
+
+Definendo:
+
+$$
+w_i=\frac{E_i}{\sum_j E_j},
+\qquad
+w_i\geq0,
+\qquad
+\sum_i w_i=1,
+$$
+
+si ottiene:
+
+$$
+AF_{\mathrm{Reg}}
+=
+\sum_i w_i f(\Delta C_i).
+$$
+
+I pesi non sono dunque introdotti arbitrariamente per applicare la
+disuguaglianza di Jensen, ma derivano direttamente dalla definizione
+della frazione attribuibile regionale. Essi esprimono il contributo di
+ciascuna sezione al totale regionale dei decessi attesi.
+
+Considerando la distribuzione discreta che assegna alla sezione $i$ il
+peso $w_i$, i due valori attesi ponderati sono:
+
+$$
+\mathbb{E}_w[f(\Delta C)]=\sum_i w_i f(\Delta C_i),
+\qquad \text{e} \qquad
+\mathbb{E}_w[\Delta C]=\sum_i w_i\Delta C_i.
+$$
+La forma ponderata della disuguaglianza di Jensen diventa pertanto:
+
+$$
+\sum_i w_i f(\Delta C_i)
+\leq
+f\left(\sum_i w_i\Delta C_i\right).
 $$
 
 La relazione mette a confronto due strategie:
 
-- **$\sum_iw_i f(\Delta C_i)$**: la frazione attribuibile calcolata separatamente per ciascuna sezione e successivamente aggregata con i pesi dei decessi attesi;
+- **$\sum_i w_i f(\Delta C_i)$**: la frazione attribuibile calcolata
+  separatamente per ciascuna sezione e successivamente aggregata
+  utilizzando come pesi i decessi attesi;
 
-- **$f(\sum_iw_i\Delta C_i)$**: la frazione calcolata una sola volta sul differenziale medio ponderato, trattando l'area come omogenea.
+- **$f\left(\sum_i w_i\Delta C_i\right)$**: la frazione calcolata una
+  sola volta sul differenziale medio ponderato, trattando l'area come
+  omogenea.
 
 Con gli stessi pesi e con $\Delta C_i$ già definito mediante il troncamento a zero, la prima quantità è minore o uguale alla seconda.
 
@@ -652,16 +731,20 @@ L'uguaglianza vale quando il differenziale è costante nelle unità con peso pos
 L'applicazione sezionale rimane quindi preferibile perché conserva l'eterogeneità disponibile e utilizza correttamente i decessi attesi come pesi; la disuguaglianza di Jensen descrive una specifica conseguenza matematica dell'aggregazione, non una regola universale sulla direzione di ogni possibile errore ecologico.
 
 Un esempio numerico semplice chiarisce bene il meccanismo.
+
 Si considerino due sole sezioni censuarie con $\Delta C_1 = 2 \ \mu g/m^3$ e $\Delta C_2 = 18 \ \mu g/m^3$
-($\overline{\Delta C} = 10$) e $\beta = 0{.}01$.  Si ottiene:
+($\overline{\Delta C} = 10$) e $\beta = 0{.}01$.  
+
+Si ottiene:
+
 $$f(\Delta C_1) = f(2) = 1 - e^{-0{.}02} \approx 0{.}0198$$
 $$f(\Delta C_2) = f(18) = 1 - e^{-0{.}18} \approx 0{.}1647$$
 
-con media $E[f(\Delta C)] \approx 0{.}0923$, mentre:
+con media aritmetica $\mathbb{E}[f(\Delta C)] \approx 0{.}0923$.
 
-$$f(\overline{\Delta C}) = f(10) = 1 - e^{-0{.}1} \approx 0{.}0952$$
-
-cioè, la stima aggregata risulta, seppur di poco, superiore.
+Invece: 
+$f(\overline{\Delta C}) = f(10) = 1 - e^{-0{.}1} \approx 0{.}0952$
+cioè, il valore ottenuto applicando la funzione al differenziale medio risulta, seppure di poco, superiore alla media dei valori calcolati separatamente.
 
 Il grafico di una funzione concava si trova sempre *al di sopra* della corda che congiunge due suoi punti qualsiasi. 
 Nell'esempio numerico, $\Delta C = 10$ è esattamente il punto medio tra $\Delta C_1 = 2$ e $\Delta C_2 = 18$; di conseguenza, il valore della corda in quel punto coincide con la media dei due benefici calcolati separatamente, $E[f(\Delta C)] \approx 0{.}0923$.
