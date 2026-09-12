@@ -554,7 +554,6 @@ Una terza direttrice è rappresentata dall'*inferenza causale spaziale* (*Spatia
 
 Nel complesso, l'estensione della propagazione dell'incertezza, l'adozione di modelli spaziali e spazio-temporali e l'integrazione di metodi di inferenza causale renderebbero la valutazione più solida e più adatta al supporto quantitativo delle politiche regionali di prevenzione ambientale e sanitaria.
 
-
 ## Bibliografia
 
 ::: {#refs}
@@ -639,11 +638,9 @@ $$
 f\left(\mathbb{E}[\Delta C]\right).
 $$
 
-In termini applicativi, ciò significa che calcolare la frazione attribuibile separatamente nelle diverse unità territoriali e aggregare successivamente i risultati non equivale ad applicare direttamente la funzione al differenziale medio di esposizione. 
+In termini applicativi, ciò significa che calcolare la frazione attribuibile separatamente nelle diverse unità territoriali e aggregare successivamente i risultati non equivale ad applicare direttamente la funzione al differenziale medio di esposizione. A parità di criteri di ponderazione, quest'ultima procedura restituisce un valore maggiore o uguale a quello ottenuto mediante il calcolo sezionale.
 
-Utilizzando in entrambi i calcoli gli stessi pesi, la frazione attribuibile ottenuta applicando la funzione al differenziale medio ponderato è maggiore o uguale a quella risultante dal calcolo separato per ciascuna sezione e dalla successiva aggregazione.
-
-Nella presente analisi, il differenziale medio rilevante non è una semplice media aritmetica delle sezioni censuarie. Il contributo di ciascuna sezione al risultato regionale è commisurato al numero di decessi attesi, determinato dalla popolazione residente di età pari o superiore a 30 anni e dal tasso basale di mortalità della provincia di appartenenza. Le sezioni con un numero maggiore di decessi attesi incidono pertanto maggiormente sulla frazione attribuibile regionale. 
+Nella presente analisi, la media pertinente non è una semplice media aritmetica tra le sezioni censuarie. Il contributo di ciascuna sezione alla frazione attribuibile regionale è proporzionale al numero di decessi attesi nella stessa sezione, che dipende sia dalla popolazione residente di età pari o superiore a 30 anni sia dal corrispondente tasso provinciale di mortalità basale. Le sezioni nelle quali è atteso un numero maggiore di decessi incidono quindi maggiormente sul risultato regionale. Tale ponderazione non costituisce una scelta statistica aggiuntiva, ma deriva direttamente dalla definizione della frazione attribuibile regionale come rapporto tra il totale dei casi attribuibili e il totale dei decessi attesi.
 
 Ne consegue che l'applicazione della funzione al differenziale medio ponderato, trattando la regione come un'area omogenea, può produrre una stima superiore a quella ottenuta applicando la funzione separatamente alle sezioni e sommando successivamente i casi attribuibili. I due risultati coincidono quando il differenziale di esposizione è costante nelle sezioni che contribuiscono al calcolo.
 
