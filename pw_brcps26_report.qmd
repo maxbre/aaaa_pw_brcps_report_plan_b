@@ -59,7 +59,7 @@ La frequenza del Master in \textit{"Biostatistica per la Ricerca Clinica e la Pu
 
 \newpage
 
-*Valutazione di impatto sanitario dell’esposizione atmosferica a $\text{NO}_2$: scenario controfattuale e propagazione dell’incertezza. Il caso della Regione Veneto.*
+*Valutazione di impatto sanitario dell’inquinamento atmosferico da $NO_2$: scenario controfattuale e propagazione dell’incertezza. Il caso della Regione Veneto.*
 
 
 ## Sommario {.unnumbered .unlisted}
@@ -68,7 +68,7 @@ L'inquinamento atmosferico da biossido di azoto ($NO_2$) è associato in lettera
 
 \newpage
 
-*Health Impact Assessment of Ambient $\text{NO}_2$ Exposure: Counterfactual Scenario and Uncertainty Propagation. The Case of the Veneto Region.*
+*Health impact assessment of ambient $NO_2$ pollution: counterfactual scenario and uncertainty propagation. A case study of the Veneto Region.*
 
 ## Abstract {.unnumbered .unlisted}
 
