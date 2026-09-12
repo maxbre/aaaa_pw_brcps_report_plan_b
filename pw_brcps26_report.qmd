@@ -121,7 +121,7 @@ $$
 
 dove $N_{ia}$ è la popolazione della sezione $i$ nella classe d'età $a$ e $B_{p(i),a}$ è il tasso di mortalità respiratoria della medesima classe nella provincia $p(i)$. Questa formulazione terrebbe conto della forte dipendenza della mortalità respiratoria dall'età e delle differenze nella composizione demografica tra sezioni.
 
-Nell'assetto informativo attualmente disponibile per lo studio non è, tuttavia, presente una serie completa di tassi provinciali di mortalità respiratoria età-specifici, coerente per definizione dell'esito, classi d'età, periodo e denominatori demografici. Non è stato quindi possibile applicare una standardizzazione indiretta correttamente allineata ai dati di popolazione sezionale. La scelta non dipende dalla scarsa numerosità dei decessi osservati nelle singole sezioni: una standardizzazione indiretta impiegherebbe infatti tassi esterni e non richiederebbe di stimare tassi sezionali instabili.
+Nell'assetto informativo attualmente disponibile per lo studio non è, tuttavia, presente una serie completa di tassi provinciali di mortalità respiratoria età-specifici, coerente per definizione dell'esito, classi d'età, periodo di riferimento e popolazione utilizzata per il calcolo dei tassi. Non è stato quindi possibile applicare una standardizzazione indiretta correttamente allineata ai dati di popolazione sezionale. La scelta non dipende dalla scarsa numerosità dei decessi osservati nelle singole sezioni: una standardizzazione indiretta impiegherebbe infatti tassi esterni e non richiederebbe di stimare tassi sezionali instabili.
 
 È stata pertanto adottata la seguente approssimazione:
 
@@ -511,7 +511,8 @@ L'interpretazione dei risultati deve considerare alcune limitazioni rilevanti:
 
 - *trasportabilità dei parametri*: il $RR$ deriva dalla letteratura internazionale, mentre i tassi di mortalità provinciali sono attribuiti alle sezioni censuarie; entrambe le operazioni presuppongono una trasportabilità che potrebbe non riflettere differenze locali nella struttura demografica, nella suscettibilità e nell'accesso alle cure;
 
-- *mortalità basale e mancato aggiustamento per età*: nell'assetto informativo attuale non sono disponibili tassi provinciali età-specifici di mortalità respiratoria pienamente coerenti con esito, periodo, classi demografiche e denominatori dello studio. I tassi grezzi 30+ incorporano la composizione per età della provincia e, se trasferiti alle sezioni, possono sovrastimare i decessi attesi nelle aree relativamente più giovani e sottostimarli in quelle più anziane. Tale errore si trasferisce proporzionalmente ai casi attribuibili;
+- *mortalità basale e mancato aggiustamento per età*: nell'assetto informativo attuale non sono disponibili tassi provinciali età-specifici di mortalità respiratoria pienamente coerenti, per esito, periodo e articolazione per età, con i dati demografici utilizzati nello studio.
+I tassi grezzi 30+ incorporano la composizione per età della provincia e, se trasferiti alle sezioni, possono sovrastimare i decessi attesi nelle aree relativamente più giovani e sottostimarli in quelle più anziane. Tale errore si trasferisce proporzionalmente ai casi attribuibili;
 
 - *allineamento temporale*: popolazione sezionale, tassi di mortalità ed esposizione si riferiscono rispettivamente al 2021, al 2024 e al 2025. La VIS descrive pertanto una popolazione sintetica costruita con le fonti disponibili e assume una sufficiente stabilità nel breve periodo, non il numero osservato di decessi attribuibili nel 2025;
 
@@ -541,17 +542,17 @@ Un primo sviluppo dovrebbe riguardare la *specificazione della mortalità basale
 
 In attesa di tali dati, una verifica di sensibilità utile consiste nel ricalcolare l'impatto impiegando alternativamente i tassi grezzi provinciali e un unico tasso grezzo regionale. Questo confronto non risolve il confondimento per età, ma consente di quantificare quanto la sola scelta della scala territoriale del tasso basale influenzi la stima regionale e i confronti provinciali.
 
-Oltre al $RR$, potranno essere incluse l'incertezza delle concentrazioni modellate, dei tassi epidemiologici di base e delle stime demografiche sezionali. L'errore delle concentrazioni potrebbe essere caratterizzato confrontando le stime modellistiche con una granularità più fine, da realizzare attraverso tecniche di data fusion con le misure delle stazioni di monitoraggio di qualità dell'aria e propagando i residui dotati di struttura spaziale. 
-Qualora fossero disponibili conteggi e denominatori sufficientemente dettagliati, i tassi basali potrebbero essere stabilizzati mediante modelli gerarchici o tecniche di *Empirical Bayes smoothing* [@blangiardo_cameletti:2015]. Queste tecniche sarebbero utili per stime locali derivate da dati sparsi, ma non sostituiscono l'indisponibilità delle necessarie informazioni età-specifiche.
+Oltre al $RR$, potranno essere incluse l'incertezza delle concentrazioni modellate, dei tassi epidemiologici di base e delle stime demografiche sezionali. L'errore delle concentrazioni potrebbe essere caratterizzato confrontando le stime modellistiche con una granularità più fine, da realizzare attraverso tecniche di data fusion con le misure delle stazioni di monitoraggio di qualità dell'aria e propagazione dei residui dotati di struttura spaziale. 
+
+Qualora fossero disponibili, per classi d’età e piccole aree, sia i conteggi dei decessi sia le corrispondenti popolazioni a rischio, i tassi basali potrebbero essere stabilizzati mediante tecniche di *Empirical Bayes Smoothing* [@marshall:1991] oppure mediante modelli gerarchici bayesiani spaziali o spazio-temporali stimati con INLA [@blangiardo_cameletti:2015].
+
+Queste tecniche sarebbero utili per stime locali derivate da dati sparsi, ma non sostituiscono l'indisponibilità delle necessarie informazioni età-specifiche.
 
 Un secondo sviluppo riguarda la *modellazione spaziale e spazio-temporale*. Strutture autoregressive spaziali, quali i modelli CAR/MICAR o Besag–York–Mollié, insieme a indicatori di autocorrelazione come l'$I$ di Moran, permetterebbero di rappresentare la dipendenza di vicinato e la covarianza residua [@blangiardo_cameletti:2015]. Sul piano temporale, la selezione uniforme degli anni potrebbe essere sostituita da un modello che descriva esplicitamente il trend e l'autocorrelazione delle concentrazioni. Ciò consentirebbe di distinguere la variabilità interannuale dal miglioramento strutturale della qualità dell'aria e, sulla base di ipotesi adeguate, di formulare scenari previsivi.
 
 Una terza direttrice è rappresentata dall'*inferenza causale spaziale* (*Spatial Causal Inference*). L'impiego di approcci quali *propensity score*, IPTW o *g-computation*, opportunamente estesi al contesto spaziale [@dominici_cas_evi:2017; @akbari_sp_inf:2023], potrebbe contribuire a controllare i confondenti socio-demografici e territoriali e a distinguere più chiaramente l'effetto attribuibile all'esposizione da quello delle caratteristiche delle popolazioni residenti. La natura aggregata dei dati continuerebbe comunque a richiedere cautela nell'interpretazione causale e impedirebbe un trasferimento automatico dei risultati al livello individuale.
 
 Nel complesso, l'estensione della propagazione dell'incertezza, l'adozione di modelli spaziali e spazio-temporali e l'integrazione di metodi di inferenza causale renderebbero la valutazione più solida e più adatta al supporto quantitativo delle politiche regionali di prevenzione ambientale e sanitaria.
-
-
-\newpage
 
 ## Bibliografia
 
