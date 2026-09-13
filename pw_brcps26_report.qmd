@@ -440,13 +440,7 @@ La stima puntuale riferita al 2025, ottenuta applicando il valore centrale del r
 
 La @fig-sim-2025 mostra la distribuzione simulata dei casi attribuibili per il 2025. La mediana è pari a circa 108,7 casi/anno e risulta sostanzialmente coincidente con la stima puntuale deterministica di 109 casi/anno. Il 2,5° e il 97,5° percentile si attestano rispettivamente a circa 67,6 e 149,7 casi/anno e definiscono l'intervallo di confidenza al 95% propagato dall'incertezza epidemiologica del $RR$. Tali valori sono coerenti con gli estremi deterministici ottenuti applicando direttamente alla funzione di impatto il limite inferiore ($RR=1{.}03$) e quello superiore ($RR=1{.}07$), pari rispettivamente a 66,3 e 150,0 casi/anno. Le modeste differenze osservate sono attribuibili all'approssimazione Monte Carlo e agli arrotondamenti numerici.
 
-
 La corrispondenza tra i due approcci è attesa, poiché la funzione che lega il $RR$ ai casi attribuibili è monotonicamente crescente. Essa costituisce quindi una verifica della coerenza numerica dell'implementazione, ma non rappresenta una validazione indipendente della stima né introduce ulteriori fonti di informazione. Il vantaggio della simulazione consiste nella possibilità di descrivere l'intera distribuzione probabilistica dell'impatto e di estendere in futuro la propagazione dell'incertezza ad altri parametri del modello.
-
-Separatamente, la variabilità delle esposizioni nel periodo 2019–2025 è stata analizzata mediante una simulazione Monte Carlo con ricampionamento degli scenari annuali. A ogni iterazione è stato selezionato con uguale probabilità uno degli anni compresi tra il 2019 e il 2025, utilizzando simultaneamente per tutte le sezioni censuarie il corrispondente campo spaziale delle concentrazioni di $\mathrm{NO}_2$. È stato inoltre estratto un valore del $RR$ dalla medesima distribuzione lognormale impiegata nella simulazione 2025. La popolazione e i tassi di mortalità sono stati mantenuti fissi, in modo da isolare, a parità di struttura demografica e sanitaria, l'effetto delle differenze tra gli scenari annuali di esposizione.
-
-La simulazione storica risponde pertanto alla seguente domanda: quale sarebbe il carico sanitario attribuibile sulla popolazione di riferimento se il profilo di esposizione ambientale coincidesse con quello di un anno selezionato casualmente tra il 2019 e il 2025, tenendo conto anche dell'incertezza epidemiologica del $RR$?
-
 
 ```{r}
 #| label: fig-sim-2025
@@ -461,8 +455,9 @@ knitr::include_graphics("./fig_tab/ac_sim_2025.png")
 
 ```
 
-La linea tratteggiata rossa identifica la mediana simulata, pari a circa 109 casi/anno. Le linee verdi delimitano l'IC 95% propagato dal $RR$: circa 68 casi/anno al 2,5° percentile e 150 casi/anno al 97,5° percentile. L'area ombreggiata racchiude la massa di probabilità centrale corrispondente.
+Separatamente, la variabilità delle esposizioni nel periodo 2019–2025 è stata analizzata mediante una simulazione Monte Carlo con ricampionamento degli scenari annuali. A ogni iterazione è stato selezionato con uguale probabilità uno degli anni compresi tra il 2019 e il 2025, utilizzando simultaneamente per tutte le sezioni censuarie il corrispondente campo spaziale delle concentrazioni di $\mathrm{NO}_2$. È stato inoltre estratto un valore del $RR$ dalla medesima distribuzione lognormale impiegata nella simulazione 2025. La popolazione e i tassi di mortalità sono stati mantenuti fissi, in modo da isolare, a parità di struttura demografica e sanitaria, l'effetto delle differenze tra gli scenari annuali di esposizione.
 
+La simulazione storica risponde pertanto alla seguente domanda: quale sarebbe il carico sanitario attribuibile sulla popolazione di riferimento se il profilo di esposizione ambientale coincidesse con quello di un anno selezionato casualmente tra il 2019 e il 2025, tenendo conto anche dell'incertezza epidemiologica del $RR$?
 
 La @fig-sim-hist mostra che la distribuzione storica presenta una mediana pari a circa 145,8 casi attribuibili/anno e un intervallo di simulazione al 95% compreso tra circa 81,5 e 230,5 casi/anno. Rispetto alla mediana della simulazione specifica per il 2025, il valore centrale della distribuzione storica è superiore di circa 37 casi/anno, corrispondenti a un incremento relativo di circa il 34%. Anche l'intervallo storico risulta più ampio, poiché combina l'incertezza epidemiologica del $RR$ con la variabilità delle concentrazioni di $\mathrm{NO}_2$ tra i diversi anni.
 
@@ -486,6 +481,37 @@ knitr::include_graphics("./fig_tab/ac_sim_hist.png")
 
 ```
 
+La scomposizione della simulazione storica in base all'anno di esposizione
+selezionato consente di distinguere più chiaramente la variabilità tra gli
+scenari ambientali dalla dispersione dovuta all'incertezza epidemiologica
+(@tbl-sim-hist-years e @fig-sim-hist-years).
+
+Le distribuzioni mostrano uno spostamento complessivo verso valori più bassi dei casi attribuibili nel corso del periodo considerato. La mediana passa da 186,8 casi/anno per lo scenario di esposizione 2019 a 108,9 casi/anno per quello del 2025, con una differenza di 77,8 casi, pari a una riduzione del 41,7% rispetto al 2019. L'andamento non è strettamente monotono: gli scenari 2020–2021 e 2023–2024 producono valori molto simili.
+
+| Anno di esposizione | Mediana AC | Intervallo percentile 95% |
+|:-------------------:|-----------:|:--------------------------:|
+| 2019 | 186,8 | 113,5–255,0 |
+| 2020 | 172,5 | 101,5–234,5 |
+| 2021 | 170,9 | 105,0–234,0 |
+| 2022 | 153,4 | 95,3–211,1 |
+| 2023 | 124,8 | 78,7–173,2 |
+| 2024 | 126,4 | 78,0–173,8 |
+| 2025 | 108,9 | 66,8–150,0 |
+
+: Mediana e intervallo percentile al 95% dei casi attribuibili, condizionati allo scenario annuale di esposizione selezionato. All'interno di ciascun anno, la dispersione deriva dall'incertezza epidemiologica del rischio relativo, mentre popolazione e tassi basali sono mantenuti fissi. {#tbl-sim-hist-years}
+
+```{r}
+#| label: fig-sim-hist-years
+#| fig-cap: "Distribuzioni dei casi attribuibili condizionate allo scenario annuale di esposizione $NO_2$ selezionato nella simulazione storica. Lo spostamento tra le curve riflette le differenze tra gli scenari di esposizione; la dispersione interna a ciascuna curva deriva dall’incertezza del rischio relativo."
+#| fig-align: "center"
+#| out-height: "0.5\\textheight"
+#| out-width: "!\\textheight"
+#| echo: false
+#| fig-pos: "H"
+
+knitr::include_graphics("./fig_tab/ac_sim_hist_cfr_years.png")
+
+```
 
 ## Discussione e conclusioni
 
@@ -498,6 +524,17 @@ La stima dipende linearmente dal numero di decessi attesi e, quindi, dai tassi b
 L'analisi territoriale evidenzia una marcata eterogeneità del carico sanitario attribuibile. Le province di Padova e Venezia presentano il maggior numero di casi attribuibili, rispettivamente circa 27 e 24 casi/anno, con frazioni attribuibili pari al 3,5% e al 3,8% dei casi attesi. Belluno mostra invece un impatto stimato molto contenuto, con una frazione attribuibile prossima allo 0,1%, coerentemente con i minori differenziali di esposizione rispetto allo scenario controfattuale. Questi risultati indicano che i potenziali benefici sanitari delle politiche di riduzione dell'$\mathrm{NO}_2$ non sarebbero distribuiti uniformemente nel territorio regionale e risulterebbero maggiori nelle aree di pianura caratterizzate da più elevata densità abitativa e pressione antropica.
 
 La simulazione storica restituisce una mediana di 145,8 casi attribuibili/anno e un intervallo di simulazione al 95% pari a 81,5–230,5 casi/anno. Il valore centrale, superiore di circa il 34% rispetto alla simulazione 2025, riflette l'inclusione di scenari annuali caratterizzati da concentrazioni di $\mathrm{NO}_2$ mediamente più elevate. La maggiore ampiezza dell'intervallo storico mostra inoltre che la scelta dell'anno di esposizione contribuisce in misura rilevante alla variabilità della stima di impatto.
+
+La scomposizione per anno chiarisce che l'ampiezza della distribuzione
+storica complessiva non deriva soltanto dall'incertezza del $RR$, ma anche
+dalla combinazione di distribuzioni annuali centrate su livelli diversi
+di inquinamento atmosferico. Il progressivo spostamento verso valori generalmente più bassi tra il 2019 e il 2025 è coerente con la riduzione delle concentrazioni modellate osservata nella serie ambientale. Poiché popolazione e tassi
+basali sono mantenuti costanti, tale andamento non descrive l'evoluzione
+temporale dei decessi effettivamente osservati, ma la variazione del carico
+attribuibile che si otterrebbe applicando i diversi scenari di esposizione
+alla stessa popolazione di riferimento. La sovrapposizione degli intervalli
+annuali riflette l'incertezza comune associata al $RR$ e non deve essere
+interpretata come un test formale delle differenze tra anni.
 
 Le due distribuzioni non rappresentano stime alternative della stessa quantità. La simulazione 2025 quantifica l'incertezza epidemiologica associata al carico stimato per uno specifico anno; la simulazione storica descrive invece la sensibilità dell'impatto alla variabilità degli scenari ambientali osservati nel periodo 2019–2025. Quest'ultima non modifica la stima del 2025 e non costituisce una previsione, ma consente di riconoscere che il 2025 si colloca in una condizione relativamente favorevole rispetto agli anni precedenti.
 
