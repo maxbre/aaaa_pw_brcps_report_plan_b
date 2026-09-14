@@ -59,7 +59,7 @@ La frequenza del Master in \textit{"Biostatistica per la Ricerca Clinica e la Pu
 
 \newpage
 
-*Valutazione di impatto sanitario dell’inquinamento atmosferico da $NO_2$: scenario controfattuale e propagazione dell’incertezza. Il caso della Regione Veneto.*
+*Valutazione di impatto sanitario dell’inquinamento atmosferico da $NO_2$: scenario controfattuale ed analisi dell’incertezza. Il caso della Regione Veneto.*
 
 
 ## Sommario {.unnumbered .unlisted}
@@ -68,7 +68,7 @@ L'inquinamento atmosferico da biossido di azoto ($NO_2$) è associato in lettera
 
 \newpage
 
-*Health impact assessment of ambient $NO_2$ pollution: counterfactual scenario and uncertainty propagation. A case study of the Veneto Region.*
+*Health impact assessment of ambient $NO_2$ pollution: counterfactual scenario and uncertainty analysis. A case study of the Veneto Region.*
 
 ## Abstract {.unnumbered .unlisted}
 
@@ -207,22 +207,30 @@ La valutazione confronta, per ciascuna sezione censuaria, due livelli di esposiz
 
 Il differenziale $\Delta C_i$ rappresenta pertanto la riduzione necessaria per ricondurre al livello guida OMS le sole sezioni che lo superano. Lo scenario è normativo e comparativo: non implica l'assenza di effetti sanitari al di sotto di $10\ \mu g\,m^{-3}$.
 
-*Propagazione incertezza (simulazione Monte Carlo)*
+*Analisi probabilistiche dell’incertezza e della variabilità temporale*
 
-Al fine di distinguere l’incertezza epidemiologica dalla variabilità temporale dell’esposizione, sono state condotte due analisi probabilistiche separate. 
+Al fine di distinguere l’incertezza epidemiologica dalla variabilità temporale dell’esposizione, sono state condotte due simulazioni Monte Carlo separate. Nel presente studio, ciascuna simulazione Monte Carlo ripete il calcolo dell’impatto per $B=10\ 000$ repliche,  estraendo a ogni iterazione i parametri o gli scenari secondo le distribuzioni di probabilità specificate, così da ottenere una distribuzione dei risultati anziché una sola stima puntuale.
 
-Nella prima, riferita specificamente al 2025, le concentrazioni modellate, la popolazione e i tassi di mortalità sono stati mantenuti fissi. A ogni iterazione è stato estratto un unico valore di $RR_{10}$, comune a tutte le sezioni, assumendo:
+Nella prima simulazione, riferita specificamente al 2025, le concentrazioni modellate, la popolazione e i tassi di mortalità sono stati mantenuti fissi. A ogni iterazione è stato estratto un unico valore di $RR_{10}$, comune a tutte le sezioni censuarie, assumendo:
 
 $$
-\log(RR_{10})\sim\mathcal{N}\!\left[\log(1{.}05),\,\sigma_{\log RR}^{2}\right],
+\log(RR_{10})\sim\mathcal{N}\!\left[
+\log(1{.}05),\,\sigma_{\log RR}^{2}
+\right],
 \qquad
-\sigma_{\log RR}=\frac{\log(1{.}07)-\log(1{.}03)}{2\times1{.}96}.
+\sigma_{\log RR}
+=
+\frac{\log(1{.}07)-\log(1{.}03)}
+{2\times1{.}96}.
 $$
 
-La distribuzione risultante propaga esclusivamente l'incertezza epidemiologica associata al $RR$. I percentili 2,5 e 97,5 possono quindi essere interpretati come limiti di un IC 95% dell'impatto propagato dal $RR$, condizionato agli altri input trattati come noti.
+La distribuzione Monte Carlo così ottenuta propaga esclusivamente l’incertezza epidemiologica associata al $RR_{10}$. I percentili 2,5 e 97,5 possono pertanto essere interpretati come limiti di un IC 95%  dell’impatto, ottenuto propagando l’incertezza del rischio relativo e condizionato agli altri input del modello, trattati come noti.
 
-Nella seconda analisi, finalizzata a descrivere la variabilità storica del carico sanitario, a ogni iterazione è stato selezionato con reinserimento e con uguale probabilità uno degli scenari annuali di esposizione 2019–2025. Lo stesso anno è stato applicato simultaneamente a tutte le sezioni, preservandone la configurazione spaziale modellata, ed è stato estratto un valore del $RR$ dalla medesima distribuzione lognormale. Popolazione e tassi basali sono rimasti fissi. I percentili ottenuti costituiscono un *intervallo di simulazione* riferito alla combinazione tra variabilità storica dell'esposizione e incertezza epidemiologica; non sono un IC della stima 2025 né una previsione.
+Nella seconda simulazione, finalizzata a descrivere la variabilità storica del carico sanitario, a ogni iterazione è stato selezionato con uguale probabilità uno dei sette scenari annuali di esposizione compresi tra il 2019 e il 2025. Il campo spaziale delle concentrazioni relativo all’anno selezionato è stato applicato simultaneamente a tutte le sezioni censuarie, preservandone la configurazione spaziale modellata. Nella
+stessa iterazione è stato inoltre estratto un valore di $RR_{10}$ dalla medesima distribuzione lognormale. La popolazione e i tassi basali sono fissi.
 
+I percentili della distribuzione risultante definiscono un *intervallo di simulazione* riferito alla combinazione tra variabilità storica dell’esposizione e incertezza epidemiologica del rischio relativo. Tale
+intervallo non costituisce un IC della stima specifica per il 2025 né una previsione del carico sanitario futuro.
 
 *Software*
 
