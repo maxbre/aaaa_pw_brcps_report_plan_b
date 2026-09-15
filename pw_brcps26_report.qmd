@@ -140,6 +140,8 @@ Il modello *CAMx*, distribuito da *Ramboll Environ* (http://www.camx.com/), è l
 
 Le variabili demografiche aggregate per sezione censuaria — popolazione totale residente e popolazione di età pari o superiore a 30 anni — sono state ricavate dalla rielaborazione dei dati ISTAT 2021 *Basi territoriali e variabili censuarie* (https://www.istat.it/notizia/basi-territoriali-e-variabili-censuarie/).
 
+Il 2021 rappresenta, al momento dell’analisi, il più recente riferimento temporale per il quale sono disponibili variabili demografiche definitive con la granularità sezionale richiesta. Sebbene il Censimento permanente e l’integrazione dei registri statistici rendano possibile la produzione di informazioni a scala subcomunale, la disponibilità di dati più aggiornati e con un’adeguata articolazione per età resta subordinata ai tempi e ai contenuti dei rilasci ISTAT.
+
 *Valutazione di impatto sanitario (VIS)*
 
 L'impatto sanitario è stato valutato impiegando il rischio relativo desunto dalla letteratura OMS/HRAPIE-2 per la mortalità respiratoria (ICD-10 J00–J99) nella popolazione 30+: $RR_{10}=1{.}05$ (IC 95%: 1,03–1,07) per ogni incremento di $10\ \mu g\,m^{-3}$ [@hrapie-2:2025]. L'applicazione locale presuppone la trasportabilità di questa funzione concentrazione-risposta alla popolazione delle sezioni censuarie della Regione Veneto.
@@ -551,7 +553,7 @@ L'interpretazione dei risultati deve considerare alcune limitazioni rilevanti:
 - *mortalità basale e mancato aggiustamento per età*: nell'assetto informativo attuale non sono disponibili tassi provinciali età-specifici di mortalità respiratoria pienamente coerenti, per esito, periodo e articolazione per età, con i dati demografici utilizzati nello studio.
 I tassi grezzi 30+ incorporano la composizione per età della provincia e, se trasferiti alle sezioni, possono sovrastimare i decessi attesi nelle aree relativamente più giovani e sottostimarli in quelle più anziane. Tale errore si trasferisce proporzionalmente ai casi attribuibili;
 
-- *allineamento temporale*: popolazione sezionale, tassi di mortalità ed esposizione si riferiscono rispettivamente al 2021, al 2024 e al 2025. La VIS descrive pertanto una popolazione sintetica costruita con le fonti disponibili e assume una sufficiente stabilità nel breve periodo, non il numero osservato di decessi attribuibili nel 2025;
+- *allineamento temporale*: popolazione sezionale, tassi di mortalità ed esposizione si riferiscono rispettivamente al 2021, al 2024 e al 2025. La VIS descrive pertanto una popolazione sintetica costruita con le fonti disponibili e assume una sufficiente stabilità nel breve periodo, non il numero osservato di decessi attribuibili nel 2025; il ricorso alla popolazione del 2021 riflette, in particolare, la limitata disponibilità di dati demografici più aggiornati alla scala della sezione censuaria;
 
 - *risoluzione dell'esposizione*: la disaggregazione demografica avviene a livello di sezione censuaria, ma la risoluzione effettiva dell'esposizione rimane vincolata al grigliato SPIAIR/CAMx di 4 km, che non può rappresentare interamente la variabilità di microscala;
 
@@ -576,6 +578,8 @@ Permangono, tuttavia, alcuni limiti propri delle analisi ecologiche su base terr
 * *dipendenza e spillover spaziale*: le concentrazioni e le caratteristiche delle aree contigue non sono indipendenti. L'attuale valutazione conserva la configurazione spaziale delle esposizioni modellate, ma non rappresenta esplicitamente la dipendenza spaziale nell'errore di esposizione e nelle altre componenti d'incertezza.
 
 Un primo sviluppo dovrebbe riguardare la *specificazione della mortalità basale e la propagazione integrata dell'incertezza*. Quando saranno disponibili tassi provinciali età-specifici, i decessi attesi dovranno essere calcolati applicando i tassi di ciascuna classe alla corrispondente popolazione sezionale e sommando i contributi. Ciò separerà, almeno in parte, l'effetto della composizione per età dalle differenze territoriali nel rischio basale. Non sarebbe invece metodologicamente giustificato ricostruire tassi età-specifici mancanti mediante una semplice ripartizione del tasso grezzo, perché questa introdurrebbe informazione non osservata e un'apparente precisione.
+
+Il progressivo consolidamento del Censimento permanente e dei registri statistici territoriali potrà attenuare anche il disallineamento temporale della componente demografica, qualora renda disponibili aggiornamenti delle variabili necessarie a livello di sezione censuaria. Ciò consentirebbe di allineare più strettamente popolazione, mortalità basale ed esposizione ambientale.
 
 In attesa di tali dati, una verifica di sensibilità utile consiste nel ricalcolare l'impatto impiegando alternativamente i tassi grezzi provinciali e un unico tasso grezzo regionale. Questo confronto non risolve il confondimento per età, ma consente di quantificare quanto la sola scelta della scala territoriale del tasso basale influenzi la stima regionale e i confronti provinciali.
 
