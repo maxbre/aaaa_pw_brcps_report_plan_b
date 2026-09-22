@@ -64,7 +64,7 @@ La frequenza del Master in \textit{"Biostatistica per la Ricerca Clinica e la Pu
 
 ## Sommario {.unnumbered .unlisted}
 
-L'inquinamento atmosferico da biossido di azoto ($NO_2$) è associato in letteratura a effetti sulla mortalità respiratoria. Il presente *project-work* ne stima l'impatto sanitario nella Regione Veneto mediante una valutazione controfattuale riferita alla popolazione di età pari o superiore a 30 anni. La funzione concentrazione-risposta OMS/HRAPIE-2 ($RR_{10}=1{.}05$; IC 95%: 1,03–1,07) è stata applicata alla popolazione delle sezioni censuarie ISTAT, utilizzando concentrazioni modellate su griglia di 4 km e tassi grezzi provinciali di mortalità respiratoria nella popolazione 30+. Il differenziale rispetto al livello guida OMS di $10\ \mu g\,m^{-3}$ è stato calcolato per ciascuna sezione prima dell'aggregazione regionale. Per il 2025 si stimano 109 casi attribuibili/anno, pari al 2,86% dei decessi respiratori attesi; la simulazione Monte Carlo che propaga esclusivamente l'incertezza del $RR$ restituisce una mediana di 108,7 casi/anno (IC 95%: 67,6–149,7). Una seconda simulazione, basata sugli scenari di esposizione 2019–2025, produce una mediana di 145,8 casi/anno e un intervallo di simulazione al 95% di 81,5–230,5, fornendo un'analisi descrittiva della sensibilità dei risultati rispetto alla scelta dell'anno di esposizione. L'uso di tassi grezzi provinciali, reso necessario dall'indisponibilità attuale di tassi età-specifici coerenti con il disegno dello studio, costituisce una fonte di incertezza non propagata.
+L'inquinamento atmosferico da biossido di azoto ($NO_2$) è associato in letteratura a effetti sulla mortalità respiratoria. Il presente *project-work* ne stima l'impatto sanitario nella Regione Veneto mediante una valutazione controfattuale riferita alla popolazione di età pari o superiore a 30 anni. La funzione concentrazione-risposta OMS/HRAPIE-2 ($RR_{10}=1{.}05$; IC 95%: 1,03–1,07) è stata applicata alla popolazione delle sezioni censuarie ISTAT, utilizzando concentrazioni modellate su griglia di 4 km e tassi grezzi provinciali di mortalità respiratoria nella popolazione 30+. Il differenziale rispetto al livello guida OMS di $10\ \mu g\,m^{-3}$ è stato calcolato per ciascuna sezione di censimento prima dell'aggregazione regionale. Per il 2025 si stimano 109 casi attribuibili/anno, pari al 2,86% dei decessi respiratori attesi; la simulazione Monte Carlo che propaga esclusivamente l'incertezza del $RR$ restituisce una mediana di 108,7 casi/anno (IC 95%: 67,6–149,7). Una seconda simulazione, basata sugli scenari di esposizione 2019–2025, produce una mediana di 145,8 casi/anno e un intervallo di simulazione al 95% di 81,5–230,5, fornendo un'analisi descrittiva della sensibilità dei risultati rispetto alla scelta dell'anno di esposizione. L'uso di tassi grezzi provinciali, reso necessario dall'indisponibilità attuale di tassi età-specifici coerenti con il disegno dello studio, costituisce una fonte di incertezza non propagata.
 
 \newpage
 
@@ -103,9 +103,9 @@ In prospettiva futura i risultati potranno rappresentare la base conoscitiva per
 
 *Unità statistica di analisi e disegno dello studio*
 
-L'unità statistica di analisi è rappresentata dalla sezione censuaria ISTAT definita come la minima unità territoriale di analisi aggregata della popolazione (43.447 sezioni in Regione Veneto da censimento ISTAT 2021). 
+L'unità statistica di analisi è rappresentata dalla sezione di censimento ISTAT definita come la minima unità territoriale di analisi aggregata della popolazione (43.447 sezioni in Regione Veneto da censimento ISTAT 2021). 
 
-Si tratta di uno studio *ecologico* su base territoriale nel quale esposizione atmosferica, popolazione residente e mortalità basale sono attribuite alla sezione censuaria. L'impiego di questa unità consente di conservare la massima granularità demografica disponibile prima dell'aggregazione dei risultati. Non aumenta, tuttavia, la risoluzione originaria delle concentrazioni modellate — pari a 4 km — né elimina l'errore di classificazione dell'esposizione o il confondimento ecologico.
+Si tratta di uno studio *ecologico* su base territoriale nel quale esposizione atmosferica, popolazione residente e mortalità basale sono attribuite alla sezione di censimento. L'impiego di questa unità consente di conservare la massima granularità demografica disponibile prima dell'aggregazione dei risultati. Non aumenta, tuttavia, la risoluzione originaria delle concentrazioni modellate — pari a 4 km — né elimina l'errore di classificazione dell'esposizione o il confondimento ecologico.
 
 *Dataset e test statistici*
 
@@ -138,7 +138,7 @@ I *casi attesi* non sono conteggi osservati nelle sezioni, ma valori modellati o
 La concentrazione media annuale di biossido di azoto ($NO_2$) attribuita alle singole sezioni censuarie è stata ottenuta mediante un *overlay* geografico tra i poligoni censuari e il grigliato di output del modello euleriano di dispersione atmosferica *CAMx*, calcolando una media zonale pesata per la superficie di intersezione.
 Il modello *CAMx*, distribuito da *Ramboll Environ* (http://www.camx.com/), è lo strumento operativo della catena modellistica SPIAIR implementata da ARPAV per la stima degli inquinanti atmosferici in Regione Veneto, su un grigliato regolare di output che ha una risoluzione orizzontale di 4 km. 
 
-Le variabili demografiche aggregate per sezione censuaria — popolazione totale residente e popolazione di età pari o superiore a 30 anni — sono state ricavate dalla rielaborazione dei dati ISTAT 2021 *Basi territoriali e variabili censuarie* (https://www.istat.it/notizia/basi-territoriali-e-variabili-censuarie/).
+Le variabili demografiche aggregate per sezione di censimento — popolazione totale residente e popolazione di età pari o superiore a 30 anni — sono state ricavate dalla rielaborazione dei dati ISTAT 2021 *Basi territoriali e variabili censuarie* (https://www.istat.it/notizia/basi-territoriali-e-variabili-censuarie/).
 
 Il 2021 rappresenta, al momento dell’analisi, il più recente riferimento temporale per il quale sono disponibili variabili demografiche definitive con la granularità sezionale richiesta. Sebbene il Censimento permanente e l’integrazione dei registri statistici rendano possibile la produzione di informazioni a scala subcomunale, la disponibilità di dati più aggiornati e con un’adeguata articolazione per età resta subordinata ai tempi e ai contenuti dei rilasci ISTAT.
 
@@ -146,9 +146,9 @@ Il 2021 rappresenta, al momento dell’analisi, il più recente riferimento temp
 
 L'impatto sanitario è stato valutato impiegando il rischio relativo desunto dalla letteratura OMS/HRAPIE-2 per la mortalità respiratoria (ICD-10 J00–J99) nella popolazione 30+: $RR_{10}=1{.}05$ (IC 95%: 1,03–1,07) per ogni incremento di $10\ \mu g\,m^{-3}$ [@hrapie-2:2025]. L'applicazione locale presuppone la trasportabilità di questa funzione concentrazione-risposta alla popolazione delle sezioni censuarie della Regione Veneto.
 
-Per quantificare l'impatto sanitario associato al differenziale tra esposizione modellata e scenario controfattuale è stata applicata, in ogni sezione censuaria, la funzione concentrazione-risposta utilizzata nel software *WHO AirQ+* [@who_airq:2020].
+Per quantificare l'impatto sanitario associato al differenziale tra esposizione modellata e scenario controfattuale è stata applicata, in ogni sezione di censimento, la funzione concentrazione-risposta utilizzata nel software *WHO AirQ+* [@who_airq:2020].
 
-I *casi attribuibili* rappresentano la quota dei decessi attesi associata all'esposizione eccedente il livello controfattuale e sono interpretabili come casi potenzialmente evitabili se tale differenziale fosse annullato, subordinatamente alle assunzioni del modello. Per la sezione censuaria $i$:
+I *casi attribuibili* rappresentano la quota dei decessi attesi associata all'esposizione eccedente il livello controfattuale e sono interpretabili come casi potenzialmente evitabili se tale differenziale fosse annullato, subordinatamente alle assunzioni del modello. Per la sezione di censimento $i$:
 
 $$
 C_{i,\mathrm{cf}}=\min(C_{i,\mathrm{obs}},C_{\mathrm{ref}}),
@@ -195,13 +195,13 @@ La frazione $({RR_i-1})/{RR_i}$ esprime la proporzione dei casi attesi associata
 
 La concavità della funzione di impatto implica che, a parità di pesi e dopo avere definito i differenziali non negativi $\Delta C_i$, applicare la funzione al differenziale medio può produrre una stima maggiore di quella ottenuta applicandola separatamente alle unità e aggregando i risultati [^nota]. Questa proprietà non autorizza una conclusione universale sulla direzione dell'errore per qualunque forma di aggregazione, soprattutto quando cambiano i pesi o la concentrazione media attraversa il valore di riferimento.
 
-Per preservare l'eterogeneità demografica e ambientale disponibile, il differenziale $\Delta C_i$ e i casi attribuibili $AC_i$ sono quindi calcolati separatamente per ciascuna sezione censuaria e aggregati solo successivamente. La sezione costituisce la più fine unità demografica accessibile; la risoluzione effettiva dell'esposizione resta quella del modello ambientale.
+Per preservare l'eterogeneità demografica e ambientale disponibile, il differenziale $\Delta C_i$ e i casi attribuibili $AC_i$ sono quindi calcolati separatamente per ciascuna sezione di censimento e aggregati solo successivamente. La sezione costituisce la più fine unità demografica accessibile; la risoluzione effettiva dell'esposizione resta quella del modello ambientale.
 
 [^nota]: Si rimanda al testo riportato in Appendice per una dimostrazione rigorosa.
 
 *Scenari di valutazione controfattuale*
 
-La valutazione confronta, per ciascuna sezione censuaria, due livelli di esposizione:
+La valutazione confronta, per ciascuna sezione di censimento, due livelli di esposizione:
 
 - *scenario 2025* ($C_{i,\mathrm{obs}}$), rappresentato dalla concentrazione media annuale modellata per il 2025;
 
@@ -419,7 +419,7 @@ K -> L [style=invis, weight=100];
 
 ```
 
-La @fig-flow-vis mostra come i diversi input concorrano alla stima dell’impatto sanitario. Per ciascuna sezione censuaria, la concentrazione di $NO_2$ determina il differenziale non negativo rispetto al livello controfattuale di $10\ \mu g\,m^{-3}$, mentre la popolazione 30+ e il tasso provinciale di mortalità basale determinano il numero di casi attesi. Il rischio relativo consente di trasformare il differenziale di esposizione nella frazione attribuibile; il prodotto tra casi attesi e frazione attribuibile fornisce quindi i casi attribuibili della singola sezione. I risultati sezionali sono successivamente aggregati a livello regionale. Applicando il valore centrale del rischio relativo alle concentrazioni del 2025 si ottiene la stima puntuale; nelle analisi Monte Carlo, invece, la medesima sequenza di calcolo e l’aggregazione regionale sono ripetute a ogni iterazione, variando il rischio relativo nella simulazione 2025 e sia il rischio relativo sia lo scenario annuale di esposizione nella simulazione storica 2019–2025. Popolazione e mortalità basale sono mantenute fisse in entrambe le simulazioni.
+La @fig-flow-vis mostra come i diversi input concorrano alla stima dell’impatto sanitario. Per ciascuna sezione di censimento, la concentrazione di $NO_2$ determina il differenziale non negativo rispetto al livello controfattuale di $10\ \mu g\,m^{-3}$, mentre la popolazione 30+ e il tasso provinciale di mortalità basale determinano il numero di casi attesi. Il rischio relativo consente di trasformare il differenziale di esposizione nella frazione attribuibile; il prodotto tra casi attesi e frazione attribuibile fornisce quindi i casi attribuibili della singola sezione. I risultati sezionali sono successivamente aggregati a livello regionale. Applicando il valore centrale del rischio relativo alle concentrazioni del 2025 si ottiene la stima puntuale; nelle analisi Monte Carlo, invece, la medesima sequenza di calcolo e l’aggregazione regionale sono ripetute a ogni iterazione, variando il rischio relativo nella simulazione 2025 e sia il rischio relativo sia lo scenario annuale di esposizione nella simulazione storica 2019–2025. Popolazione e mortalità basale sono mantenute fisse in entrambe le simulazioni.
 
 *Software*
 
@@ -433,7 +433,7 @@ Questo documento è stato redatto dinamicamente con *Quarto* (https://quarto.org
 
 Secondo il censimento ISTAT 2021, la Regione Veneto (@fig-map-sez21) è costituita da `r format(43447, big.mark = " ")` sezioni censuarie abitate che rappresentano un totale di `r format(4847745, big.mark = " ")` residenti. 
 
-Le sezioni censuarie del Veneto coprono una superficie di `r format(14511, big.mark = " ")` $km^2$, con una densità media di 334 $ab\,km^{-2}$. La sezione censuaria *mediana* ha un'estensione pari a circa 2,90 $ha$, con una densità abitativa mediana pari a 13,5 $ab\,ha^{-1}$.
+Le sezioni censuarie del Veneto coprono una superficie di `r format(14511, big.mark = " ")` $km^2$, con una densità media di 334 $ab\,km^{-2}$. La sezione di censimento *mediana* ha un'estensione pari a circa 2,90 $ha$, con una densità abitativa mediana pari a 13,5 $ab\,ha^{-1}$.
 
 La popolazione in classe d'età 30+ è costituita da `r format(3521995, big.mark = " ")` abitanti, che rappresentano circa il 73% della popolazione totale. 
 
@@ -450,7 +450,7 @@ knitr::include_graphics("./fig_tab/map_sezioni_censuarie_rv.png")
 
 ```
 
-L'impiego della sezione censuaria come unità demografica consente di rappresentare gruppi di popolazione mediamente contenuti [^nota-ha]. Tuttavia, l'asimmetria e la multimodalità della loro distribuzione impongono cautela: dimensione, densità ed estensione delle sezioni sono molto eterogenee e la risoluzione ambientale effettiva rimane pari a 4 km.
+L'impiego della sezione di censimento come unità demografica consente di rappresentare gruppi di popolazione mediamente contenuti [^nota-ha]. Tuttavia, l'asimmetria e la multimodalità della loro distribuzione impongono cautela: dimensione, densità ed estensione delle sezioni sono molto eterogenee e la risoluzione ambientale effettiva rimane pari a 4 km.
 
 [^nota-ha]: L'estensione della sezione *mediana* copre una superficie equivalente ad un quadrato di lato circa 170 m. 
 
@@ -488,8 +488,8 @@ knitr::include_graphics("./fig_tab/map_sezioni_attesi.png")
 
 La @fig-map-no2-2025 rappresenta la distribuzione spaziale della concentrazione media annuale di $NO_2$ nella Regione Veneto relativa all'anno 2025 ottenuta su grigliato regolare e risoluzione orizzontale di 4 km, tramite la catena modellistica SPIAIR. Il 2025 è l'anno più recente per cui sono disponibili stime modellistiche e rappresenta il determinante ambientale rispetto al quale viene effettuata la valutazione di impatto sanitario sulla popolazione residente (attesi) in classe d'età 30+. 
 
-La distribuzione spaziale delle concentrazioni ambientali di $NO_2$ relative all'anno 2025 assegnate a ciascuna sezione censuaria è rappresentata in @fig-map-sez-no2-2025. 
-La mappa rappresenta il livello di esposizione alle concentrazioni ambientali di $NO_2$ nell'anno 2025 per la popolazione in classe d'età 30+ residente in ciascuna sezione censuaria.
+La distribuzione spaziale delle concentrazioni ambientali di $NO_2$ relative all'anno 2025 assegnate a ciascuna sezione di censimento è rappresentata in @fig-map-sez-no2-2025. 
+La mappa rappresenta il livello di esposizione alle concentrazioni ambientali di $NO_2$ nell'anno 2025 per la popolazione in classe d'età 30+ residente in ciascuna sezione di censimento.
 
 Per la Regione Veneto la popolazione delle sezioni censuarie risulta esposta ad una concentrazione *media pesata* di $NO_2$ pari a $16\ \mu g~m^{-3}$, mentre il valore medio pesato a livello provinciale è compreso entro l'intervallo tra circa $7\ \mu g~m^{-3}$, per la Provincia di Belluno, e circa $18\ \mu g~m^{-3}$, per le Province di Padova e Venezia.
 
@@ -740,9 +740,9 @@ L'interpretazione dei risultati deve considerare alcune limitazioni rilevanti:
 - *mortalità basale e mancato aggiustamento per età*: nell'assetto informativo attuale non sono disponibili tassi provinciali età-specifici di mortalità respiratoria pienamente coerenti, per esito, periodo e articolazione per età, con i dati demografici utilizzati nello studio.
 I tassi grezzi 30+ incorporano la composizione per età della provincia e, se trasferiti alle sezioni, possono sovrastimare i decessi attesi nelle aree relativamente più giovani e sottostimarli in quelle più anziane. Tale errore si trasferisce proporzionalmente ai casi attribuibili;
 
-- *allineamento temporale*: popolazione sezionale, tassi di mortalità ed esposizione si riferiscono rispettivamente al 2021, al 2024 e al 2025. La VIS descrive pertanto una popolazione sintetica costruita con le fonti disponibili e assume una sufficiente stabilità nel breve periodo, non il numero osservato di decessi attribuibili nel 2025; il ricorso alla popolazione del 2021 riflette, in particolare, la limitata disponibilità di dati demografici più aggiornati alla scala della sezione censuaria;
+- *allineamento temporale*: popolazione sezionale, tassi di mortalità ed esposizione si riferiscono rispettivamente al 2021, al 2024 e al 2025. La VIS descrive pertanto una popolazione sintetica costruita con le fonti disponibili e assume una sufficiente stabilità nel breve periodo, non il numero osservato di decessi attribuibili nel 2025; il ricorso alla popolazione del 2021 riflette, in particolare, la limitata disponibilità di dati demografici più aggiornati alla scala della sezione di censimento;
 
-- *risoluzione dell'esposizione*: la disaggregazione demografica avviene a livello di sezione censuaria, ma la risoluzione effettiva dell'esposizione rimane vincolata al grigliato SPIAIR/CAMx di 4 km, che non può rappresentare interamente la variabilità di microscala;
+- *risoluzione dell'esposizione*: la disaggregazione demografica avviene a livello di sezione di censimento, ma la risoluzione effettiva dell'esposizione rimane vincolata al grigliato SPIAIR/CAMx di 4 km, che non può rappresentare interamente la variabilità di microscala;
 
 - *singolo inquinante*: l'analisi considera esclusivamente l'$\mathrm{NO}_2$ e non permette di separarne completamente il contributo da quello della miscela di inquinanti atmosferici, in particolare dal $PM_{2.5}$;
 
@@ -766,7 +766,7 @@ Permangono, tuttavia, alcuni limiti propri delle analisi ecologiche su base terr
 
 Un primo sviluppo dovrebbe riguardare la *specificazione della mortalità basale e la propagazione integrata dell'incertezza*. Quando saranno disponibili tassi provinciali età-specifici, i decessi attesi dovranno essere calcolati applicando i tassi di ciascuna classe alla corrispondente popolazione sezionale e sommando i contributi. Ciò separerà, almeno in parte, l'effetto della composizione per età dalle differenze territoriali nel rischio basale. Non sarebbe invece metodologicamente giustificato ricostruire tassi età-specifici mancanti mediante una semplice ripartizione del tasso grezzo, perché questa introdurrebbe informazione non osservata e un'apparente precisione.
 
-Il progressivo consolidamento del Censimento permanente e dei registri statistici territoriali potrà attenuare anche il disallineamento temporale della componente demografica, qualora renda disponibili aggiornamenti delle variabili necessarie a livello di sezione censuaria. Ciò consentirebbe di allineare più strettamente popolazione, mortalità basale ed esposizione ambientale.
+Il progressivo consolidamento del Censimento permanente e dei registri statistici territoriali potrà attenuare anche il disallineamento temporale della componente demografica, qualora renda disponibili aggiornamenti delle variabili necessarie a livello di sezione di censimento. Ciò consentirebbe di allineare più strettamente popolazione, mortalità basale ed esposizione ambientale.
 
 In attesa di tali dati, una verifica di sensibilità utile consiste nel ricalcolare l'impatto impiegando alternativamente i tassi grezzi provinciali e un unico tasso grezzo regionale. Questo confronto non risolve il confondimento per età, ma consente di quantificare quanto la sola scelta della scala territoriale del tasso basale influenzi la stima regionale e i confronti provinciali.
 
