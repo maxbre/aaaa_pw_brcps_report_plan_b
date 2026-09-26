@@ -795,14 +795,13 @@ Nel complesso, l'estensione della propagazione dell'incertezza, l'adozione di mo
 
 **Funzione per la stima dei casi attribuibili**
 
-Questa sezione riprende la nota metodologica richiamata in @sec-methods e illustra le proprietà della funzione utilizzata per stimare la frazione attribuibile e i casi attribuibili.
+Questa sezione riprende la nota metodologica del paragrafo -@sec-methods ed illustra le proprietà della funzione utilizzata per stimare la frazione attribuibile ed i casi attribuibili.
 
-La funzione di impatto utilizzata nel presente studio e implementata in *AirQ+* è:
+La funzione di impatto utilizzata nella presente valutazione è:
 
 $$
 f(\Delta C) = 1 - e^{-\beta \cdot \Delta C}.
 $$
-
 Calcolando la derivata prima e la derivata seconda della funzione rispetto a $\Delta C$, si ottiene:
 
 $$
@@ -813,14 +812,14 @@ $$
 
 La derivata prima positiva indica che la frazione attribuibile aumenta all'aumentare del differenziale di esposizione; a parità di decessi attesi, aumentano di conseguenza anche i casi attribuibili. La derivata seconda negativa indica che la funzione è strettamente concava: incrementi successivi di uguale ampiezza del differenziale producono aumenti progressivamente più contenuti della frazione attribuibile.
 
-La @fig-f-who riproduce graficamente l'andamento della funzione $f(\Delta C)$ nell'intervallo $\Delta C \in [0, 100] ~\mu g~ m^{-3}$, rendendo visivamente evidenti la monotonia crescente e la concavità appena dimostrate, con la retta tangente nell'origine tracciata come riferimento per apprezzare meglio il progressivo rallentamento dei rendimenti marginali.
+La @fig-f-who riproduce graficamente l'andamento della funzione $f(\Delta C)$ nell'intervallo $\Delta C \in [0, 100] ~\mu g~ m^{-3}$, rendendo visivamente evidenti la monotonia crescente e la concavità appena dimostrate, con la retta tangente nell'origine tracciata come riferimento per apprezzare il progressivo rallentamento dei rendimenti marginali.
 
 ```{r}
 #| label: fig-f-who
 #| echo: false
 #| message: false
 #| warning: false
-#| fig-cap: 'Funzione di stima dell’impatto sanitario in funzione di $\Delta C$'
+#| fig-cap: 'Funzione di stima dell’impatto sanitario rispetto a  $\Delta C$'
 #| fig-height: 2.5
 #| fig-width: 5
 #| fig-pos: "H"
@@ -860,7 +859,7 @@ ggplot(df, aes(x = delta_c, y = f_val)) +
 
 ```
 
-La principale conseguenza metodologica della concavità riguarda il livello territoriale al quale viene applicata la funzione. In base alla *disuguaglianza di Jensen* [@casella2002statistical], per una funzione concava vale:
+La principale conseguenza metodologica della concavità della funzione di impatto riguarda il livello territoriale al quale viene applicata la funzione. In base alla *disuguaglianza di Jensen* [@casella2002statistical], per una funzione concava vale:
 
 $$
 \mathbb{E}[f(\Delta C)]
@@ -868,7 +867,7 @@ $$
 f\left(\mathbb{E}[\Delta C]\right).
 $$
 
-In termini applicativi, ciò significa che calcolare la frazione attribuibile separatamente nelle diverse unità territoriali e aggregare successivamente i risultati non equivale ad applicare direttamente la funzione al differenziale medio di esposizione. 
+In termini applicativi, ciò significa che *calcolare la frazione attribuibile separatamente nelle diverse unità territoriali ed aggregare successivamente i risultati non equivale ad applicare direttamente la funzione al differenziale medio di esposizione*. 
 
 Utilizzando in entrambi i calcoli gli stessi pesi, la frazione attribuibile ottenuta applicando la funzione al differenziale medio ponderato è maggiore o uguale a quella risultante dal calcolo separato per ciascuna sezione e dalla successiva aggregazione.
 
@@ -878,9 +877,9 @@ Ne consegue che l'applicazione della funzione al differenziale medio ponderato, 
 
 Questa conclusione riguarda un confronto effettuato utilizzando gli stessi pesi e differenziali di esposizione già definiti rispetto al livello controfattuale e troncati a zero. Non può essere estesa automaticamente a procedure differenti, come il calcolo della concentrazione media prima dell'applicazione del valore controfattuale oppure l'impiego di criteri di ponderazione diversi.
 
-Il calcolo sezionale seguito dall'aggregazione regionale rimane pertanto preferibile, perché conserva l'eterogeneità demografica e ambientale disponibile. La disuguaglianza di Jensen chiarisce una specifica conseguenza della concavità della funzione di impatto, ma non stabilisce una regola universale sulla direzione di ogni possibile distorsione derivante dall'aggregazione territoriale.
+Il calcolo sezionale seguito dall'aggregazione regionale rimane pertanto preferibile, perché *conserva l'eterogeneità demografica e ambientale disponibile*. La disuguaglianza di Jensen chiarisce una specifica conseguenza della concavità della funzione di impatto, ma non stabilisce una regola universale sulla direzione di ogni possibile distorsione derivante dall'aggregazione territoriale.
 
-Un esempio numerico semplificato consente di visualizzare il meccanismo. Si considerino due sole sezioni di censimento alle quali, esclusivamente a fini illustrativi, viene attribuito lo stesso peso; ciò equivale ad assumere che nelle due sezioni sia atteso lo stesso numero di decessi. Siano $\Delta C_1=2\ \mu g\,m^{-3}$ e $\Delta C_2=18\ \mu g\,m^{-3}$, con differenziale medio pari a $10\ \mu g\,m^{-3}$ e $\beta=0{.}01$. Si ottiene:
+Un esempio numerico semplificato consente di apprezzare il meccanismo. Si considerino due sole sezioni di censimento alle quali, esclusivamente a fini illustrativi, viene attribuito lo stesso peso; ciò equivale ad assumere che nelle due sezioni sia atteso lo stesso numero di decessi. Siano $\Delta C_1=2\ \mu g\,m^{-3}$ e $\Delta C_2=18\ \mu g\,m^{-3}$, con differenziale medio pari a $10\ \mu g\,m^{-3}$ e $\beta=0{.}01$. Si ottiene:
 
 $$
 f(2)=1-e^{-0{.}02}\approx0{.}0198,
@@ -888,7 +887,7 @@ f(2)=1-e^{-0{.}02}\approx0{.}0198,
 f(18)=1-e^{-0{.}18}\approx0{.}1647.
 $$
 
-La media dei due valori sezionali della frazione attribuibile è circa $0{.}0923$. Applicando invece la funzione direttamente al differenziale medio si ottiene:
+La media dei due valori sezionali della frazione attribuibile è circa $0{.}0923$. Applicando invece la funzione direttamente al differenziale medio si ha:
 
 $$
 f(10)=1-e^{-0{.}1}\approx0{.}0952.
@@ -903,9 +902,9 @@ L'esempio considera intenzionalmente pesi uguali per isolare e rendere immediata
 
 **Serie storica $NO_2$ da modellistica regionale**
 
-In questa sezione dell'Appendice viene proposta un breve inquadramento della serie storica delle concentrazioni ambientali di $NO_2$ in Regione Veneto che sono state stimate per il periodo dal 2019 al 2025 tramite la catena modellistica SPIAIR.
+In questa sezione dell'Appendice viene proposto un breve inquadramento della serie storica delle concentrazioni ambientali di $NO_2$ in Regione Veneto, stimate per il periodo dal 2019 al 2025 tramite la catena modellistica SPIAIR.
 
-In @fig-map-no2-ts sono riportate le mappe delle concentrazioni medie annuali di $NO_2$. La sequenza mostra una generale riduzione dei valori modellati e i livelli medi più bassi nel 2025; data la brevità della serie, la stabilità del processo non può essere stabilita su questa sola base.
+In @fig-map-no2-ts sono riportate le mappe delle concentrazioni medie annuali di $NO_2$. La sequenza mostra una generale riduzione dei valori modellati con i livelli medi più bassi nel 2025. Considerata la brevità della serie, la stabilità del processo non può essere stabilita su questa sola base.
 
 ```{r}
 #| label: fig-map-no2-ts
@@ -919,7 +918,7 @@ knitr::include_graphics("./fig_tab/map_no2_ts_rv.png")
 
 ```
 
-Per descrivere direzione ed entità dei trend nelle concentrazioni medie annuali comunali sono stati utilizzati il test non parametrico di Mann–Kendall e lo stimatore della pendenza di Sen (*Sen's slope*). I metodi non richiedono la normalità dei dati e sono poco sensibili ai valori estremi. I $p$-value di Mann–Kendall sono stati corretti per confronti multipli con la procedura di Benjamini–Hochberg, adottando $\alpha=0{.}05$ sui valori aggiustati. Con sole sette osservazioni annuali per comune, la potenza del test è limitata e un'eventuale autocorrelazione temporale può alterarne la calibrazione; i risultati hanno pertanto valore esplorativo.
+Per descrivere direzione ed entità dei trend nelle concentrazioni medie annuali comunali sono stati utilizzati il test non parametrico di Mann–Kendall e lo stimatore della pendenza di Sen (*Sen's slope*). I metodi non richiedono la normalità dei dati e sono poco sensibili ai valori estremi. I $p$-value di Mann–Kendall sono stati corretti per confronti multipli con la procedura di Benjamini–Hochberg, adottando $\alpha=0{.}05$ sui valori aggiustati. Con sole sette osservazioni annuali per comune, la potenza del test è comunque limitata ed un'eventuale autocorrelazione temporale può alterarne la calibrazione; i risultati hanno pertanto solo valore esplorativo.
 
 La @fig-map-mk-sen rappresenta la distribuzione geografica della pendenza di Sen per le concentrazioni medie annuali comunali. I colori indicano l'entità e la direzione della pendenza; i valori negativi identificano un andamento decrescente. I bordi ispessiti individuano i comuni con $p$-value di Mann–Kendall aggiustato inferiore a 0,05.
 
@@ -936,4 +935,4 @@ knitr::include_graphics("./fig_tab/map_mk_sen_no2.png")
 
 ```
 
-La correzione di Benjamini–Hochberg controlla il tasso atteso di false scoperte sotto le condizioni previste dalla procedura, ma non corregge la dipendenza spaziale o temporale dei dati. Poiché tali strutture non sono state modellate esplicitamente, la @fig-map-mk-sen deve essere interpretata come rappresentazione descrittiva e non come dimostrazione definitiva di trend locali indipendenti.
+La correzione di Benjamini–Hochberg controlla il tasso atteso di false scoperte, ma non corregge la dipendenza spaziale o temporale dei dati. Poiché tali strutture non sono state modellate esplicitamente, la @fig-map-mk-sen deve essere interpretata come rappresentazione descrittiva e non come una dimostrazione definitiva di trend locali indipendenti.
