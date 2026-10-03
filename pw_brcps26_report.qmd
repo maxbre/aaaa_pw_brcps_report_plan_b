@@ -566,7 +566,6 @@ knitr::include_graphics("./fig_tab/no2_exp_pop_2019_2025_by_province.png")
 \newpage
 
 Nel 2025 il differenziale non negativo tra la concentrazione modellata e il riferimento controfattuale OMS di $10\ \mu g\,m^{-3}$ è risultato in media pari a $5{.}7\ \mu g\,m^{-3}$, con una mediana di $5{.}9\ \mu g\,m^{-3}$ e un intervallo interquartile di $3{.}9\ \mu g\,m^{-3}$.
-
 Il differenziale mostra una marcata eterogeneità descrittiva tra Province  del Veneto (@tbl-diff-prov).
 
 | Provincia | Media    | Mediana    | Min     | Max     | IQR     |
@@ -656,7 +655,7 @@ knitr::include_graphics("./fig_tab/ac_sim_2025.png")
 
 Separatamente, la variabilità delle esposizioni nel periodo 2019–2025 è stata analizzata mediante una simulazione Monte Carlo con ricampionamento degli scenari annuali. A ogni iterazione è stato selezionato con uguale probabilità uno degli anni compresi tra il 2019 e il 2025, utilizzando simultaneamente per tutte le sezioni di censimento il corrispondente campo spaziale delle concentrazioni di $\mathrm{NO}_2$. È stato inoltre estratto un valore del $RR$ dalla medesima distribuzione lognormale impiegata nella simulazione 2025. La popolazione e i tassi di mortalità sono stati mantenuti fissi, in modo da isolare, a parità di struttura demografica e sanitaria, l'effetto delle differenze tra gli scenari annuali di esposizione.
 
-La simulazione storica risponde pertanto alla seguente domanda sulla quantificazione del  carico sanitario attribuibile sulla popolazione di riferimento se il profilo di esposizione ambientale coincidesse con quello di un anno selezionato casualmente tra il 2019 e il 2025, tenendo conto anche dell'incertezza epidemiologica del $RR$.
+La simulazione storica quantifica il carico sanitario attribuibile nella popolazione di riferimento ipotizzando che il profilo di esposizione ambientale corrisponda a quello di un anno estratto casualmente tra il 2019 e il 2025, integrando anche l'incertezza epidemiologica del $RR$.
 
 La @fig-sim-hist mostra che la distribuzione storica presenta una mediana pari a circa 145.8 casi attribuibili/anno e un intervallo di simulazione al 95% compreso tra circa 81.5 e 230.5 casi/anno. Rispetto alla mediana della simulazione specifica per il 2025, il valore centrale della distribuzione storica è superiore di circa 37 casi/anno, corrispondenti a un incremento relativo di circa il 34%. Anche l'intervallo storico risulta più ampio, poiché combina l'incertezza epidemiologica del $RR$ con la variabilità delle concentrazioni di $\mathrm{NO}_2$ tra i diversi anni.
 
