@@ -688,13 +688,13 @@ Le distribuzioni mostrano uno spostamento complessivo verso valori più bassi de
 
 | Anno di esposizione | Mediana AC | Intervallo percentile 95% |
 |:-------------------:|-----------:|:--------------------------:|
-| 2019 | 186,8 | 113,5–255,0 |
-| 2020 | 172,5 | 101,5–234,5 |
-| 2021 | 170,9 | 105,0–234,0 |
-| 2022 | 153,4 | 95,3–211,1 |
-| 2023 | 124,8 | 78,7–173,2 |
-| 2024 | 126,4 | 78,0–173,8 |
-| 2025 | 108,9 | 66,8–150,0 |
+| 2019 | 186.8 | 113.5–255.0 |
+| 2020 | 172.5 | 101.5–234.5 |
+| 2021 | 170.9 | 105.0–234.0 |
+| 2022 | 153.4 | 95.3–211.1 |
+| 2023 | 124.8 | 78.7–173.2 |
+| 2024 | 126.4 | 78.0–173.8 |
+| 2025 | 108.9 | 66.8–150.0 |
 
 : Mediana e intervallo percentile al 95% dei casi attribuibili, condizionati allo scenario annuale di esposizione selezionato. All'interno di ciascun anno, la dispersione deriva dall'incertezza epidemiologica del RR; popolazione e tassi basali sono mantenuti fissi. {#tbl-sim-hist-years}
 
