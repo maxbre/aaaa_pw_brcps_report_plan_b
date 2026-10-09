@@ -240,6 +240,7 @@ I percentili della distribuzione risultante definiscono un *intervallo di simula
 
 Il flusso complessivo della valutazione di impatto sanitario, dalla costruzione degli input sezionali fino alla produzione delle stime regionali, è sintetizzato nella @fig-flow-vis.
 
+
 ```{dot}
 //| label: fig-flow-vis
 //| fig-cap: "Flusso della valutazione di impatto sanitario: dagli input ambientali, demografici ed epidemiologici al calcolo sezionale dei casi attribuibili ed alle successive stime regionali."
@@ -276,8 +277,17 @@ digraph VIS {
     arrowsize=0.7
   ];
 
-  A [
+  A1 [
     label="NO₂ per sezione",
+    width=2.20,
+    height=0.70,
+    fillcolor="#FFFFFF",
+    color="#7D7D7D",
+    fontcolor="#393D3F"
+  ];
+  
+   A2 [
+    label="Controfattuale OMS",
     width=2.20,
     height=0.70,
     fillcolor="#FFFFFF",
@@ -304,7 +314,7 @@ digraph VIS {
   ];
 
   D [
-    label="RR₁₀ OMS: 1,05",
+    label="RR₁₀ OMS: 1.05",
     width=2.20,
     height=0.70,
     fillcolor="#FFFFFF",
@@ -396,12 +406,13 @@ M [
     fontcolor="#393D3F"
   ];
 
-  { rank=same; A; B; C; D; }
+  { rank=same; A1; A2; B; C; D; }
   { rank=same; E; F;}
   { rank=same; I; M; }
   { rank=same; J; K; L;}
 
-  A -> E;
+  A1 -> E;
+  A2 ->E;
   B -> F;
   C -> F;
   D -> G;
@@ -417,7 +428,9 @@ M [
 /* trick: impone l’ordine orizzontale */
 J -> K [style=invis, weight=100];
 K -> L [style=invis, weight=100];
+A1 -> A2 [style=invis, weight=100];
 }
+
 
 ```
 
