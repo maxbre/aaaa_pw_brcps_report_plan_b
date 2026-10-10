@@ -529,8 +529,6 @@ knitr::include_graphics("./fig_tab/map_no2_2025.png")
 
 ```
 
-\vspace{-0.5em}
-\nopagebreak
 
 ```{r}
 #| label: fig-map-sez-no2-2025
@@ -547,6 +545,7 @@ knitr::include_graphics("./fig_tab/map_sezioni_no2_2025.png")
 
 \newpage
 
+
 ```{r}
 #| label: fig-no2-boxplot-prov
 #| fig-cap: "Boxplot concentrazioni $NO_2$ (2025) per sezioni di censimento Regione Veneto."
@@ -560,8 +559,6 @@ knitr::include_graphics("./fig_tab/no2_boxplot_no2_provincia.png")
 
 ```
 
-\vspace{-0.5em}
-\nopagebreak
 
 ```{r}
 #| label: fig-exp-pop_prov
@@ -597,6 +594,12 @@ La @fig-map-sez-delta-no2 rappresenta la mappatura spaziale del differenziale tr
 
 La stima di impatto sanitario per ciascuna sezione è basata su tale differenziale mediante l'applicazione della funzione concentrazione-risposta definita in @sec-methods e discussa nell'Appendice.
 
+Per il 2025 si stimano complessivamente *109.0 decessi attribuibili/anno per cause respiratorie nella popolazione di età pari o superiore a 30 anni*. Con il valore centrale $RR_{10}=1{.}05$, la frazione attribuibile regionale è pari al 2,86% dei decessi attesi. Applicando separatamente gli estremi dell'IC del $RR$ (1,03–1,07), il carico varia deterministicamente da 66,3 casi/anno ($AF_{\mathrm{low}}=1{.}74\%$) a 150,0 casi/anno ($AF_{\mathrm{upp}}=3{.}95\%$).
+
+La @fig-map-sez-af riporta la frazione attribuibile nelle sezioni di censimento, cioè la quota modellata di decessi respiratori attesi associata al differenziale rispetto al riferimento OMS.
+
+\newpage
+
 ```{r}
 #| label: fig-map-sez-delta-no2
 #| fig-cap: "Differenziale di concentrazione ambientale $NO_2$ per anno 2025."
@@ -610,10 +613,6 @@ La stima di impatto sanitario per ciascuna sezione è basata su tale differenzia
 knitr::include_graphics("./fig_tab/map_sezioni_delta_no2_2025_target_oms.png")
 
 ```
-
-Per il 2025 si stimano complessivamente *109.0 decessi attribuibili/anno per cause respiratorie nella popolazione di età pari o superiore a 30 anni*. Con il valore centrale $RR_{10}=1{.}05$, la frazione attribuibile regionale è pari al 2,86% dei decessi attesi. Applicando separatamente gli estremi dell'IC del $RR$ (1,03–1,07), il carico varia deterministicamente da 66,3 casi/anno ($AF_{\mathrm{low}}=1{.}74\%$) a 150,0 casi/anno ($AF_{\mathrm{upp}}=3{.}95\%$).
-
-La @fig-map-sez-af riporta la frazione attribuibile nelle sezioni di censimento, cioè la quota modellata di decessi respiratori attesi associata al differenziale rispetto al riferimento OMS.
 
 ```{r}
 #| label: fig-map-sez-af
@@ -629,6 +628,7 @@ knitr::include_graphics("./fig_tab/map_AF_sezioni_no2_2025.png")
 
 ```
 
+\newpage
 
 Nella @tbl-ac-prov viene riportato per l'anno 2025 il dettaglio stratificato per Provincia del numero di casi attesi, del valore centrale ($\text{AC}$), degli estremi inferiore ($\text{AC}_{\text{low}}$) e superiore ($\text{AC}_{\text{upp}}$) dei casi attribuibili e della frazione attribuibile ($\text{AF}$).
 
